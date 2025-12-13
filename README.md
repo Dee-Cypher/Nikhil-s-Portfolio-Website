@@ -1,20 +1,37 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# Nikhil | Legal Tech Automation Specialist Portfolio
 
-# Run and deploy your AI Studio app
+## 🚀 Overview
+This is a high-performance, **Neo-Brutalist portfolio website** built for Nikhil, a specialist in Legal Tech Automation. The site diverges from standard corporate aesthetics, embracing a "raw," "retro-tech," and "system-architect" vibe that mirrors the backend complexity and efficiency Nikhil manages.
 
-This contains everything you need to run your app locally.
+It is designed to serve as both a portfolio of work and a lead generation tool for high-value automation consulting.
 
-View your app in AI Studio: https://ai.studio/apps/drive/1RSy9C-UaY0yJVF6gXodvPB06hDt5vpu6
+## 🛠 Tech Stack
+- **Core Framework:** React 18 (via Vite)
+- **Styling:** Tailwind CSS (Custom Config)
+- **Animation:** Framer Motion
+- **Icons:** Lucide React
+- **Routing:** React Router DOM v6
+- **Type Safety:** TypeScript
 
-## Run Locally
+## ⚡️ Quick Start
 
-**Prerequisites:**  Node.js
+### 1. Install Dependencies
+```bash
+npm install
+```
 
+### 2. Run Development Server
+```bash
+npm run dev
+```
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+### 3. Build for Production
+```bash
+npm run build
+```
+
+## 📂 Project Structure
+- `/components`: Reusable UI blocks (Layout, ProjectCard, SkillsMarquee).
+- `/pages`: Route views (Home, About, Projects, Services, Contact).
+- `/constants.ts`: Static data for projects, skills, and services.
+- `/docs`: Design principles and core philosophy documentation.

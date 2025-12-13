@@ -45,7 +45,7 @@ export const Services: React.FC = () => {
               <ul className="space-y-4 mb-8 flex-grow">
                 {service.offerings.map((offer, i) => (
                   <li key={i} className="flex items-start font-mono text-sm">
-                    <span className="mr-3 text-brand-teal font-bold">>></span>
+                    <span className="mr-3 text-brand-teal font-bold">&gt;&gt;</span>
                     {offer}
                   </li>
                 ))}

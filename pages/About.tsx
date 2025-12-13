@@ -101,10 +101,10 @@ export const About: React.FC = () => {
                   <h3 className="font-black text-xl uppercase">Domain</h3>
                 </div>
                 <ul className="space-y-2 font-mono text-sm">
-                   <li><span className="font-bold">>></span> PI Law Docs</li>
-                   <li><span className="font-bold">>></span> Prompt Eng.</li>
-                   <li><span className="font-bold">>></span> Med Records</li>
-                   <li><span className="font-bold">>></span> Workflow Ops</li>
+                   <li><span className="font-bold">&gt;&gt;</span> PI Law Docs</li>
+                   <li><span className="font-bold">&gt;&gt;</span> Prompt Eng.</li>
+                   <li><span className="font-bold">&gt;&gt;</span> Med Records</li>
+                   <li><span className="font-bold">&gt;&gt;</span> Workflow Ops</li>
                 </ul>
               </div>
             </div>
