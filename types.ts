@@ -20,6 +20,17 @@ export interface Service {
   icon: 'legal' | 'workflow' | 'nocode';
 }
 
+export interface Article {
+  id: string;
+  title: string;
+  category: 'Law' | 'Tech' | 'Life' | 'Skills';
+  summary: string;
+  readTime: string;
+  date: string;
+  tags: string[];
+  content?: string; // For future expansion
+}
+
 export interface NavItem {
   label: string;
   path: string;

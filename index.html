@@ -3,12 +3,19 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Nikhil | Legal Tech Automation Specialist</title>
+    <title>Nikhil | The Knowledge Repository & Portfolio</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
     <script>
+      // Avoid FOUC (Flash of Unstyled Content)
+      if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
+
       tailwind.config = {
         darkMode: 'class',
         theme: {
@@ -23,19 +30,20 @@
                 teal: '#319795', // Keep for accent
                 amber: '#FFC107', // Bright Amber
                 bg: '#FFFFFF',   // Stark White
-                gray: '#F3F4F6', // Light Gray for backgrounds
+                gray: '#F3F4F6', // Light Gray
               }
             },
             boxShadow: {
               'brutal': '4px 4px 0px 0px #000000',
               'brutal-lg': '8px 8px 0px 0px #000000',
               'brutal-sm': '2px 2px 0px 0px #000000',
-              'brutal-hover': '2px 2px 0px 0px #000000', // smaller offset on hover to simulate press
+              'brutal-hover': '2px 2px 0px 0px #000000', 
             },
             animation: {
               'marquee': 'marquee 20s linear infinite',
               'marquee-reverse': 'marquee-reverse 20s linear infinite',
               'float': 'float 6s ease-in-out infinite',
+              'spin-slow': 'spin 8s linear infinite',
             },
             keyframes: {
               marquee: {
@@ -61,13 +69,15 @@
     <style>
       body {
         font-family: 'Space Grotesk', sans-serif;
-        background-color: #FFFFFF;
-        color: #000000;
       }
       .bg-grid {
         background-size: 40px 40px;
         background-image: linear-gradient(to right, #f0f0f0 1px, transparent 1px),
                           linear-gradient(to bottom, #f0f0f0 1px, transparent 1px);
+      }
+      .dark .bg-grid {
+         background-image: linear-gradient(to right, #1a1a1a 1px, transparent 1px),
+                          linear-gradient(to bottom, #1a1a1a 1px, transparent 1px);
       }
       .no-scrollbar::-webkit-scrollbar {
           display: none;
@@ -75,6 +85,11 @@
       .no-scrollbar {
           -ms-overflow-style: none;
           scrollbar-width: none;
+      }
+      /* Custom selection color */
+      ::selection {
+        background-color: #319795;
+        color: white;
       }
     </style>
   <script type="importmap">

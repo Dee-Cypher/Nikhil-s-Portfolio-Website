@@ -1,14 +1,12 @@
-# Nikhil | Legal Tech Automation Specialist Portfolio
+# Nikhil | Legal Tech Automation Specialist Portfolio & Knowledge Repository
 
 ## 🚀 Overview
-This is a high-performance, **Neo-Brutalist portfolio website** built for Nikhil, a specialist in Legal Tech Automation. The site diverges from standard corporate aesthetics, embracing a "raw," "retro-tech," and "system-architect" vibe that mirrors the backend complexity and efficiency Nikhil manages.
-
-It is designed to serve as both a portfolio of work and a lead generation tool for high-value automation consulting.
+This is a high-performance, **Neo-Brutalist portfolio & wiki** built for Nikhil. It serves as a central hub for his work ("The Archive") and his teachings ("The Codex"). The site embraces a "retro-tech" aesthetic with full **Dark Mode** support and interactive parallax animations.
 
 ## 🛠 Tech Stack
 - **Core Framework:** React 18 (via Vite)
-- **Styling:** Tailwind CSS (Custom Config)
-- **Animation:** Framer Motion
+- **Styling:** Tailwind CSS (Custom Config + Dark Mode)
+- **Animation:** Framer Motion (Scroll & Parallax)
 - **Icons:** Lucide React
 - **Routing:** React Router DOM v6
 - **Type Safety:** TypeScript
@@ -32,6 +30,12 @@ npm run build
 
 ## 📂 Project Structure
 - `/components`: Reusable UI blocks (Layout, ProjectCard, SkillsMarquee).
-- `/pages`: Route views (Home, About, Projects, Services, Contact).
-- `/constants.ts`: Static data for projects, skills, and services.
+- `/pages`: Route views (Home, About, Projects, Services, Contact, **Knowledge**).
+- `/constants.ts`: Static data for projects, skills, services, and **articles**.
 - `/docs`: Design principles and core philosophy documentation.
+
+## ✨ Key Features
+- **The Codex**: A searchable knowledge base for articles and snippets.
+- **Dark Mode**: System-aware theme toggling.
+- **Parallax**: Scroll-linked animations for visual depth.
+- **Brutalist UI**: Hard edges, high contrast, monospaced typography.

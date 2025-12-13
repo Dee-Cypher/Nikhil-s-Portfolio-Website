@@ -1,33 +1,32 @@
 # 🧠 Core Philosophy & Vision
 
-## 🏗 What We Are Building
-We are not just building a portfolio; we are building a **Digital Terminal**. 
+## 🏗 What We Are Building: "The Codex"
+We are moving beyond a static portfolio to a **Knowledge Repository**. 
 
-This website serves as the primary interface between Nikhil and potential clients (law firms, legal tech startups). It acts as:
-1.  **An Archive**: A brutalist catalog of deployed tools (The "Archive" section).
-2.  **A Filter**: The unique design filters for clients who value innovation and efficiency over tradition.
-3.  **A Demonstration**: The site itself is fast, responsive, and systematic—proving competence in engineering.
+This website serves as the primary interface between Nikhil and the world. It is:
+1.  **A Codex**: A central repository for legal tech knowledge, open-source scripts, and mental models (The "Knowledge" section).
+2.  **An Archive**: A brutalist catalog of deployed tools (The "Projects" section).
+3.  **A Demonstration**: The site itself is fast, dark-mode enabled, and systematic—proving competence in engineering.
 
-## 💡 The Philosophy: "Systems, Not Tasks"
-The central thesis of Nikhil's professional identity is that **manual work is a failure of imagination**.
+## 💡 The Philosophy: "Open Source Intelligence"
+The central thesis of Nikhil's professional identity is that **knowledge grows when shared**.
 
-### 1. The "Anti-Drudgery" Stance
-Law is filled with repetitive, low-value administrative tasks. Nikhil's role is to identify these patterns and automate them. The website reflects this by presenting information in a structured, data-first manner (JSON-like structures, terminal windows, monospaced fonts).
+### 1. The "Teacher-Architect" Stance
+By teaching "how" the magic trick is done (e.g., how to scrape a court docket), we establish authority. We don't hide the secret sauce; we sell the chef's expertise. 
 
 ### 2. Radical Transparency
-We show the **Impact** and **Tools** upfront. 
+We show the **Impact**, **Tools**, and **Code** upfront. 
 - No fluff. 
-- Just metrics: "Hours Saved," "Tools Built," "Efficiency Gained."
-- We use a "Window" metaphor for projects to imply looking *into* the machine.
+- "Knowledge" articles are practical, not theoretical.
+- We use a "Terminal" metaphor to imply direct access to the source.
 
-### 3. The Engineer's Aesthetic
-We reject the polished, soft-shadow "Corporate Memphis" style common in SaaS. Instead, we embrace the **raw aesthetic of the builder**:
-- Visible grid lines (Blueprints).
-- Monospaced fonts (Code Editors).
-- High contrast (Terminal screens).
-- Hard edges (Precision).
+### 3. The Aesthetic: "Dark Mode Default"
+We embrace the **developer's environment**:
+- Dark themes by preference (less eye strain, higher focus).
+- High contrast neon accents (Teal/Amber) against void black.
+- Motion that feels mechanical, not organic.
 
 ## 🎯 Target Audience
-1.  **Law Firm Partners**: Who are drowning in paperwork and need a "fixer."
+1.  **Law Firm Partners**: Who need a "fixer" and trust someone who explains the problem clearly.
 2.  **Legal Tech Founders**: Who need an engineer who understands the legal domain.
-3.  **Operations Managers**: Who appreciate systems thinking.
+3.  **Learners**: Who come for the free knowledge and stay for the community.
