@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
-import { ArrowRight, Bot, Cpu, Zap, Star, MousePointer2, BookOpen } from 'lucide-react';
+import { ArrowRight, Bot, Cpu, MousePointer2, BookOpen } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { PROJECTS } from '../constants';
 import { SkillsMarquee } from '../components/SkillsMarquee';
@@ -168,8 +168,17 @@ export const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* Marquee Section */}
-      <section>
+      {/* Tools Section */}
+      <section className="py-24 border-b-2 border-black dark:border-white bg-white dark:bg-black">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16 text-center">
+          <h2 className="text-5xl md:text-7xl font-black uppercase text-black dark:text-white mb-6 tracking-tighter">
+            Tools I Use
+          </h2>
+          <p className="font-mono text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+             The software ammunition behind the automation.
+          </p>
+        </div>
+        
         <SkillsMarquee />
       </section>
 
