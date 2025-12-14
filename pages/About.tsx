@@ -32,19 +32,19 @@ export const About: React.FC = () => {
                 </h3>
                 <ul className="space-y-2 font-mono text-xs text-black dark:text-white leading-tight">
                   <li className="flex justify-between">
-                    <span>Location:</span> <span className="font-bold">Noida, IN</span>
+                    <span>Location:</span> <span className="font-bold">Delhi NCR, India</span>
                   </li>
                   <li className="flex justify-between">
-                    <span>Role:</span> <span className="font-bold">Legal Engineer</span>
+                    <span>Role:</span> <span className="font-bold">Building @ EvenUp</span>
                   </li>
                   <li className="flex justify-between">
-                    <span>Mission:</span> <span className="font-bold">Automate Everything</span>
+                    <span>Mission:</span> <span className="font-bold">Ship Fast, Document Everything</span>
                   </li>
                 </ul>
               </div>
               
               <button className="w-full py-3 bg-brand-teal text-white font-bold uppercase border-2 border-black dark:border-white shadow-brutal dark:shadow-[4px_4px_0px_0px_#ffffff] hover:shadow-none hover:translate-x-[1px] hover:translate-y-[1px] transition-all flex justify-center items-center gap-2">
-                <Download size={18} /> Download Dossier
+                <Download size={18} /> Download Full Profile (PDF)
               </button>
             </div>
           </motion.div>
@@ -65,34 +65,34 @@ export const About: React.FC = () => {
               <span className="text-brand-teal">Architect</span>
             </h1>
             
-            <div className="font-mono text-lg space-y-6 mb-12 border-l-4 border-black dark:border-white pl-6 text-gray-800 dark:text-gray-300">
+            <div className="font-mono text-lg space-y-8 mb-12 border-l-4 border-black dark:border-white pl-6 text-gray-800 dark:text-gray-300">
               <p>
-                <strong>I believe in open-sourcing intelligence.</strong>
+                <strong>"I've saved legal teams over 1,000 hours with systems that cost $0 to run."</strong>
               </p>
               <p>
-                My career is built on a simple premise: If you have to do it more than twice, write a script for it. I bridge the gap between traditional legal workflows and modern software engineering.
+                By day, I draft AI-powered demand letters at EvenUp—one of legal tech's fastest-growing companies. But my real obsession? Building the tools that make legal work feel like magic. From verdict extraction engines to case assignment predictors, I automate the tedious so teams can focus on winning.
               </p>
               <p>
-                Currently, I act as a force multiplier for <span className="bg-brand-amber text-black px-1 border border-black font-bold">EvenUp</span>, drafting AI-powered demand letters. But my passion lies in building "The Codex" — a system of tools and knowledge that makes legal work instantaneous.
+                My rule is simple: If I have to do it twice, I write a script. If I have to explain it twice, I document it. Everything I learn gets published in The Codex—free for you to steal, adapt, or hire me to customize.
               </p>
             </div>
 
             {/* Skills Grids */}
-            <div className="grid sm:grid-cols-2 gap-6 mb-16">
+            <div className="grid sm:grid-cols-2 gap-6 mb-12">
               <div className="border-2 border-black dark:border-white p-6 bg-white dark:bg-zinc-900 shadow-brutal dark:shadow-[4px_4px_0px_0px_#ffffff]">
                 <div className="flex items-center mb-6">
                   <div className="p-2 bg-brand-teal border-2 border-black dark:border-white text-white mr-4">
                     <Code size={24} />
                   </div>
-                  <h3 className="font-black text-xl uppercase">Tech Stack</h3>
+                  <h3 className="font-black text-xl uppercase">What I Build With</h3>
                 </div>
                 <ul className="space-y-2 font-mono text-sm text-gray-700 dark:text-gray-300">
-                  {SKILLS.slice(0, 6).map(skill => (
-                    <li key={skill} className="flex items-center">
-                      <span className="w-2 h-2 bg-black dark:bg-white mr-2"></span>
-                      {skill}
-                    </li>
-                  ))}
+                  <li>Google Apps Script</li>
+                  <li>n8n Workflow Automation</li>
+                  <li>AI Prompt Engineering</li>
+                  <li>Notion Database Design</li>
+                  <li>Google Sheets (Advanced)</li>
+                  <li>No-Code Tool Integration</li>
                 </ul>
               </div>
 
@@ -101,19 +101,21 @@ export const About: React.FC = () => {
                   <div className="p-2 bg-brand-amber border-2 border-black dark:border-white text-black mr-4">
                     <Award size={24} />
                   </div>
-                  <h3 className="font-black text-xl uppercase">Domain</h3>
+                  <h3 className="font-black text-xl uppercase">Where I Play</h3>
                 </div>
                 <ul className="space-y-2 font-mono text-sm text-gray-700 dark:text-gray-300">
-                   <li><span className="font-bold text-brand-teal">&gt;&gt;</span> PI Law Docs</li>
-                   <li><span className="font-bold text-brand-teal">&gt;&gt;</span> Prompt Eng.</li>
-                   <li><span className="font-bold text-brand-teal">&gt;&gt;</span> Med Records</li>
-                   <li><span className="font-bold text-brand-teal">&gt;&gt;</span> Workflow Ops</li>
+                   <li>Personal Injury Law Docs</li>
+                   <li>Demand Letter Writing</li>
+                   <li>Medical Records Analysis</li>
+                   <li>Settlement Calculations</li>
+                   <li>Legal Research Systems</li>
+                   <li>Quality Assurance</li>
                 </ul>
               </div>
             </div>
 
             <h2 className="text-3xl font-black uppercase mb-6 border-b-2 border-black dark:border-white pb-2">Toolbelt</h2>
-            <div className="flex flex-wrap gap-3">
+            <div className="flex flex-wrap gap-3 mb-16">
               {SKILLS.map((skill) => (
                 <span
                   key={skill}

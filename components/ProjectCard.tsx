@@ -12,7 +12,7 @@ export const ProjectCard: React.FC<{ project: Project; index: number }> = ({ pro
       transition={{ delay: index * 0.1, duration: 0.5 }}
       className="h-full"
     >
-      <div className="h-full flex flex-col bg-white border-2 border-black shadow-brutal hover:shadow-brutal-lg transition-all duration-300 group">
+      <div className="h-full flex flex-col bg-white text-black border-2 border-black shadow-brutal hover:shadow-brutal-lg transition-all duration-300 group">
         {/* Window Header */}
         <div className="h-10 bg-black border-b-2 border-black flex items-center justify-between px-3">
           <span className="font-mono text-white text-xs uppercase tracking-wider truncate mr-4">
@@ -47,7 +47,7 @@ export const ProjectCard: React.FC<{ project: Project; index: number }> = ({ pro
              <span className="inline-block px-2 py-1 mb-3 text-xs font-bold uppercase tracking-wide bg-brand-teal text-white border-2 border-black shadow-brutal-sm">
               {project.category}
             </span>
-            <h3 className="text-2xl font-black uppercase leading-none mb-2 group-hover:text-brand-teal transition-colors">
+            <h3 className="text-2xl font-black uppercase leading-none mb-2 text-black group-hover:text-brand-teal transition-colors">
               {project.title}
             </h3>
           </div>

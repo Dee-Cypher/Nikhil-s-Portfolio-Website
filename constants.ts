@@ -3,61 +3,70 @@ import { Project, Service, Stat, NavItem, Article } from './types';
 export const NAV_ITEMS: NavItem[] = [
   { label: 'Home', path: '/' },
   { label: 'About', path: '/about' },
-  { label: 'Knowledge', path: '/knowledge' }, // New Section
+  { label: 'Knowledge', path: '/knowledge' },
   { label: 'Projects', path: '/projects' },
   { label: 'Services', path: '/services' },
   { label: 'Contact', path: '/contact' },
 ];
 
 export const STATS: Stat[] = [
-  { value: '10+', label: 'Automation Architectures' },
-  { value: '1000+', label: 'Billable Hours Saved' },
-  { value: 'Top 1%', label: 'Efficiency Rating' },
-  { value: '∞', label: 'Knowledge Shared' },
+  { value: '10+', label: 'Automation Tools Built' },
+  { value: '1000+', label: 'Hours Saved' },
+  { value: '40+', label: 'Points Weekly at EvenUp' },
+  { value: '2', label: 'Ventures in Progress' },
 ];
 
 export const SKILLS = [
-  'Google Apps Script', 'System Architecture', 'Legal Engineering', 'Claude AI', 'Gemini Ultra', 
-  'React', 'TypeScript', 'n8n Workflows', 'Prompt Engineering', 'Data Privacy',
-  'Zapier Logic', 'Contract Analysis'
+  'Google Apps Script', 'n8n', 'Claude AI', 'Gemini', 
+  'Canva', 'Google Sheets', 'Case Companion AI', 'Cursor', 'ChatGPT',
+  'Zapier', 'Legal Research'
 ];
 
 export const ARTICLES: Article[] = [
   {
     id: '1',
-    title: 'The Death of the Billable Hour: Automating Discovery',
-    category: 'Law',
-    summary: 'Why manual document review is costing firms millions and how simple regex patterns combined with LLMs can solve it.',
-    readTime: '5 min read',
+    title: 'How I Built an Automated Verdict Extraction System (Step-by-Step)',
+    category: 'Legal Tech Insights',
+    summary: 'A deep dive into using AI to extract, categorize, and organize verdict data into a searchable database, reducing research time by 70%.',
+    readTime: '8 min read',
     date: 'Oct 24, 2023',
-    tags: ['Automation', 'Legal Tech', 'Future of Law']
+    tags: ['Automation', 'AI', 'Legal Tech']
   },
   {
     id: '2',
-    title: 'Building a Second Brain in Notion for Lawyers',
-    category: 'Skills',
-    summary: 'A step-by-step guide to organizing case law, client notes, and procedural knowledge into a queryable database.',
-    readTime: '12 min read',
+    title: '5 No-Code Tools Every Legal Professional Should Know',
+    category: 'No-Code Tips',
+    summary: 'Stop doing repetitive work. Here are the top tools that require zero coding knowledge but deliver massive efficiency gains.',
+    readTime: '5 min read',
     date: 'Nov 02, 2023',
-    tags: ['Notion', 'Productivity', 'Knowledge Management']
+    tags: ['No-Code', 'Productivity', 'Tools']
   },
   {
     id: '3',
-    title: 'Variables vs. Constants: Life Lessons from Coding',
-    category: 'Life',
-    summary: 'How understanding scope and immutability in TypeScript changed how I approach personal relationships and habit building.',
-    readTime: '8 min read',
+    title: 'From Chaos to System: My Process for Workflow Automation',
+    category: 'Productivity & Systems',
+    summary: 'How to audit your current chaos, blueprint a solution, and execute a workflow system that scales.',
+    readTime: '10 min read',
     date: 'Dec 15, 2023',
-    tags: ['Philosophy', 'Coding', 'Mindset']
+    tags: ['Systems Thinking', 'Workflow', 'Operations']
   },
   {
     id: '4',
-    title: 'Reverse Engineering the Court System API',
-    category: 'Tech',
-    summary: 'A technical deep dive into scraping public court records responsibly to build predictive analytics models.',
-    readTime: '15 min read',
+    title: 'Using AI for Legal Research: A Practical Guide',
+    category: 'Automation Tutorials',
+    summary: 'Integrating Claude and Gemini into your legal research workflow without compromising data privacy or accuracy.',
+    readTime: '7 min read',
     date: 'Jan 10, 2024',
-    tags: ['Scraping', 'Python', 'Legal Data']
+    tags: ['AI', 'Research', 'Guide']
+  },
+  {
+    id: '5',
+    title: 'Building in Public: Lessons from Jotrishi',
+    category: 'Productivity & Systems',
+    summary: 'The journey of building an organic food brand from Noida for a global audience, and how systems thinking applies to D2C.',
+    readTime: '6 min read',
+    date: 'Feb 01, 2024',
+    tags: ['Entrepreneurship', 'Building in Public']
   }
 ];
 
@@ -65,56 +74,56 @@ export const PROJECTS: Project[] = [
   {
     id: '1',
     title: 'Verdict Extraction Engine',
-    category: 'Legal Tech',
-    description: 'An autonomous agent that monitors court dockets, extracts verdict data using NLP, and populates a firm-wide knowledge graph.',
+    category: 'Legal Tech Automation',
+    description: 'An AI agent that scans court dockets, extracts verdict data, and builds a searchable knowledge graph—replacing 20 hours of paralegal research weekly.',
     image: 'https://picsum.photos/id/1/800/600',
-    timeline: 'Deployed in 14 days',
-    tools: ['Google Apps Script', 'Claude 3.5', 'PostgreSQL'],
-    impact: 'Eliminated 20hrs/week of paralegal research time.',
+    timeline: 'Built in 14 days. Running 8+ months.',
+    tools: ['Google Apps Script', 'Claude AI', 'Google Sheets'],
+    impact: '20 hours/week saved. Zero missed verdicts.',
     featured: true,
   },
   {
     id: '2',
-    title: 'Algorithmic Case Distribution',
-    category: 'Workflow',
-    description: 'A logic-gate system that assigns cases based on attorney capacity, case complexity score, and historical performance metrics.',
+    title: 'Case Assignment Predictor',
+    category: 'Workflow Systems',
+    description: 'A logic-gate system that assigns cases based on attorney capacity, complexity scores, and historical win rates. No more gut-feel distribution.',
     image: 'https://picsum.photos/id/20/800/600',
-    timeline: '3 week sprint',
-    tools: ['Python', 'Pandas', 'Internal API'],
-    impact: 'Increased case velocity by 40% in Q4.',
+    timeline: '3 weeks',
+    tools: ['Google Apps Script', 'Predictive Analytics'],
+    impact: '40% faster case velocity in Q4.',
     featured: true,
   },
   {
     id: '3',
-    title: 'Onboarding.OS',
-    category: 'Workflow',
-    description: 'A gamified, interactive portal for new hires that automates account provisioning and training modules.',
-    image: 'https://picsum.photos/id/3/800/600',
+    title: 'Workstation Navigator',
+    category: 'Workflow Systems',
+    description: 'An interactive tutorial portal that turns 3-month ramp-up into 3 weeks. Gamified training with progress tracking and auto-provisioning.',
+    image: 'https://picsum.photos/id/4/800/600',
     timeline: '1 month',
-    tools: ['Notion API', 'React', 'Loom'],
-    impact: 'Reduced ramp-up time from 3 months to 3 weeks.',
+    tools: ['Interactive Video', 'LMS'],
+    impact: 'New hire productivity: 3 months → 3 weeks.',
     featured: false,
   },
   {
     id: '4',
-    title: 'Auto-Demand Writer',
-    category: 'Legal Tech',
-    description: 'Fine-tuned LLM wrapper that ingests medical records and police reports to draft preliminary demand letters.',
-    image: 'https://picsum.photos/id/4/800/600',
-    timeline: 'Ongoing Beta',
-    tools: ['OpenAI API', 'LangChain', 'Next.js'],
-    impact: 'Drafting consistency improved by factor of 10.',
+    title: 'NTD Drafting System',
+    category: 'AI-Powered Tools',
+    description: 'LLM-powered tool that ingests medical records and police reports to generate preliminary demand letters. Human review still required—but first drafts are 10x more consistent.',
+    image: 'https://picsum.photos/id/3/800/600',
+    timeline: 'Ongoing',
+    tools: ['AI Models', 'Document Automation'],
+    impact: '10x drafting consistency. Hours saved per letter.',
     featured: false,
   },
   {
     id: '5',
     title: 'Jotrishi Organics',
-    category: 'Ventures',
-    description: 'Full-stack D2C brand launch including supply chain automation and Shopify headless implementation.',
+    category: 'Personal Ventures',
+    description: 'D2C organic food brand connecting Haridwar\'s women farmers with conscious consumers. Full-stack launch: supply chain automation, Shopify headless, and marketing workflows.',
     image: 'https://picsum.photos/id/6/800/600',
     timeline: 'Live',
-    tools: ['Shopify', 'Liquid', 'Marketing Automation'],
-    impact: 'Profitable within 3 months of launch.',
+    tools: ['Shopify', 'Branding', 'Supply Chain'],
+    impact: 'Profitable in 3 months. 100% women-sourced.',
     featured: false,
   }
 ];
@@ -122,38 +131,38 @@ export const PROJECTS: Project[] = [
 export const SERVICES: Service[] = [
   {
     id: 'legal',
-    title: 'Legal Engineering',
-    target: 'Forward-thinking Law Firms',
+    title: 'Legal Tech Automation',
+    target: 'For Law Firms Drowning in Manual Work',
     icon: 'legal',
     offerings: [
-      'Automated Document Generation Pipelines',
-      'Verdict & Settlement Data Warehousing',
-      'Case Management System (CMS) Migrations',
-      'LLM Integration for Discovery',
+      'Document generation that writes itself',
+      'Verdict & settlement databases you can actually search',
+      'CMS migrations without the data loss nightmares',
+      'AI-powered discovery that finds what humans miss',
     ]
   },
   {
     id: 'workflow',
-    title: 'System Architecture',
-    target: 'Operations Teams & Startups',
+    title: 'Workflow Engineering',
+    target: 'For Teams Running on Duct Tape & Spreadsheets',
     icon: 'workflow',
     offerings: [
-      'Cross-Platform API Integrations (n8n/Zapier)',
-      'Custom Internal Tool Development',
-      'Operational Bottleneck Audits',
-      'Dashboard & Analytics Implementation',
+      'n8n/Zapier integrations that actually work',
+      'Internal tools your team will actually use',
+      'Bottleneck audits that find the 10hrs/week you\'re losing',
+      'Dashboards that tell you what to do, not just what happened',
     ]
   },
   {
     id: 'nocode',
-    title: 'Knowledge Systems',
-    target: 'Founders & Solopreneurs',
+    title: 'Second Brain Setup',
+    target: 'For Founders Who Can\'t Afford to Forget',
     icon: 'nocode',
     offerings: [
-      'Second Brain Setup (Notion/Obsidian)',
-      'Personal Knowledge Management (PKM) Coaching',
-      'Automated Content Distribution Systems',
-      'Digital Garden Cultivation',
+      'Notion/Obsidian systems that grow with your brain',
+      'PKM coaching so you never lose an idea again',
+      'Content pipelines: write once, publish everywhere',
+      'Digital garden setup for public thought leadership',
     ]
   }
 ];

@@ -9,10 +9,10 @@ export const Knowledge: React.FC = () => {
 
   const categories = [
     { name: 'All', icon: Hash },
-    { name: 'Law', icon: Gavel },
-    { name: 'Tech', icon: Code },
-    { name: 'Life', icon: Heart },
-    { name: 'Skills', icon: Book },
+    { name: 'Legal Tech Insights', icon: Gavel },
+    { name: 'Automation Tutorials', icon: Code },
+    { name: 'No-Code Tips', icon: Heart },
+    { name: 'Productivity & Systems', icon: Book },
   ];
 
   const filteredArticles = ARTICLES.filter(article => {
@@ -30,8 +30,7 @@ export const Knowledge: React.FC = () => {
           The Codex
         </h1>
         <p className="font-mono text-xl max-w-2xl text-gray-700 dark:text-gray-300">
-          A knowledge repository for things I've learned, built, or reverse-engineered. 
-          Documentation for life, law, and machines.
+          Everything I know about automating legal work, building systems, and thinking clearly—documented so you don't have to figure it out the hard way.
         </p>
       </div>
 
@@ -64,7 +63,7 @@ export const Knowledge: React.FC = () => {
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500" size={18} />
           <input 
             type="text" 
-            placeholder="SEARCH DATABASE..." 
+            placeholder="Search: automation, legal tech..." 
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             className="w-full md:w-80 pl-10 pr-4 py-2 border-2 border-black dark:border-white bg-white dark:bg-black focus:outline-none focus:shadow-brutal dark:focus:shadow-[2px_2px_0px_0px_#ffffff] font-mono text-sm"
@@ -118,7 +117,7 @@ export const Knowledge: React.FC = () => {
 
       {filteredArticles.length === 0 && (
         <div className="text-center py-20 border-2 border-dashed border-black dark:border-white opacity-50">
-          <p className="font-mono text-lg">No records found in the archive.</p>
+          <p className="font-mono text-lg">Nothing here yet. Try a different search.</p>
         </div>
       )}
     </div>

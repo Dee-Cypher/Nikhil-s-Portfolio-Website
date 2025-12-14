@@ -5,7 +5,7 @@ import { PROJECTS } from '../constants';
 
 export const Projects: React.FC = () => {
   const [filter, setFilter] = useState<string>('All');
-  const categories = ['All', 'Legal Tech', 'Workflow', 'AI', 'Ventures'];
+  const categories = ['All', 'Legal Tech Automation', 'Workflow Systems', 'AI-Powered Tools', 'Personal Ventures'];
 
   const filteredProjects = filter === 'All' 
     ? PROJECTS 
@@ -13,12 +13,12 @@ export const Projects: React.FC = () => {
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-20">
-      <div className="border-b-4 border-black pb-8 mb-16">
-        <h1 className="text-6xl md:text-8xl font-black text-black uppercase tracking-tighter mb-4">
-          Archive
+      <div className="border-b-4 border-black dark:border-white pb-8 mb-16">
+        <h1 className="text-6xl md:text-8xl font-black text-black dark:text-white uppercase tracking-tighter mb-4">
+          Systems That Ship
         </h1>
-        <p className="font-mono text-xl max-w-2xl">
-          Directory of deployed automation tools and predictive systems.
+        <p className="font-mono text-xl max-w-2xl text-black dark:text-white">
+          Real tools. Real impact. Every project here is live and saving someone time right now.
         </p>
       </div>
 
@@ -28,10 +28,10 @@ export const Projects: React.FC = () => {
           <button
             key={cat}
             onClick={() => setFilter(cat)}
-            className={`px-6 py-2 border-2 border-black font-bold uppercase text-sm shadow-brutal hover:translate-y-[2px] hover:shadow-brutal-hover transition-all ${
+            className={`px-6 py-2 border-2 border-black dark:border-white font-bold uppercase text-sm shadow-brutal dark:shadow-[2px_2px_0px_0px_#ffffff] hover:translate-y-[2px] hover:shadow-brutal-hover transition-all ${
               filter === cat
-                ? 'bg-black text-white'
-                : 'bg-white text-black hover:bg-brand-teal hover:text-white'
+                ? 'bg-black text-white dark:bg-white dark:text-black'
+                : 'bg-white text-black dark:bg-black dark:text-white hover:bg-brand-teal hover:text-white'
             }`}
           >
             {cat}
