@@ -34,15 +34,17 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
       
       <nav className="sticky top-0 z-50 bg-white/90 dark:bg-black/90 backdrop-blur-md border-b-2 border-black dark:border-white transition-colors duration-300">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between h-20 items-center">
-            <div className="flex-shrink-0 flex items-center gap-4">
+          <div className="flex h-20 items-center justify-between relative">
+            
+            {/* Logo */}
+            <div className="flex-shrink-0 flex items-center gap-4 z-10">
               <NavLink to="/" className="font-black text-3xl tracking-tighter uppercase hover:text-brand-teal transition-colors border-2 border-transparent hover:border-black dark:hover:border-white p-1">
                 NIKHIL GOYAL<span className="text-brand-teal">_</span>
               </NavLink>
             </div>
             
-            {/* Desktop Nav */}
-            <div className="hidden md:flex items-center space-x-2">
+            {/* Desktop Nav - Centered */}
+            <div className="hidden md:flex items-center space-x-2 absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10">
               {NAV_ITEMS.map((item) => (
                 item.children ? (
                   <div key={item.label} className="relative group">
@@ -79,30 +81,34 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
                   </NavLink>
                 )
               ))}
-              
+            </div>
+
+            {/* Right Side Controls */}
+            <div className="flex items-center gap-4 z-10">
+              {/* Desktop Theme Toggle */}
               <button 
                 onClick={() => setIsDark(!isDark)}
-                className="ml-4 p-2 border-2 border-black dark:border-white rounded-full hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-colors"
+                className="hidden md:block p-2 border-2 border-black dark:border-white rounded-full hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-colors"
                 aria-label="Toggle Dark Mode"
               >
                 {isDark ? <Sun size={20} /> : <Moon size={20} />}
               </button>
-            </div>
 
-            {/* Mobile Menu Button */}
-            <div className="flex md:hidden items-center gap-4">
-              <button 
-                onClick={() => setIsDark(!isDark)}
-                className="p-2 border-2 border-black dark:border-white dark:text-white"
-              >
-                 {isDark ? <Sun size={20} /> : <Moon size={20} />}
-              </button>
-              <button
-                onClick={() => setIsOpen(!isOpen)}
-                className="p-2 border-2 border-black dark:border-white shadow-brutal dark:shadow-[4px_4px_0px_0px_#ffffff] active:translate-x-[2px] active:translate-y-[2px] transition-all bg-brand-teal text-white"
-              >
-                {isOpen ? <X size={24} /> : <Menu size={24} />}
-              </button>
+              {/* Mobile Menu Button & Theme Toggle */}
+              <div className="flex md:hidden items-center gap-4">
+                <button 
+                  onClick={() => setIsDark(!isDark)}
+                  className="p-2 border-2 border-black dark:border-white dark:text-white"
+                >
+                   {isDark ? <Sun size={20} /> : <Moon size={20} />}
+                </button>
+                <button
+                  onClick={() => setIsOpen(!isOpen)}
+                  className="p-2 border-2 border-black dark:border-white shadow-brutal dark:shadow-[4px_4px_0px_0px_#ffffff] active:translate-x-[2px] active:translate-y-[2px] transition-all bg-brand-teal text-white"
+                >
+                  {isOpen ? <X size={24} /> : <Menu size={24} />}
+                </button>
+              </div>
             </div>
           </div>
         </div>
