@@ -349,7 +349,7 @@ export const Home: React.FC = () => {
                     ))}
                   </div>
                   <div className="pt-4 border-t-2 border-black font-mono text-sm font-bold text-black">
-                    → {item.takeaway}
+                    &rarr; {item.takeaway}
                   </div>
                 </div>
             ))}
@@ -430,7 +430,7 @@ export const Home: React.FC = () => {
             <div className="text-center bg-brand-amber p-8 border-2 border-black dark:border-white shadow-brutal dark:shadow-[4px_4px_0px_0px_#ffffff]">
                <h3 className="text-2xl font-black uppercase mb-4 text-black">Want to build your own legal automation tools?</h3>
                <Link to="/tech" className="inline-block px-8 py-3 bg-black text-white font-bold uppercase border-2 border-black hover:bg-white hover:text-black transition-colors">
-                  Start Learning Automation →
+                  Start Learning Automation &rarr;
                </Link>
             </div>
          </div>
@@ -580,7 +580,7 @@ export const Home: React.FC = () => {
                  <h3 className="text-2xl font-black uppercase mb-2 text-black dark:text-white">Start with Law</h3>
                  <p className="font-mono text-sm text-gray-600 dark:text-gray-400 mb-6">Trademark strategies, PI insights, contract templates</p>
                  <span className="inline-block w-full py-3 bg-black text-white dark:bg-white dark:text-black font-bold uppercase">
-                   Explore Law →
+                   Explore Law &rarr;
                  </span>
               </Link>
               <Link to="/tech" className="bg-white dark:bg-zinc-900 border-2 border-black dark:border-white p-8 shadow-brutal dark:shadow-[4px_4px_0px_0px_#ffffff] hover:shadow-none hover:translate-x-[2px] hover:translate-y-[2px] transition-all group">
@@ -588,7 +588,7 @@ export const Home: React.FC = () => {
                  <h3 className="text-2xl font-black uppercase mb-2 text-black dark:text-white">Start with Tech</h3>
                  <p className="font-mono text-sm text-gray-600 dark:text-gray-400 mb-6">Automation tutorials, tool walkthroughs, code snippets</p>
                  <span className="inline-block w-full py-3 bg-black text-white dark:bg-white dark:text-black font-bold uppercase">
-                   Explore Tech →
+                   Explore Tech &rarr;
                  </span>
               </Link>
             </div>
@@ -609,7 +609,7 @@ export const Home: React.FC = () => {
             <div className="pt-8 border-t border-gray-200 dark:border-gray-800">
                <p className="font-mono text-sm text-gray-600 dark:text-gray-400 mb-4">Need legal work or automation consulting?</p>
                <Link to="/contact" className="inline-block px-8 py-3 border-2 border-black dark:border-white bg-transparent text-black dark:text-white font-bold uppercase hover:bg-brand-teal hover:text-white hover:border-black transition-colors">
-                 Get In Touch →
+                 Get In Touch &rarr;
                </Link>
             </div>
         </div>

@@ -147,7 +147,7 @@ export const TechArticle2: React.FC = () => {
             <h3 className="font-black uppercase text-xl mb-2">Want to generate documents from this data?</h3>
             <p className="font-mono text-sm mb-4">Learn how to auto-fill a Trademark Application using data from a Sheet.</p>
             <Link to="/tech/trademark-generator" className="inline-block px-6 py-2 bg-black text-white dark:bg-white dark:text-black font-bold uppercase hover:bg-brand-teal hover:border-brand-teal transition-colors border-2 border-black dark:border-white">
-              Next Tutorial →
+              Next Tutorial &rarr;
             </Link>
           </div>
 
