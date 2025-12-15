@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
-import { Menu, X, Github, Linkedin, Mail, ArrowUpRight, Sun, Moon, BookOpen } from 'lucide-react';
+import { Menu, X, Github, Linkedin, Mail, ArrowUpRight, Sun, Moon, BookOpen, ChevronDown } from 'lucide-react';
 import { NAV_ITEMS } from '../constants';
 import { AnimatePresence, motion } from 'framer-motion';
 
@@ -37,26 +37,47 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
           <div className="flex justify-between h-20 items-center">
             <div className="flex-shrink-0 flex items-center gap-4">
               <NavLink to="/" className="font-black text-3xl tracking-tighter uppercase hover:text-brand-teal transition-colors border-2 border-transparent hover:border-black dark:hover:border-white p-1">
-                NIKHIL<span className="text-brand-teal">_</span>
+                NIKHIL GOYAL<span className="text-brand-teal">_</span>
               </NavLink>
             </div>
             
             {/* Desktop Nav */}
             <div className="hidden md:flex items-center space-x-2">
               {NAV_ITEMS.map((item) => (
-                <NavLink
-                  key={item.path}
-                  to={item.path}
-                  className={({ isActive }) =>
-                    `px-4 py-2 text-sm font-bold uppercase tracking-wider border-2 border-transparent hover:border-black dark:hover:border-white hover:shadow-brutal dark:hover:shadow-[4px_4px_0px_0px_#ffffff] transition-all ${
-                      isActive 
-                      ? 'bg-black text-white dark:bg-white dark:text-black' 
-                      : 'text-black dark:text-white hover:bg-brand-teal hover:text-white'
-                    }`
-                  }
-                >
-                  {item.label}
-                </NavLink>
+                item.children ? (
+                  <div key={item.label} className="relative group">
+                    <button className="px-4 py-2 text-sm font-bold uppercase tracking-wider border-2 border-transparent hover:border-black dark:hover:border-white text-black dark:text-white hover:bg-brand-teal hover:text-white flex items-center gap-1 transition-all">
+                      {item.label} <ChevronDown size={14} />
+                    </button>
+                    <div className="absolute top-full left-0 w-48 pt-2 hidden group-hover:block">
+                      <div className="bg-white dark:bg-black border-2 border-black dark:border-white shadow-brutal dark:shadow-[4px_4px_0px_0px_#ffffff] flex flex-col">
+                        {item.children.map(child => (
+                          <NavLink
+                            key={child.path}
+                            to={child.path}
+                            className="px-4 py-3 text-sm font-bold uppercase text-black dark:text-white hover:bg-brand-teal hover:text-white transition-colors border-b-2 border-transparent hover:border-transparent last:border-b-0"
+                          >
+                            {child.label}
+                          </NavLink>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                ) : (
+                  <NavLink
+                    key={item.path}
+                    to={item.path}
+                    className={({ isActive }) =>
+                      `px-4 py-2 text-sm font-bold uppercase tracking-wider border-2 border-transparent hover:border-black dark:hover:border-white hover:shadow-brutal dark:hover:shadow-[4px_4px_0px_0px_#ffffff] transition-all ${
+                        isActive 
+                        ? 'bg-black text-white dark:bg-white dark:text-black' 
+                        : 'text-black dark:text-white hover:bg-brand-teal hover:text-white'
+                      }`
+                    }
+                  >
+                    {item.label}
+                  </NavLink>
+                )
               ))}
               
               <button 
@@ -95,22 +116,48 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
               exit={{ opacity: 0, height: 0 }}
               className="md:hidden overflow-hidden border-t-2 border-black dark:border-white bg-white dark:bg-black"
             >
-              <div className="flex flex-col p-4 space-y-2 bg-brand-gray dark:bg-zinc-900">
+              <div className="flex flex-col p-4 space-y-4 bg-brand-gray dark:bg-zinc-900">
                 {NAV_ITEMS.map((item) => (
-                  <NavLink
-                    key={item.path}
-                    to={item.path}
-                    onClick={() => setIsOpen(false)}
-                    className={({ isActive }) =>
-                      `block px-4 py-3 text-lg font-bold uppercase border-2 border-black dark:border-white shadow-brutal-sm dark:shadow-[2px_2px_0px_0px_#ffffff] ${
-                        isActive 
-                        ? 'bg-black text-white dark:bg-white dark:text-black' 
-                        : 'bg-white text-black dark:bg-black dark:text-white hover:bg-brand-teal hover:text-white'
-                      }`
-                    }
-                  >
-                    {item.label}
-                  </NavLink>
+                  item.children ? (
+                    <div key={item.label} className="space-y-2">
+                      <div className="block px-4 py-2 text-lg font-bold uppercase border-2 border-black dark:border-white shadow-brutal-sm dark:shadow-[2px_2px_0px_0px_#ffffff] bg-black text-white dark:bg-white dark:text-black">
+                        {item.label}
+                      </div>
+                      <div className="pl-4 space-y-2 border-l-2 border-black dark:border-white ml-2">
+                        {item.children.map(child => (
+                          <NavLink
+                            key={child.path}
+                            to={child.path}
+                            onClick={() => setIsOpen(false)}
+                            className={({ isActive }) =>
+                              `block px-4 py-2 text-base font-bold uppercase border-2 border-black dark:border-white ${
+                                isActive 
+                                ? 'bg-brand-teal text-white' 
+                                : 'bg-white text-black dark:bg-black dark:text-white hover:bg-brand-teal hover:text-white'
+                              }`
+                            }
+                          >
+                            {child.label}
+                          </NavLink>
+                        ))}
+                      </div>
+                    </div>
+                  ) : (
+                    <NavLink
+                      key={item.path}
+                      to={item.path}
+                      onClick={() => setIsOpen(false)}
+                      className={({ isActive }) =>
+                        `block px-4 py-3 text-lg font-bold uppercase border-2 border-black dark:border-white shadow-brutal-sm dark:shadow-[2px_2px_0px_0px_#ffffff] ${
+                          isActive 
+                          ? 'bg-black text-white dark:bg-white dark:text-black' 
+                          : 'bg-white text-black dark:bg-black dark:text-white hover:bg-brand-teal hover:text-white'
+                        }`
+                      }
+                    >
+                      {item.label}
+                    </NavLink>
+                  )
                 ))}
               </div>
             </motion.div>

@@ -34,9 +34,48 @@ export interface Article {
 export interface NavItem {
   label: string;
   path: string;
+  children?: NavItem[];
 }
 
 export interface Stat {
+  number: string;
   label: string;
-  value: string;
+  sublabel: string;
+}
+
+export interface Domain {
+  id: string;
+  name: string;
+  icon: string;
+  tagline: string;
+  description?: string;
+  bulletPoints: string[];
+  idealFor: string;
+}
+
+export interface Integration {
+  id: number;
+  icon: string;
+  title: string;
+  lawApplication: string;
+  financeApplication: string;
+  techApplication: string;
+  takeaway: string;
+}
+
+export interface Philosophy {
+  id: number;
+  icon: string;
+  title: string;
+  description: string;
+}
+
+export interface ArticlePreview {
+  id: string;
+  category: string;
+  title: string;
+  summary: string;
+  readTime: string;
+  tags: string[];
+  link: string;
 }

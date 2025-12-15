@@ -1,25 +1,186 @@
-import { Project, Service, Stat, NavItem, Article } from './types';
+import { Project, Service, Stat, NavItem, Article, Domain, Integration, Philosophy, ArticlePreview } from './types';
 
 export const NAV_ITEMS: NavItem[] = [
   { label: 'Home', path: '/' },
   { label: 'About', path: '/about' },
-  { label: 'Knowledge', path: '/knowledge' },
-  { label: 'Projects', path: '/projects' },
-  { label: 'Services', path: '/services' },
+  { 
+    label: 'Knowledge Base', 
+    path: '/knowledge',
+    children: [
+      { label: 'Law', path: '/law' },
+      { label: 'Tech', path: '/tech' }
+    ]
+  },
+  { label: 'Work', path: '/projects' },
   { label: 'Contact', path: '/contact' },
 ];
 
 export const STATS: Stat[] = [
-  { value: '10+', label: 'Automation Tools Built' },
-  { value: '1000+', label: 'Hours Saved' },
-  { value: '40+', label: 'Points Weekly at EvenUp' },
-  { value: '2', label: 'Ventures in Progress' },
+  { number: '200+', label: 'Trademark Apps', sublabel: 'Filed & Prosecuted' },
+  { number: '500+', label: 'Agreements', sublabel: 'Drafted & Negotiated' },
+  { number: '80%', label: 'Success Rate', sublabel: 'Opposition Proceedings' },
+  { number: '250+', label: 'Disputes', sublabel: 'Resolved via Arbitration' },
+  { number: '2.5+', label: 'Years', sublabel: 'Legal Practice' },
+  { number: '10+', label: 'Tools Built', sublabel: 'Automation Projects' },
+  { number: '100%', label: 'Free', sublabel: 'All Knowledge Shared' },
+  { number: '2', label: 'Domains', sublabel: 'Law • Tech' },
 ];
 
 export const SKILLS = [
-  'Google Apps Script', 'n8n', 'Claude AI', 'Gemini', 
-  'Canva', 'Google Sheets', 'Case Companion AI', 'Cursor', 'ChatGPT',
-  'Zapier', 'Legal Research'
+  'Trademark Law', 'Contract Drafting', 'IP Strategy',
+  'Personal Injury', 'Demand Letters', 'Legal Ops',
+  'Google Apps Script', 'n8n', 'Claude AI', 'System Design'
+];
+
+export const DOMAINS: Domain[] = [
+  {
+    id: 'law',
+    name: 'Law & Legal Practice',
+    icon: 'Scale',
+    tagline: 'IP Law + Personal Injury',
+    bulletPoints: [
+      'Trademark registration & IP protection strategies',
+      'Personal injury demand letter drafting',
+      'Contract drafting frameworks and clause libraries',
+      'Case law analysis and legal research methods',
+      'Office action responses and examiner objections'
+    ],
+    idealFor: 'Law students, IP practitioners, personal injury attorneys'
+  },
+  {
+    id: 'tech',
+    name: 'Technology & Automation',
+    icon: 'Terminal',
+    tagline: 'Learning & Building',
+    bulletPoints: [
+      'Google Apps Script for legal workflows',
+      'Automation for trademark applications',
+      'n8n workflow automation (no-code)',
+      'AI tools for legal analysis (Claude, ChatGPT)',
+      'Quality assurance systems for demand letters'
+    ],
+    idealFor: 'Legal professionals, automation beginners, efficiency seekers'
+  }
+];
+
+export const INTEGRATIONS: Integration[] = [
+  {
+    id: 1,
+    icon: 'Target',
+    title: 'Pattern Recognition',
+    lawApplication: 'Case precedents, contract patterns',
+    financeApplication: '',
+    techApplication: 'Code patterns, workflow bottlenecks',
+    takeaway: 'All legal work involves recognizing underlying structures and replicating success'
+  },
+  {
+    id: 2,
+    icon: 'Shield',
+    title: 'Risk Management',
+    lawApplication: 'Due diligence, liability protection',
+    financeApplication: '',
+    techApplication: 'Error handling, data validation',
+    takeaway: 'Managing downside is universal—whether in contracts, cases, or code'
+  },
+  {
+    id: 3,
+    icon: 'Zap',
+    title: 'Leverage & Efficiency',
+    lawApplication: 'Clause libraries, template contracts',
+    financeApplication: '',
+    techApplication: 'Automation scripts, reusable workflows',
+    takeaway: 'Build once, benefit forever—the power of systems thinking'
+  },
+  {
+    id: 4,
+    icon: 'MessageSquare',
+    title: 'Clear Communication',
+    lawApplication: 'Persuasive arguments, precise language',
+    financeApplication: '',
+    techApplication: 'Clean code, documentation',
+    takeaway: 'Clarity compounds trust in every domain'
+  }
+];
+
+export const PHILOSOPHY: Philosophy[] = [
+  {
+    id: 1,
+    icon: 'BookOpen',
+    title: 'Teach to Learn',
+    description: 'I document every project publicly for a selfish reason: teaching forces clarity. If I can\'t explain how I built something, I don\'t actually understand it. That\'s why everything I learn gets published here—free, detailed, step-by-step.'
+  },
+  {
+    id: 2,
+    icon: 'Cog',
+    title: 'Systems > Hustle',
+    description: "I don't work 80-hour weeks. I build systems that work while I sleep. If you do something more than twice, script it. If you draft the same contract 50 times, template it. Manual work doesn't scale. Systems do."
+  },
+  {
+    id: 3,
+    icon: 'Users',
+    title: 'Learning in Public',
+    description: "I'm not a legal tech expert. I'm a lawyer learning to code. I share projects that aren't perfect, tools that have bugs, tutorials where I got stuck. If you're 10 steps ahead of me, this won't help. If you're where I was 6 months ago, it might be exactly what you need."
+  }
+];
+
+export const LAW_ARTICLES_PREVIEW: ArticlePreview[] = [
+  {
+    id: '1',
+    category: 'Trademark Law',
+    title: 'How to Respond to a Trademark Office Action (Step-by-Step)',
+    summary: 'Examiner objections aren\'t rejections. Here\'s how to craft responses that anticipate concerns and increase approval odds. Based on 200+ successful filings.',
+    readTime: '12 min read',
+    tags: ['trademark', 'office-action', 'IP-law'],
+    link: '/law/trademark-response'
+  },
+  {
+    id: '2',
+    category: 'Personal Injury',
+    title: 'Anatomy of a Strong PI Demand Letter: What Works',
+    summary: 'Breaking down the structure of effective personal injury demand letters. Medical chronology, liability narrative, settlement valuation—how each section builds the case.',
+    readTime: '15 min read',
+    tags: ['personal-injury', 'demand-letters', 'settlement'],
+    link: '/law/pi-demand-letter'
+  },
+  {
+    id: '3',
+    category: 'Contract Drafting',
+    title: 'Licensing Agreement Template: The 10 Clauses You Need',
+    summary: 'Free template based on 500+ drafted agreements. What to include, what to avoid, and how to protect both parties in trademark licensing deals.',
+    readTime: '10 min read',
+    tags: ['contracts', 'licensing', 'templates'],
+    link: '/law/licensing-template'
+  }
+];
+
+export const TECH_ARTICLES_PREVIEW: ArticlePreview[] = [
+  {
+    id: '1',
+    category: 'Automation Tutorial',
+    title: 'Your First Legal Automation: Email to Google Sheets in 30 Minutes',
+    summary: 'Complete tutorial for lawyers with zero coding experience. Build a system that captures client inquiries from email and organizes them in a searchable sheet.',
+    readTime: '25 min read',
+    tags: ['automation', 'google-apps-script', 'tutorial'],
+    link: '/tech/email-to-sheets'
+  },
+  {
+    id: '2',
+    category: 'Project Walkthrough',
+    title: 'Building a Trademark Application Template Generator (With Code)',
+    summary: 'How I reduced trademark filing prep from 45 minutes to 5 minutes. Full code walkthrough, common pitfalls, and downloadable template.',
+    readTime: '20 min read',
+    tags: ['legal-tech', 'trademark', 'automation'],
+    link: '/tech/trademark-generator'
+  },
+  {
+    id: '3',
+    category: 'Learning Journey',
+    title: '30 Days of Google Apps Script: What I Learned',
+    summary: 'Honest account of learning to code as a lawyer. What worked, what didn\'t, resources that actually helped, and mistakes to avoid.',
+    readTime: '8 min read',
+    tags: ['learning', 'apps-script', 'journey'],
+    link: '/tech/learning-journey'
+  }
 ];
 
 export const ARTICLES: Article[] = [
