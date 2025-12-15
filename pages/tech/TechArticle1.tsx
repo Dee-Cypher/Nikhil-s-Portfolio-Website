@@ -109,7 +109,7 @@ export const TechArticle1: React.FC = () => {
               <ul className="list-disc pl-4 mt-2 text-sm text-gray-500">
                 <li>Click "Review Permissions".</li>
                 <li>Choose your account.</li>
-                <li>If you see "Google hasn't verified this app" (because you just wrote it), click <strong>Advanced</strong> -> <strong>Go to First Legal Script (unsafe)</strong>. It is safe; you wrote it.</li>
+                <li>If you see "Google hasn't verified this app" (because you just wrote it), click <strong>Advanced</strong> &rarr; <strong>Go to First Legal Script (unsafe)</strong>. It is safe; you wrote it.</li>
                 <li>Click "Allow".</li>
               </ul>
             </li>
