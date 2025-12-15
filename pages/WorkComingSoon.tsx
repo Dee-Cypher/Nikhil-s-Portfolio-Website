@@ -230,7 +230,7 @@ export const WorkComingSoon: React.FC = () => {
 
         <div className="pt-12 border-t border-black/10 dark:border-white/10">
            <p className="font-mono text-xs uppercase text-gray-400">
-              Expected Completion: <span className="text-black dark:text-white font-bold">Q1 2025</span>
+              Expected Completion: <span className="text-black dark:text-white font-bold">Q1 2026</span>
            </p>
         </div>
       </motion.div>
