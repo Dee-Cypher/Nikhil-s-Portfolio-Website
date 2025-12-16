@@ -91,6 +91,20 @@
         background-color: #319795;
         color: white;
       }
+
+      /* 3D Transform Utilities for Cards */
+      .perspective-1000 {
+        perspective: 1000px;
+      }
+      
+      .preserve-3d {
+        transform-style: preserve-3d;
+      }
+      
+      .backface-hidden {
+        backface-visibility: hidden;
+        -webkit-backface-visibility: hidden;
+      }
     </style>
   <script type="importmap">
 {
@@ -102,7 +116,10 @@
     "lucide-react": "https://esm.sh/lucide-react@^0.561.0",
     "framer-motion": "https://esm.sh/framer-motion@^12.23.26",
     "vite": "https://esm.sh/vite@^7.2.7",
-    "@vitejs/plugin-react": "https://esm.sh/@vitejs/plugin-react@^5.1.2"
+    "@vitejs/plugin-react": "https://esm.sh/@vitejs/plugin-react@^5.1.2",
+    "react-countup": "https://esm.sh/react-countup@^6.5.3",
+    "react-intersection-observer": "https://esm.sh/react-intersection-observer@^9.13.1",
+    "recharts": "https://esm.sh/recharts@^2.12.7"
   }
 }
 </script>

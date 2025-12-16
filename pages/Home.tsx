@@ -2,11 +2,16 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { 
-  Award, FileCheck, FileSignature, Gavel, ArrowRight, Download, Scale, 
+  Award, Gavel, ArrowRight, Download, Scale, 
   Terminal, Check, GraduationCap, Building2, Target, Shield, 
   Zap, MessageSquare, BookOpen, Cog, Users, Mail, Wrench
 } from 'lucide-react';
 import { PHILOSOPHY, STATS, LAW_ARTICLES_PREVIEW, TECH_ARTICLES_PREVIEW } from '../constants';
+import { StatsGrid } from '../components/AnimatedCounter';
+import { InteractivePillarCard } from '../components/InteractivePillarCard';
+import { ConnectionCard } from '../components/ConnectionDiagram';
+import { PhilosophyCard } from '../components/PhilosophyCard';
+import { ArticlePreviewCard } from '../components/ArticlePreviewCard';
 
 // Data specifically for Home Page projects based on prompt
 const HOME_PROJECTS = [
@@ -138,31 +143,8 @@ export const Home: React.FC = () => {
               </p>
             </div>
 
-            {/* Proof Point Cards */}
-            <div className="grid md:grid-cols-3 gap-6 mb-12">
-               {[
-                 { icon: FileCheck, label: "Trademark Applications", number: "200+", desc: "Filed & prosecuted with 80% success rate in opposition proceedings" },
-                 { icon: FileSignature, label: "Licensing Agreements", number: "500+", desc: "Drafted & negotiated across trademark, franchise, and partnership agreements" },
-                 { icon: Wrench, label: "Automation Tools", number: "10+", desc: "Built and documented. From trademark templates to demand letter QA systems" }
-               ].map((card, idx) => (
-                 <motion.div 
-                    key={idx}
-                    initial={{ opacity: 0, y: 30 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.2 + idx * 0.1 }}
-                    className="bg-white dark:bg-zinc-900 border-2 border-black dark:border-white p-6 shadow-brutal hover:shadow-brutal-lg hover:-translate-y-1 transition-all duration-300"
-                 >
-                    <div className="flex items-center gap-4 mb-4">
-                      <div className="w-12 h-12 bg-brand-teal border-2 border-black dark:border-white flex items-center justify-center text-white">
-                        <card.icon size={24} />
-                      </div>
-                      <span className="font-mono text-xs uppercase font-bold text-gray-500 dark:text-gray-400">{card.label}</span>
-                    </div>
-                    <div className="text-4xl font-black text-black dark:text-white mb-2">{card.number}</div>
-                    <div className="font-mono text-xs text-gray-600 dark:text-gray-300 leading-relaxed">{card.desc}</div>
-                 </motion.div>
-               ))}
-            </div>
+            {/* NEW: Animated Stats Grid */}
+            <StatsGrid />
             
             <div className="flex flex-col sm:flex-row gap-6">
               <Link 
@@ -236,70 +218,41 @@ export const Home: React.FC = () => {
             </p>
           </div>
 
+          {/* NEW: Interactive Pillar Cards */}
           <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-             {/* LAW CARD */}
-             <div className="bg-brand-gray dark:bg-zinc-900 border-2 border-black dark:border-white p-8 shadow-brutal dark:shadow-[4px_4px_0px_0px_#ffffff] hover:shadow-brutal-lg hover:-translate-y-2 transition-all duration-300">
-                <div className="w-16 h-16 bg-brand-teal border-2 border-black dark:border-white flex items-center justify-center mb-6 text-white shadow-brutal-sm">
-                   <Scale size={32} />
-                </div>
-                <h3 className="text-3xl font-black uppercase leading-none mb-4 text-black dark:text-white">Law & Legal Practice</h3>
-                <div className="inline-block bg-white dark:bg-black border border-black dark:border-white p-2 mb-6 font-mono text-xs font-bold uppercase text-black dark:text-white">
-                   IP Law + Personal Injury
-                </div>
-                <div className="mb-3 font-bold text-sm uppercase text-black dark:text-white">What You'll Learn:</div>
-                <ul className="space-y-3 mb-6">
-                   {[
-                     "Trademark registration strategies and opposition proceedings",
-                     "Personal injury demand letter structure and medical analysis",
-                     "Contract drafting frameworks (licensing, franchise, partnership)",
-                     "Case law research and legal argument construction",
-                     "Office action responses and examiner objections"
-                   ].map((point, i) => (
-                     <li key={i} className="flex items-start font-mono text-sm text-gray-700 dark:text-gray-300">
-                       <span className="mr-3 text-brand-teal font-bold">&gt;&gt;</span>
-                       {point}
-                     </li>
-                   ))}
-                </ul>
-                <div className="pt-6 border-t-2 border-black dark:border-white">
-                   <div className="font-mono text-xs font-bold uppercase text-gray-500 dark:text-gray-400">Ideal For</div>
-                   <div className="font-mono text-sm mt-2 text-black dark:text-white">
-                      Law students, IP practitioners, personal injury attorneys, business owners
-                   </div>
-                </div>
-             </div>
-
-             {/* TECH CARD */}
-             <div className="bg-brand-gray dark:bg-zinc-900 border-2 border-black dark:border-white p-8 shadow-brutal dark:shadow-[4px_4px_0px_0px_#ffffff] hover:shadow-brutal-lg hover:-translate-y-2 transition-all duration-300">
-                <div className="w-16 h-16 bg-brand-amber border-2 border-black dark:border-white flex items-center justify-center mb-6 text-black shadow-brutal-sm">
-                   <Terminal size={32} />
-                </div>
-                <h3 className="text-3xl font-black uppercase leading-none mb-4 text-black dark:text-white">Technology & Automation</h3>
-                <div className="inline-block bg-white dark:bg-black border border-black dark:border-white p-2 mb-6 font-mono text-xs font-bold uppercase text-black dark:text-white">
-                   Learning & Building
-                </div>
-                <div className="mb-3 font-bold text-sm uppercase text-black dark:text-white">What You'll Learn:</div>
-                <ul className="space-y-3 mb-6">
-                   {[
-                     "Google Apps Script for legal workflows",
-                     "Automation for trademark applications and contract generation",
-                     "n8n workflow automation (no-code solutions)",
-                     "AI tools for legal analysis (Claude, ChatGPT, Gemini)",
-                     "Quality assurance systems for demand letters"
-                   ].map((point, i) => (
-                     <li key={i} className="flex items-start font-mono text-sm text-gray-700 dark:text-gray-300">
-                       <span className="mr-3 text-brand-teal font-bold">&gt;&gt;</span>
-                       {point}
-                     </li>
-                   ))}
-                </ul>
-                <div className="pt-6 border-t-2 border-black dark:border-white">
-                   <div className="font-mono text-xs font-bold uppercase text-gray-500 dark:text-gray-400">Ideal For</div>
-                   <div className="font-mono text-sm mt-2 text-black dark:text-white">
-                      Legal professionals drowning in manual work, automation beginners
-                   </div>
-                </div>
-             </div>
+            <InteractivePillarCard
+              icon={<Scale size={32} />}
+              title="Law & Legal Practice"
+              subtitle="IP Law + Personal Injury"
+              description="Real legal experience from 200+ trademark applications, 500+ licensing agreements, and daily demand letter drafting."
+              bulletPoints={[
+                "Trademark registration strategies and opposition proceedings",
+                "Personal injury demand letter structure and medical analysis",
+                "Contract drafting frameworks (licensing, franchise, partnership)",
+                "Case law research and legal argument construction",
+                "Office action responses and examiner objections"
+              ]}
+              idealFor="Law students, IP practitioners, personal injury attorneys, business owners"
+              accentColor="brand-teal"
+              index={0}
+            />
+            
+            <InteractivePillarCard
+              icon={<Terminal size={32} />}
+              title="Technology & Automation"
+              subtitle="Learning & Building"
+              description="Self-taught automation expert documenting the journey from manual work to systematic efficiency."
+              bulletPoints={[
+                "Google Apps Script for legal workflows",
+                "Automation for trademark applications and contract generation",
+                "n8n workflow automation (no-code solutions)",
+                "AI tools for legal analysis (Claude, ChatGPT, Gemini)",
+                "Quality assurance systems for demand letters"
+              ]}
+              idealFor="Legal professionals drowning in manual work, automation beginners"
+              accentColor="brand-amber"
+              index={1}
+            />
           </div>
 
           <div className="mt-16 text-center">
@@ -331,28 +284,67 @@ export const Home: React.FC = () => {
              <p className="font-mono text-xl italic text-white">"Each domain teaches lessons that transfer to the other"</p>
           </div>
 
+          {/* NEW: Animated Connection Diagram */}
           <div className="grid md:grid-cols-2 gap-8">
-            {[
-               { icon: Target, title: "Pattern Recognition", apps: ["Case precedents, contract patterns", "Medical record patterns", "Code patterns, workflow bottlenecks"], takeaway: "All legal work involves recognizing underlying structures and replicating success" },
-               { icon: Shield, title: "Risk Management", apps: ["Due diligence, liability protection", "Litigation risk assessment", "Error handling, backup systems"], takeaway: "Managing downside is universal—whether in contracts, cases, or code" },
-               { icon: Zap, title: "Leverage & Efficiency", apps: ["Clause libraries, legal precedents", "Medical chronology systems", "Automation scripts, reusable workflows"], takeaway: "Build once, benefit forever—the power of systems thinking" },
-               { icon: MessageSquare, title: "Clear Communication", apps: ["Persuasive legal arguments", "Compelling demand narratives", "Clean code, documentation"], takeaway: "Clarity compounds trust in every domain" }
-            ].map((item, idx) => (
-                <div key={idx} className="bg-white border-2 border-black p-8 shadow-brutal-lg hover:-translate-y-1 transition-transform">
-                  <div className="flex items-center gap-3 mb-4 text-black">
-                    <item.icon size={32} className="text-brand-teal" />
-                    <h3 className="text-2xl font-black uppercase">{item.title}</h3>
-                  </div>
-                  <div className="space-y-2 mb-6 font-mono text-sm text-gray-700">
-                    {item.apps.map((app, i) => (
-                       <div key={i}>• {app}</div>
-                    ))}
-                  </div>
-                  <div className="pt-4 border-t-2 border-black font-mono text-sm font-bold text-black">
-                    &rarr; {item.takeaway}
-                  </div>
-                </div>
-            ))}
+            <ConnectionCard
+              icon={<Target size={32} className="text-brand-teal" />}
+              title="Pattern Recognition"
+              lawApps={[
+                "Case precedents, contract patterns",
+                "Medical record patterns"
+              ]}
+              techApps={[
+                "Code patterns, workflow bottlenecks",
+                "System architecture patterns"
+              ]}
+              takeaway="All work involves recognizing structures and replicating success"
+              index={0}
+            />
+            
+            <ConnectionCard
+              icon={<Shield size={32} className="text-brand-teal" />}
+              title="Risk Management"
+              lawApps={[
+                "Due diligence, liability protection",
+                "Litigation risk assessment"
+              ]}
+              techApps={[
+                "Error handling, backup systems",
+                "Data validation, security"
+              ]}
+              takeaway="Managing downside is universal—in contracts, cases, and code"
+              index={1}
+            />
+            
+            <ConnectionCard
+              icon={<Zap size={32} className="text-brand-teal" />}
+              title="Leverage & Efficiency"
+              lawApps={[
+                "Clause libraries, legal precedents",
+                "Medical chronology systems"
+              ]}
+              techApps={[
+                "Automation scripts, reusable workflows",
+                "Template systems"
+              ]}
+              takeaway="Build once, benefit forever—the power of systems thinking"
+              index={2}
+            />
+            
+            <ConnectionCard
+              icon={<MessageSquare size={32} className="text-brand-teal" />}
+              title="Clear Communication"
+              lawApps={[
+                "Persuasive legal arguments",
+                "Compelling demand narratives"
+              ]}
+              techApps={[
+                "Clean code, documentation",
+                "User-friendly interfaces"
+              ]}
+              takeaway="Clarity compounds trust in every domain"
+              index={3}
+            />
           </div>
         </div>
       </section>
@@ -440,26 +432,18 @@ export const Home: React.FC = () => {
       <section className="py-20 border-b-2 border-black dark:border-white bg-brand-gray dark:bg-zinc-900">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-5xl md:text-6xl font-black uppercase text-center mb-16 text-black dark:text-white tracking-tighter">Core Beliefs</h2>
+          {/* NEW: Animated Philosophy Cards */}
           <div className="grid md:grid-cols-3 gap-8">
             {PHILOSOPHY.map((card, idx) => {
-              const Icon = iconMap[card.icon];
+              const IconComponent = iconMap[card.icon];
               return (
-                <motion.div
+                <PhilosophyCard
                   key={card.id}
-                  initial={{ opacity: 0, y: 40 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: idx * 0.15 }}
-                  className="bg-white dark:bg-black border-2 border-black dark:border-white p-8 shadow-brutal dark:shadow-[4px_4px_0px_0px_#ffffff] flex flex-col h-full"
-                >
-                  <div className="w-16 h-16 bg-brand-teal border-2 border-black dark:border-white flex items-center justify-center text-white mb-6 shadow-brutal-sm">
-                    <Icon size={32} />
-                  </div>
-                  <h3 className="text-2xl font-black uppercase mb-4 text-black dark:text-white">{card.title}</h3>
-                  <p className="font-mono text-sm text-gray-700 dark:text-gray-300 leading-relaxed flex-grow">
-                    {card.description}
-                  </p>
-                </motion.div>
+                  icon={<IconComponent size={32} />}
+                  title={card.title}
+                  description={card.description}
+                  index={idx}
+                />
               );
             })}
           </div>
@@ -470,19 +454,65 @@ export const Home: React.FC = () => {
       <section className="py-20 border-b-2 border-white bg-black text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-4xl md:text-5xl font-black uppercase text-center mb-12 tracking-tighter">By The Numbers</h2>
+          {/* NEW: Staggered Stats Grid */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {STATS.map((stat, idx) => (
               <motion.div
                 key={idx}
-                initial={{ opacity: 0, scale: 0.8 }}
-                whileInView={{ opacity: 1, scale: 1 }}
+                initial={{ opacity: 0, scale: 0.8, rotate: -5 }}
+                whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: idx * 0.05 }}
-                className="border-2 border-white p-6 text-center hover:bg-white/5 hover:scale-105 transition-all duration-300 bg-black"
+                transition={{ 
+                  delay: idx * 0.05,
+                  duration: 0.5,
+                  type: "spring",
+                  stiffness: 200
+                }}
+                whileHover={{ 
+                  scale: 1.05,
+                  rotate: 2,
+                  transition: { duration: 0.2 }
+                }}
+                className="border-2 border-white p-6 text-center hover:bg-white/5 transition-all duration-300 bg-black relative overflow-hidden group"
               >
-                <div className="text-4xl md:text-5xl font-black text-brand-teal mb-2">{stat.number}</div>
-                <div className="font-mono text-sm font-bold uppercase mb-1">{stat.label}</div>
-                <div className="font-mono text-xs text-gray-400 italic">{stat.sublabel}</div>
+                {/* Animated background gradient */}
+                <motion.div
+                  className="absolute inset-0 bg-gradient-to-br from-brand-teal/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"
+                  initial={false}
+                />
+                
+                {/* Number with count-up */}
+                <motion.div 
+                  className="text-4xl md:text-5xl font-black text-brand-teal mb-2 relative z-10"
+                  initial={{ scale: 0 }}
+                  whileInView={{ scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: idx * 0.05 + 0.2, type: "spring" }}
+                >
+                  {stat.number}
+                </motion.div>
+                
+                {/* Labels */}
+                <div className="font-mono text-sm font-bold uppercase mb-1 relative z-10">
+                  {stat.label}
+                </div>
+                <div className="font-mono text-xs text-gray-400 italic relative z-10">
+                  {stat.sublabel}
+                </div>
+
+                {/* Corner accent */}
+                <motion.div
+                  className="absolute -bottom-4 -right-4 w-16 h-16 bg-brand-teal/10 rounded-full"
+                  animate={{
+                    scale: [1, 1.2, 1],
+                    opacity: [0.1, 0.3, 0.1]
+                  }}
+                  transition={{
+                    repeat: Infinity,
+                    duration: 3,
+                    ease: "easeInOut"
+                  }}
+                />
               </motion.div>
             ))}
           </div>
@@ -521,31 +551,13 @@ export const Home: React.FC = () => {
               </ul>
               
               <div className="grid md:grid-cols-3 gap-6">
+                {/* NEW: Animated Preview Cards */}
                 {block.previews.map((article, i) => (
-                  <motion.div
+                  <ArticlePreviewCard
                     key={article.id}
-                    initial={{ opacity: 0, scale: 0.95 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: i * 0.1 }}
-                    className="bg-brand-gray dark:bg-zinc-900 border-2 border-black dark:border-white p-6 shadow-brutal dark:shadow-[4px_4px_0px_0px_#ffffff] hover:shadow-brutal-lg dark:hover:shadow-[8px_8px_0px_0px_#ffffff] hover:-translate-y-1 transition-all cursor-pointer group flex flex-col"
-                  >
-                    <div className="inline-block px-2 py-1 bg-brand-teal text-white border border-black font-mono text-[10px] uppercase font-bold mb-3 self-start">
-                      {article.category}
-                    </div>
-                    <div className="font-mono text-xs text-gray-500 dark:text-gray-400 mb-4">{article.readTime}</div>
-                    <h4 className="text-xl font-black uppercase leading-tight mb-3 text-black dark:text-white group-hover:text-brand-teal transition-colors">
-                      {article.title}
-                    </h4>
-                    <p className="font-mono text-sm text-gray-600 dark:text-gray-300 line-clamp-3 mb-4 border-l-2 border-gray-300 pl-3 flex-grow">
-                      {article.summary}
-                    </p>
-                    <div className="flex flex-wrap gap-2 mb-4">
-                      {article.tags.map(tag => (
-                        <span key={tag} className="font-mono text-[10px] uppercase text-gray-500 dark:text-gray-400">#{tag}</span>
-                      ))}
-                    </div>
-                  </motion.div>
+                    article={article}
+                    index={i}
+                  />
                 ))}
               </div>
               
@@ -561,15 +573,62 @@ export const Home: React.FC = () => {
 
       {/* SECTION 9: FINAL CTA */}
       <section className="py-20 bg-white dark:bg-black relative overflow-hidden">
-        {/* Decorative Top Bar */}
-        <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-brand-teal via-brand-amber to-red-500"></div>
+        {/* Animated gradient overlay */}
+        <motion.div
+          className="absolute inset-0 opacity-10"
+          animate={{
+            background: [
+              'linear-gradient(45deg, #319795 0%, #FFC107 100%)',
+              'linear-gradient(90deg, #FFC107 0%, #319795 100%)',
+              'linear-gradient(135deg, #319795 0%, #FFC107 100%)',
+              'linear-gradient(45deg, #319795 0%, #FFC107 100%)',
+            ]
+          }}
+          transition={{
+            duration: 10,
+            repeat: Infinity,
+            ease: "linear"
+          }}
+        />
 
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        {/* Decorative Top Bar with animation */}
+        <motion.div 
+          className="absolute top-0 left-0 w-full h-2"
+          initial={{ scaleX: 0 }}
+          whileInView={{ scaleX: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1.5 }}
+        >
+          <motion.div
+            className="h-full"
+            animate={{
+              background: [
+                'linear-gradient(to right, #319795, #FFC107, #EF4444)',
+                'linear-gradient(to right, #FFC107, #EF4444, #319795)',
+                'linear-gradient(to right, #EF4444, #319795, #FFC107)',
+                'linear-gradient(to right, #319795, #FFC107, #EF4444)',
+              ]
+            }}
+            transition={{
+              duration: 5,
+              repeat: Infinity,
+              ease: "linear"
+            }}
+          />
+        </motion.div>
+
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
             
-            <h2 className="text-5xl md:text-7xl font-black uppercase mb-4 text-black dark:text-white">
+            <motion.h2 
+              className="text-5xl md:text-7xl font-black uppercase mb-4 text-black dark:text-white"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
               Ready to Learn<br/>
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-teal to-brand-amber">Legal Automation?</span>
-            </h2>
+            </motion.h2>
             <p className="font-mono text-lg text-gray-700 dark:text-gray-300 max-w-2xl mx-auto mb-12">
               Choose your starting point, or explore both and see how they connect.
             </p>
