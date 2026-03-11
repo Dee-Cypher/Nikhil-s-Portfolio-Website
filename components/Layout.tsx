@@ -1,63 +1,80 @@
 import React, { useState, useEffect } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
-import { Menu, X, Github, Linkedin, Mail, ArrowUpRight, Sun, Moon, BookOpen, ChevronDown } from 'lucide-react';
+import { Menu, X, Github, Linkedin, Mail, ArrowUpRight, BookOpen, ChevronDown, Sun, Moon } from 'lucide-react';
 import { NAV_ITEMS } from '../constants';
 import { AnimatePresence, motion } from 'framer-motion';
 
 export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const location = useLocation();
+
   const [isDark, setIsDark] = useState(() => {
     if (typeof window !== 'undefined') {
-      return localStorage.getItem('theme') === 'dark' || 
-        (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches);
+      return document.documentElement.classList.contains('dark') || localStorage.getItem('theme') === 'dark';
     }
-    return false;
+    return true;
   });
-  const location = useLocation();
+
+  const toggleTheme = () => {
+    if (isDark) {
+      document.documentElement.classList.remove('dark');
+      localStorage.setItem('theme', 'light');
+      setIsDark(false);
+    } else {
+      document.documentElement.classList.add('dark');
+      localStorage.setItem('theme', 'dark');
+      setIsDark(true);
+    }
+  };
 
   useEffect(() => {
     setIsOpen(false);
   }, [location]);
 
-  useEffect(() => {
-    if (isDark) {
-      document.documentElement.classList.add('dark');
-      localStorage.setItem('theme', 'dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-      localStorage.setItem('theme', 'light');
-    }
-  }, [isDark]);
-
   return (
-    <div className="min-h-screen flex flex-col bg-brand-bg text-black dark:bg-black dark:text-white transition-colors duration-300 selection:bg-brand-teal selection:text-white">
-      
-      <nav className="sticky top-0 z-50 bg-white/90 dark:bg-black/90 backdrop-blur-md border-b-2 border-black dark:border-white transition-colors duration-300">
+    <div className="min-h-screen flex flex-col bg-brand-bg text-brand-text font-sans selection:bg-brand-orange selection:text-brand-text overflow-x-hidden">
+
+      {/* GLOW EFFECTS BACKGROUND */}
+      <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+        <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-brand-orange/10 rounded-full blur-[120px]" />
+        <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-brand-blue/10 rounded-full blur-[120px]" />
+      </div>
+
+      {/* NAVBAR */}
+      <nav className="sticky top-0 z-50 bg-brand-bg/80 backdrop-blur-md border-b border-brand-text/5 transition-all duration-300">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex h-20 items-center justify-between relative">
-            
+
             {/* Logo */}
             <div className="flex-shrink-0 flex items-center gap-4 z-10">
-              <NavLink to="/" className="font-black text-3xl tracking-tighter uppercase hover:text-brand-teal transition-colors border-2 border-transparent hover:border-black dark:hover:border-white p-1">
-                NIKHIL GOYAL<span className="text-brand-teal">_</span>
+              <NavLink to="/" className="font-bold text-2xl tracking-tight flex items-center group">
+                {"Nikhil Goyal".split('').map((char, index) => (
+                  <span 
+                    key={index}
+                    className={`transition-all duration-300 inline-block hover:scale-110 hover:text-brand-orange ${char === ' ' ? 'w-1.5' : ''}`}
+                  >
+                    {char}
+                  </span>
+                ))}
               </NavLink>
             </div>
-            
+
             {/* Desktop Nav - Centered */}
-            <div className="hidden md:flex items-center space-x-2 absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10">
+            <div className="hidden md:flex items-center space-x-1 absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10">
               {NAV_ITEMS.map((item) => (
                 item.children ? (
                   <div key={item.label} className="relative group">
-                    <button className="px-4 py-2 text-sm font-bold uppercase tracking-wider border-2 border-transparent hover:border-black dark:hover:border-white text-black dark:text-white hover:bg-brand-teal hover:text-white flex items-center gap-1 transition-all">
-                      {item.label} <ChevronDown size={14} />
+                    <button className="px-4 py-2 text-sm font-medium text-brand-muted hover:text-brand-text flex items-center gap-1 transition-all">
+                      {item.label} <ChevronDown size={14} className="group-hover:rotate-180 transition-transform duration-300" />
                     </button>
-                    <div className="absolute top-full left-0 w-48 pt-2 hidden group-hover:block">
-                      <div className="bg-white dark:bg-black border-2 border-black dark:border-white shadow-brutal dark:shadow-[4px_4px_0px_0px_#ffffff] flex flex-col">
+                    {/* Dropdown */}
+                    <div className="absolute top-full left-1/2 -translate-x-1/2 pt-4 hidden group-hover:block w-48">
+                      <div className="bg-brand-surface/90 backdrop-blur-xl border border-brand-text/10 rounded-xl overflow-hidden shadow-glass flex flex-col p-1">
                         {item.children.map(child => (
                           <NavLink
                             key={child.path}
                             to={child.path}
-                            className="px-4 py-3 text-sm font-bold uppercase text-black dark:text-white hover:bg-brand-teal hover:text-white transition-colors border-b-2 border-transparent hover:border-transparent last:border-b-0"
+                            className="px-4 py-2 text-sm font-medium text-brand-muted hover:text-brand-text hover:bg-brand-text/5 rounded-lg transition-colors text-center"
                           >
                             {child.label}
                           </NavLink>
@@ -70,10 +87,9 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
                     key={item.path}
                     to={item.path}
                     className={({ isActive }) =>
-                      `px-4 py-2 text-sm font-bold uppercase tracking-wider border-2 border-transparent hover:border-black dark:hover:border-white hover:shadow-brutal dark:hover:shadow-[4px_4px_0px_0px_#ffffff] transition-all ${
-                        isActive 
-                        ? 'bg-black text-white dark:bg-white dark:text-black' 
-                        : 'text-black dark:text-white hover:bg-brand-teal hover:text-white'
+                      `px-4 py-2 text-sm font-medium transition-all rounded-full ${isActive
+                        ? 'text-brand-text bg-brand-text/10 shadow-glass'
+                        : 'text-brand-muted hover:text-brand-text hover:bg-brand-text/5'
                       }`
                     }
                   >
@@ -83,33 +99,34 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
               ))}
             </div>
 
-            {/* Right Side Controls */}
-            <div className="flex items-center gap-4 z-10">
-              {/* Desktop Theme Toggle */}
-              <button 
-                onClick={() => setIsDark(!isDark)}
-                className="hidden md:block p-2 border-2 border-black dark:border-white rounded-full hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-colors"
-                aria-label="Toggle Dark Mode"
+            {/* Right Side Control - Mobile Menu */}
+            <div className="flex items-center gap-2 z-10 md:hidden">
+              <button
+                onClick={toggleTheme}
+                className="p-2 text-brand-muted hover:text-brand-orange transition-colors rounded-full"
               >
                 {isDark ? <Sun size={20} /> : <Moon size={20} />}
               </button>
-
-              {/* Mobile Menu Button & Theme Toggle */}
-              <div className="flex md:hidden items-center gap-4">
-                <button 
-                  onClick={() => setIsDark(!isDark)}
-                  className="p-2 border-2 border-black dark:border-white dark:text-white"
-                >
-                   {isDark ? <Sun size={20} /> : <Moon size={20} />}
-                </button>
-                <button
-                  onClick={() => setIsOpen(!isOpen)}
-                  className="p-2 border-2 border-black dark:border-white shadow-brutal dark:shadow-[4px_4px_0px_0px_#ffffff] active:translate-x-[2px] active:translate-y-[2px] transition-all bg-brand-teal text-white"
-                >
-                  {isOpen ? <X size={24} /> : <Menu size={24} />}
-                </button>
-              </div>
+              <button
+                onClick={() => setIsOpen(!isOpen)}
+                className="p-2 text-brand-text hover:text-brand-orange transition-colors"
+              >
+                {isOpen ? <X size={24} /> : <Menu size={24} />}
+              </button>
             </div>
+
+            {/* Desktop Socials (Hidden on mobile) */}
+            <div className="hidden md:flex items-center gap-3 z-10">
+              <button
+                onClick={toggleTheme}
+                className="p-2 text-brand-muted hover:text-brand-orange transition-colors mr-2 rounded-full hover:bg-brand-text/5"
+                title="Toggle theme"
+              >
+                {isDark ? <Sun size={20} /> : <Moon size={20} />}
+              </button>
+              <a href="https://linkedin.com" target="_blank" rel="noreferrer" className="text-brand-muted hover:text-brand-text transition-colors"><Linkedin size={20} /></a>
+            </div>
+
           </div>
         </div>
 
@@ -120,26 +137,25 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
-              className="md:hidden overflow-hidden border-t-2 border-black dark:border-white bg-white dark:bg-black"
+              className="md:hidden overflow-hidden bg-brand-surface border-b border-brand-text/10"
             >
-              <div className="flex flex-col p-4 space-y-4 bg-brand-gray dark:bg-zinc-900">
+              <div className="flex flex-col p-4 space-y-2">
                 {NAV_ITEMS.map((item) => (
                   item.children ? (
-                    <div key={item.label} className="space-y-2">
-                      <div className="block px-4 py-2 text-lg font-bold uppercase border-2 border-black dark:border-white shadow-brutal-sm dark:shadow-[2px_2px_0px_0px_#ffffff] bg-black text-white dark:bg-white dark:text-black">
+                    <div key={item.label} className="space-y-1">
+                      <div className="px-4 py-2 text-sm font-bold text-brand-muted uppercase tracking-wider">
                         {item.label}
                       </div>
-                      <div className="pl-4 space-y-2 border-l-2 border-black dark:border-white ml-2">
+                      <div className="pl-4 space-y-1 border-l border-brand-text/10 ml-4">
                         {item.children.map(child => (
                           <NavLink
                             key={child.path}
                             to={child.path}
                             onClick={() => setIsOpen(false)}
                             className={({ isActive }) =>
-                              `block px-4 py-2 text-base font-bold uppercase border-2 border-black dark:border-white ${
-                                isActive 
-                                ? 'bg-brand-teal text-white' 
-                                : 'bg-white text-black dark:bg-black dark:text-white hover:bg-brand-teal hover:text-white'
+                              `block px-4 py-2 text-sm font-medium rounded-lg ${isActive
+                                ? 'bg-brand-orange/10 text-brand-orange'
+                                : 'text-brand-muted hover:text-brand-text'
                               }`
                             }
                           >
@@ -154,10 +170,9 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
                       to={item.path}
                       onClick={() => setIsOpen(false)}
                       className={({ isActive }) =>
-                        `block px-4 py-3 text-lg font-bold uppercase border-2 border-black dark:border-white shadow-brutal-sm dark:shadow-[2px_2px_0px_0px_#ffffff] ${
-                          isActive 
-                          ? 'bg-black text-white dark:bg-white dark:text-black' 
-                          : 'bg-white text-black dark:bg-black dark:text-white hover:bg-brand-teal hover:text-white'
+                        `block px-4 py-3 text-lg font-medium rounded-lg ${isActive
+                          ? 'bg-brand-orange/10 text-brand-orange'
+                          : 'text-brand-text hover:bg-brand-text/5'
                         }`
                       }
                     >
@@ -171,42 +186,48 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
         </AnimatePresence>
       </nav>
 
-      <main className="flex-grow bg-grid dark:bg-grid-dark relative">
-        {/* Dark mode overlay for grid adjustment if needed */}
+      {/* MAIN CONTENT */}
+      <main className="flex-grow relative z-10">
         {children}
       </main>
 
-      <footer className="border-t-2 border-black dark:border-white bg-white dark:bg-black pt-16 pb-8 text-black dark:text-white transition-colors duration-300">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* FOOTER */}
+      <footer className="border-t border-brand-text/10 bg-brand-bg pt-16 pb-8 relative overflow-hidden">
+        {/* Footer Glow */}
+        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[60%] h-[300px] bg-brand-orange/5 rounded-full blur-[100px] pointer-events-none" />
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
-              <h3 className="text-5xl font-black uppercase mb-4 tracking-tighter">Knowledge<br/>Is Power</h3>
-              <p className="font-mono text-sm max-w-md border-l-4 border-brand-teal pl-4 dark:text-gray-300">
-                I document everything. From legal hacks to automation scripts. 
-                Steal my workflows, or hire me to build them.
+              <h3 className="text-4xl font-bold mb-4 tracking-tight text-brand-text">
+                Knowledge <span className="text-brand-orange">Is Power.</span>
+              </h3>
+              <p className="text-brand-muted max-w-md text-sm leading-relaxed">
+                Documenting the intersection of Law and Engineering.
+                Building open-source tools for the next generation of legal professionals.
               </p>
               <div className="mt-8">
-                <NavLink to="/knowledge" className="inline-flex items-center gap-2 font-bold underline decoration-brand-teal underline-offset-4 hover:text-brand-teal">
-                  <BookOpen size={18} /> Access The Knowledge Repository
+                <NavLink to="/knowledge" className="inline-flex items-center gap-2 text-sm font-bold text-brand-orange hover:text-brand-text transition-colors">
+                  <BookOpen size={16} /> Access Knowledge Base
                 </NavLink>
               </div>
             </div>
-            
-            <div className="flex flex-col md:items-end space-y-4">
-              <a href="mailto:hello@example.com" className="group flex items-center gap-2 text-xl font-bold hover:bg-brand-amber hover:text-black hover:px-2 transition-all cursor-pointer">
+
+            <div className="flex flex-col md:items-end space-y-6">
+              <a href="mailto:hello@example.com" className="group flex items-center gap-2 text-2xl font-bold text-brand-text hover:text-brand-orange transition-colors">
                 hello@nikhil.dev <ArrowUpRight className="group-hover:-translate-y-1 group-hover:translate-x-1 transition-transform" />
               </a>
-              
+
               <div className="flex gap-4">
                 {[
                   { icon: Github, href: "#" },
                   { icon: Linkedin, href: "#" },
                   { icon: Mail, href: "mailto:hello@example.com" }
                 ].map((social, i) => (
-                  <a 
+                  <a
                     key={i}
                     href={social.href}
-                    className="p-3 border-2 border-black dark:border-white shadow-brutal dark:shadow-[4px_4px_0px_0px_#ffffff] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none hover:bg-brand-teal hover:text-white transition-all bg-white dark:bg-black text-black dark:text-white"
+                    className="p-3 rounded-full bg-brand-text/5 border border-brand-text/10 hover:bg-brand-orange hover:border-brand-orange hover:text-brand-text transition-all text-brand-muted"
                   >
                     <social.icon size={20} />
                   </a>
@@ -214,10 +235,13 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
               </div>
             </div>
           </div>
-          
-          <div className="mt-16 pt-8 border-t-2 border-black dark:border-white flex flex-col md:flex-row justify-between items-center gap-4 font-mono text-xs uppercase tracking-widest text-gray-500 dark:text-gray-400">
+
+          <div className="mt-16 pt-8 border-t border-brand-text/5 flex flex-col md:flex-row justify-between items-center gap-4 text-xs font-mono text-brand-muted">
             <div>© {new Date().getFullYear()} Nikhil.System_v2.0</div>
-            <div>STATUS: ONLINE • READY FOR QUERY</div>
+            <div className="flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-brand-green animate-pulse"></span>
+              SYSTEM ONLINE
+            </div>
           </div>
         </div>
       </footer>

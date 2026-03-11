@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Mail, Linkedin, Calendar, Send, ArrowRight, Clock, MapPin, Check, Terminal, CheckCircle2 } from 'lucide-react';
+import { Mail, Linkedin, Calendar, Send, ArrowRight, Clock, MapPin, Check, Terminal, CheckCircle2, AlertCircle } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 export const Contact: React.FC = () => {
@@ -29,171 +29,214 @@ export const Contact: React.FC = () => {
   };
 
   return (
-    <div className="bg-white dark:bg-black text-black dark:text-white">
-      
+    <div className="bg-brand-bg text-brand-text font-sans min-h-screen">
+
       {/* HERO SECTION */}
-      <section className="pt-20 pb-16 border-b-2 border-black dark:border-white bg-grid dark:bg-grid-dark">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-black uppercase leading-[0.9] mb-8">
-            Got A Problem<br/>
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-teal to-brand-amber">Worth Solving?</span>
-          </h1>
-          <p className="font-mono text-lg md:text-xl text-gray-700 dark:text-gray-300 max-w-3xl mx-auto">
-            Whether it's a 2-hour manual process driving you insane, or a half-formed idea for a tool that doesn't exist yet—let's talk.
-          </p>
+      <section className="pt-20 pb-16 border-b border-brand-text/5 relative overflow-hidden">
+        <div className="absolute top-0 left-0 w-full h-full bg-brand-blue/5 blur-[100px] pointer-events-none" />
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+          >
+            <div className="inline-block px-3 py-1 bg-brand-surface border border-brand-text/10 rounded-full font-bold uppercase text-xs mb-6 text-brand-blue tracking-wider shadow-glass">
+              Let's Build Together
+            </div>
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold uppercase leading-[0.9] mb-8 tracking-tight">
+              Got A Problem<br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-blue to-brand-green">Worth Solving?</span>
+            </h1>
+            <p className="text-lg md:text-xl text-brand-muted max-w-3xl mx-auto font-light leading-relaxed">
+              Whether it's a 2-hour manual process driving you insane, or a half-formed idea for a tool that doesn't exist yet—let's talk.
+            </p>
+          </motion.div>
         </div>
       </section>
 
       {/* OPTIONS SECTION */}
-      <section className="py-20 border-b-2 border-black dark:border-white bg-brand-gray dark:bg-zinc-900">
+      <section className="py-20 border-b border-brand-text/5 bg-brand-surface/30">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-2 gap-12">
             {/* Option 1 */}
-            <div className="bg-white dark:bg-black border-2 border-black dark:border-white p-8 shadow-brutal dark:shadow-[4px_4px_0px_0px_#ffffff]">
-              <div className="inline-block px-3 py-1 bg-brand-teal text-white font-mono text-xs font-bold uppercase mb-4">Option 1: You Know What You Need</div>
-              <h2 className="text-3xl font-black uppercase mb-4">Book A Free Workflow Audit</h2>
-              <p className="font-mono text-sm text-gray-600 dark:text-gray-400 mb-6">
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="bg-brand-surface border border-brand-text/5 p-8 rounded-2xl shadow-glass hover:bg-brand-text/[0.02] transition-colors group"
+            >
+              <div className="inline-block px-3 py-1 bg-brand-blue/10 text-brand-blue font-bold uppercase text-xs rounded mb-4 border border-brand-blue/20">Option 1: You Know What You Need</div>
+              <h2 className="text-3xl font-bold uppercase mb-4 text-brand-text">Book A Free Workflow Audit</h2>
+              <p className="text-sm text-brand-muted mb-8 leading-relaxed">
                 We'll hop on Zoom, map your process, and I'll tell you exactly what's worth automating (and what isn't).
               </p>
-              <button className="w-full py-4 bg-black text-white dark:bg-white dark:text-black font-bold uppercase border-2 border-transparent hover:bg-brand-teal hover:text-white transition-colors flex items-center justify-center gap-2">
+              <button className="w-full py-4 bg-brand-blue text-brand-surface font-bold uppercase rounded-xl hover:bg-brand-text transition-colors flex items-center justify-center gap-2 shadow-glow">
                 <Calendar size={18} /> Pick A Time That Works
               </button>
-              <div className="mt-4 text-center font-mono text-xs text-gray-500">Average response: Proposal in 2 business days.</div>
-            </div>
+              <div className="mt-4 text-center text-xs text-brand-muted/70 flex items-center justify-center gap-2">
+                <Clock size={12} /> Average response: Proposal in 2 business days.
+              </div>
+            </motion.div>
 
             {/* Option 2 */}
-            <div className="bg-white dark:bg-black border-2 border-black dark:border-white p-8 shadow-brutal dark:shadow-[4px_4px_0px_0px_#ffffff]">
-              <div className="inline-block px-3 py-1 bg-brand-amber text-black font-mono text-xs font-bold uppercase mb-4">Option 2: You Have Questions</div>
-              <h2 className="text-3xl font-black uppercase mb-4">Send A Message</h2>
-              <p className="font-mono text-sm text-gray-600 dark:text-gray-400 mb-6">
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="bg-brand-surface border border-brand-text/5 p-8 rounded-2xl shadow-glass hover:bg-brand-text/[0.02] transition-colors group"
+            >
+              <div className="inline-block px-3 py-1 bg-brand-orange/10 text-brand-orange font-bold uppercase text-xs rounded mb-4 border border-brand-orange/20">Option 2: You Have Questions</div>
+              <h2 className="text-3xl font-bold uppercase mb-4 text-brand-text">Send A Message</h2>
+              <p className="text-sm text-brand-muted mb-8 leading-relaxed">
                 Not sure if automation is the answer? Describe the pain point. I'll help you figure it out.
               </p>
-              <button 
+              <button
                 onClick={() => document.getElementById('contact-form')?.scrollIntoView({ behavior: 'smooth' })}
-                className="w-full py-4 bg-white text-black dark:bg-black dark:text-white font-bold uppercase border-2 border-black dark:border-white hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-colors flex items-center justify-center gap-2"
+                className="w-full py-4 bg-transparent border border-brand-text/20 text-brand-text font-bold uppercase rounded-xl hover:bg-brand-text/10 transition-colors flex items-center justify-center gap-2"
               >
                 <Mail size={18} /> Use The Form Below
               </button>
-              <div className="mt-4 text-center font-mono text-xs text-gray-500">Response time: 24-48 hours.</div>
-            </div>
+              <div className="mt-4 text-center text-xs text-brand-muted/70 flex items-center justify-center gap-2">
+                <Clock size={12} /> Response time: 24-48 hours.
+              </div>
+            </motion.div>
           </div>
         </div>
       </section>
 
       {/* MAIN FORM SECTION */}
-      <section id="contact-form" className="py-20 border-b-2 border-black dark:border-white bg-white dark:bg-black">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          
-          <div className="bg-brand-gray dark:bg-zinc-900 border-2 border-black dark:border-white shadow-brutal-lg dark:shadow-[8px_8px_0px_0px_#ffffff] overflow-hidden">
+      <section id="contact-form" className="py-20 border-b border-brand-text/5 relative">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-1/2 h-1/2 bg-brand-green/5 blur-[120px] pointer-events-none" />
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+
+          <div className="bg-black/40 border border-brand-text/10 rounded-2xl shadow-2xl backdrop-blur-md overflow-hidden">
             {/* Terminal Header */}
-            <div className="bg-black text-white px-4 py-2 border-b-2 border-black dark:border-white flex justify-between items-center">
-               <span className="font-mono text-xs font-bold uppercase">msg_terminal.exe</span>
-               <div className="flex gap-2">
-                  <div className="w-3 h-3 bg-white border border-black"></div>
-                  <div className="w-3 h-3 bg-brand-teal border border-black"></div>
-               </div>
+            <div className="bg-brand-text/5 px-4 py-3 border-b border-brand-text/5 flex justify-between items-center">
+              <div className="flex items-center gap-2">
+                <Terminal size={14} className="text-brand-muted" />
+                <span className="font-mono text-xs font-bold uppercase text-brand-muted tracking-wide">msg_terminal.exe</span>
+              </div>
+              <div className="flex gap-1.5">
+                <div className="w-2.5 h-2.5 rounded-full bg-brand-text/10"></div>
+                <div className="w-2.5 h-2.5 rounded-full bg-brand-text/10"></div>
+                <div className="w-2.5 h-2.5 rounded-full bg-brand-green shadow-glow"></div>
+              </div>
             </div>
 
             <div className="p-8 md:p-12">
               {submitted ? (
-                <div className="text-center py-12">
-                  <div className="w-20 h-20 bg-brand-teal text-white border-2 border-black dark:border-white flex items-center justify-center mx-auto mb-6 shadow-brutal">
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  className="text-center py-12"
+                >
+                  <div className="w-20 h-20 bg-brand-green/20 text-brand-green border border-brand-green/30 rounded-full flex items-center justify-center mx-auto mb-6 shadow-glow">
                     <Check size={40} />
                   </div>
-                  <h3 className="text-3xl font-black uppercase mb-4 text-black dark:text-white">Transmission Sent</h3>
-                  <p className="font-mono text-sm mb-8 text-black dark:text-white max-w-md mx-auto">
+                  <h3 className="text-3xl font-bold uppercase mb-4 text-brand-text tracking-tight">Transmission Sent</h3>
+                  <p className="text-brand-muted mb-8 max-w-md mx-auto text-sm leading-relaxed">
                     Message logged successfully. I'll review your transmission and report back within 24-48 hours.
                   </p>
-                  <button 
+                  <button
                     onClick={() => setSubmitted(false)}
-                    className="text-black dark:text-white font-bold uppercase underline decoration-2 underline-offset-4 hover:text-brand-teal"
+                    className="text-brand-text font-bold uppercase text-sm border-b border-brand-text/30 pb-1 hover:text-brand-green hover:border-brand-green transition-colors"
                   >
                     Send Another Message
                   </button>
-                </div>
+                </motion.div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="grid md:grid-cols-2 gap-6">
                     <div>
-                      <label className="block text-xs font-bold uppercase mb-2 text-black dark:text-white">Your Name *</label>
+                      <label className="block text-xs font-bold uppercase mb-2 text-brand-muted">Your Name *</label>
                       <input
                         type="text"
                         name="name"
                         required
                         value={formData.name}
                         onChange={handleChange}
-                        className="w-full px-4 py-3 bg-white border-2 border-black focus:shadow-brutal focus:outline-none transition-all font-mono text-sm text-black"
+                        className="w-full px-4 py-3 bg-brand-text/5 border border-brand-text/10 rounded-lg focus:border-brand-blue/50 focus:bg-brand-text/10 focus:outline-none transition-all text-sm text-brand-text placeholder-brand-muted/30"
                         placeholder="NAME"
                       />
                     </div>
                     <div>
-                      <label className="block text-xs font-bold uppercase mb-2 text-black dark:text-white">Your Email *</label>
+                      <label className="block text-xs font-bold uppercase mb-2 text-brand-muted">Your Email *</label>
                       <input
                         type="email"
                         name="email"
                         required
                         value={formData.email}
                         onChange={handleChange}
-                        className="w-full px-4 py-3 bg-white border-2 border-black focus:shadow-brutal focus:outline-none transition-all font-mono text-sm text-black"
+                        className="w-full px-4 py-3 bg-brand-text/5 border border-brand-text/10 rounded-lg focus:border-brand-blue/50 focus:bg-brand-text/10 focus:outline-none transition-all text-sm text-brand-text placeholder-brand-muted/30"
                         placeholder="EMAIL"
                       />
                     </div>
                   </div>
 
                   <div>
-                    <label className="block text-xs font-bold uppercase mb-2 text-black dark:text-white">What Kind of Project? *</label>
-                    <select
-                      name="type"
-                      value={formData.type}
-                      onChange={handleChange}
-                      className="w-full px-4 py-3 bg-white border-2 border-black focus:shadow-brutal focus:outline-none transition-all font-mono text-sm uppercase text-black"
-                    >
-                      <option>Workflow Automation</option>
-                      <option>Legal Tech Tool Development</option>
-                      <option>Google Apps Script / n8n</option>
-                      <option>Internal Tool for Law Firm</option>
-                      <option>Just Exploring / Not Sure</option>
-                    </select>
+                    <label className="block text-xs font-bold uppercase mb-2 text-brand-muted">What Kind of Project? *</label>
+                    <div className="relative">
+                      <select
+                        name="type"
+                        value={formData.type}
+                        onChange={handleChange}
+                        className="w-full px-4 py-3 bg-brand-text/5 border border-brand-text/10 rounded-lg focus:border-brand-blue/50 focus:bg-brand-text/10 focus:outline-none transition-all text-sm uppercase text-brand-text appearance-none cursor-pointer"
+                      >
+                        <option className="bg-black text-brand-text">Workflow Automation</option>
+                        <option className="bg-black text-brand-text">Legal Tech Tool Development</option>
+                        <option className="bg-black text-brand-text">Google Apps Script / n8n</option>
+                        <option className="bg-black text-brand-text">Internal Tool for Law Firm</option>
+                        <option className="bg-black text-brand-text">Just Exploring / Not Sure</option>
+                      </select>
+                      <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-brand-muted">
+                        <ArrowRight size={14} className="rotate-90" />
+                      </div>
+                    </div>
                   </div>
 
                   <div>
-                    <label className="block text-xs font-bold uppercase mb-2 text-black dark:text-white">What's The Problem? *</label>
+                    <label className="block text-xs font-bold uppercase mb-2 text-brand-muted">What's The Problem? *</label>
                     <textarea
                       name="problem"
                       required
                       rows={5}
                       value={formData.problem}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 bg-white border-2 border-black focus:shadow-brutal focus:outline-none transition-all font-mono text-sm text-black"
+                      className="w-full px-4 py-3 bg-brand-text/5 border border-brand-text/10 rounded-lg focus:border-brand-blue/50 focus:bg-brand-text/10 focus:outline-none transition-all text-sm text-brand-text placeholder-brand-muted/30 resize-none"
                       placeholder="Describe the manual process or workflow issue..."
                     ></textarea>
                   </div>
 
                   <div>
-                    <label className="block text-xs font-bold uppercase mb-2 text-black dark:text-white">Estimated Urgency</label>
-                    <select
-                      name="urgency"
-                      value={formData.urgency}
-                      onChange={handleChange}
-                      className="w-full px-4 py-3 bg-white border-2 border-black focus:shadow-brutal focus:outline-none transition-all font-mono text-sm uppercase text-black"
-                    >
-                      <option>Immediate (This Week)</option>
-                      <option>Soon (2-4 Weeks)</option>
-                      <option>Future (1-3 Months)</option>
-                      <option>Just Exploring</option>
-                    </select>
+                    <label className="block text-xs font-bold uppercase mb-2 text-brand-muted">Estimated Urgency</label>
+                    <div className="relative">
+                      <select
+                        name="urgency"
+                        value={formData.urgency}
+                        onChange={handleChange}
+                        className="w-full px-4 py-3 bg-brand-text/5 border border-brand-text/10 rounded-lg focus:border-brand-blue/50 focus:bg-brand-text/10 focus:outline-none transition-all text-sm uppercase text-brand-text appearance-none cursor-pointer"
+                      >
+                        <option className="bg-black text-brand-text">Immediate (This Week)</option>
+                        <option className="bg-black text-brand-text">Soon (2-4 Weeks)</option>
+                        <option className="bg-black text-brand-text">Future (1-3 Months)</option>
+                        <option className="bg-black text-brand-text">Just Exploring</option>
+                      </select>
+                      <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-brand-muted">
+                        <ArrowRight size={14} className="rotate-90" />
+                      </div>
+                    </div>
                   </div>
 
                   <div className="pt-4">
-                     <p className="font-mono text-xs text-gray-500 mb-4">
-                        * Your info is private. No spam. Direct to my inbox.
-                     </p>
-                     <button
-                        type="submit"
-                        className="w-full py-4 bg-brand-teal text-white font-bold uppercase border-2 border-black dark:border-white shadow-brutal hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all flex items-center justify-center gap-2"
-                     >
-                        Send Transmission <Terminal size={18} />
-                     </button>
+                    <p className="text-xs text-brand-muted mb-4 flex items-center gap-2">
+                      <CheckCircle2 size={12} className="text-brand-green" /> Your info is private. No spam. Direct to my inbox.
+                    </p>
+                    <button
+                      type="submit"
+                      className="w-full py-4 bg-brand-text text-brand-surface font-bold uppercase rounded-xl hover:bg-brand-blue hover:text-brand-text transition-colors flex items-center justify-center gap-2 shadow-glow"
+                    >
+                      Send Transmission <Send size={18} />
+                    </button>
                   </div>
                 </form>
               )}
@@ -204,62 +247,68 @@ export const Contact: React.FC = () => {
       </section>
 
       {/* DIRECT METHODS */}
-      <section className="py-20 border-b-2 border-black dark:border-white bg-brand-gray dark:bg-zinc-900">
-         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 className="text-4xl font-black uppercase mb-12 text-center">Prefer Direct Contact?</h2>
-            <div className="grid md:grid-cols-3 gap-8">
-               <div className="bg-white dark:bg-black p-6 border-2 border-black dark:border-white text-center shadow-brutal">
-                  <Mail size={32} className="mx-auto mb-4 text-brand-teal" />
-                  <h3 className="font-black uppercase mb-2">Email</h3>
-                  <a href="mailto:nikhilgoyal.advo@gmail.com" className="font-mono text-sm hover:text-brand-teal hover:underline break-all">nikhilgoyal.advo@gmail.com</a>
-                  <p className="font-mono text-xs text-gray-500 mt-2">Best for detailed briefs</p>
-               </div>
-               <div className="bg-white dark:bg-black p-6 border-2 border-black dark:border-white text-center shadow-brutal">
-                  <Linkedin size={32} className="mx-auto mb-4 text-brand-teal" />
-                  <h3 className="font-black uppercase mb-2">LinkedIn</h3>
-                  <a href="#" className="font-mono text-sm hover:text-brand-teal hover:underline">/in/nikhilgoyal</a>
-                  <p className="font-mono text-xs text-gray-500 mt-2">Best for networking</p>
-               </div>
-               <div className="bg-white dark:bg-black p-6 border-2 border-black dark:border-white text-center shadow-brutal">
-                  <Clock size={32} className="mx-auto mb-4 text-brand-teal" />
-                  <h3 className="font-black uppercase mb-2">Availability</h3>
-                  <p className="font-mono text-sm">Mon-Fri, 8am-12pm EST</p>
-                  <p className="font-mono text-xs text-gray-500 mt-2">US Business Hours Overlap</p>
-               </div>
+      <section className="py-20 border-b border-brand-text/5 bg-brand-surface/30">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-4xl font-bold uppercase mb-12 text-center text-brand-text">Prefer Direct Contact?</h2>
+          <div className="grid md:grid-cols-3 gap-8">
+            <div className="bg-brand-surface p-8 border border-brand-text/5 rounded-2xl text-center shadow-glass hover:bg-brand-text/[0.02] transition-colors group">
+              <div className="w-16 h-16 bg-brand-blue/10 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
+                <Mail size={32} className="text-brand-blue" />
+              </div>
+              <h3 className="font-bold uppercase mb-2 text-brand-text">Email</h3>
+              <a href="mailto:nikhilgoyal.advo@gmail.com" className="text-sm text-brand-muted hover:text-brand-text transition-colors break-all">nikhilgoyal.advo@gmail.com</a>
+              <p className="text-xs text-brand-muted/50 mt-2 uppercase tracking-wide">Best for detailed briefs</p>
             </div>
-         </div>
+            <div className="bg-brand-surface p-8 border border-brand-text/5 rounded-2xl text-center shadow-glass hover:bg-brand-text/[0.02] transition-colors group">
+              <div className="w-16 h-16 bg-brand-blue/10 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
+                <Linkedin size={32} className="text-brand-blue" />
+              </div>
+              <h3 className="font-bold uppercase mb-2 text-brand-text">LinkedIn</h3>
+              <a href="#" className="text-sm text-brand-muted hover:text-brand-text transition-colors">/in/nikhilgoyal</a>
+              <p className="text-xs text-brand-muted/50 mt-2 uppercase tracking-wide">Best for networking</p>
+            </div>
+            <div className="bg-brand-surface p-8 border border-brand-text/5 rounded-2xl text-center shadow-glass hover:bg-brand-text/[0.02] transition-colors group">
+              <div className="w-16 h-16 bg-brand-blue/10 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
+                <Clock size={32} className="text-brand-blue" />
+              </div>
+              <h3 className="font-bold uppercase mb-2 text-brand-text">Availability</h3>
+              <p className="text-sm text-brand-muted">Mon-Fri, 8am-12pm EST</p>
+              <p className="text-xs text-brand-muted/50 mt-2 uppercase tracking-wide">US Business Hours Overlap</p>
+            </div>
+          </div>
+        </div>
       </section>
 
       {/* FAQ */}
-      <section className="py-20 border-b-2 border-black dark:border-white bg-white dark:bg-black">
-         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 className="text-4xl font-black uppercase mb-12 text-center">Before You Hit Send</h2>
-            <div className="space-y-6">
-               {[
-                  { q: "What should I include in my message?", a: "The more detail, the better. Describe the manual process slowing you down, the tools you use, and how much time it costs you." },
-                  { q: "Do you charge for the initial consultation?", a: "Nope. The first 30-minute workflow audit is free. No strings attached." },
-                  { q: "Can I hire you for a one-time project?", a: "Absolutely. Most of my work is project-based. You're not committed to a long-term contract." },
-                  { q: "Do you work internationally?", a: "Yes! I work with clients globally. As long as we can communicate via Zoom/Email, location doesn't matter." }
-               ].map((faq, i) => (
-                  <div key={i} className="border-2 border-black dark:border-white p-6 bg-brand-gray dark:bg-zinc-900 shadow-brutal-sm">
-                     <h3 className="font-bold uppercase text-brand-teal mb-2">Q: {faq.q}</h3>
-                     <p className="font-mono text-sm text-gray-700 dark:text-gray-300">A: {faq.a}</p>
-                  </div>
-               ))}
-            </div>
-         </div>
+      <section className="py-20 border-b border-brand-text/5">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-4xl font-bold uppercase mb-12 text-center text-brand-text">Before You Hit Send</h2>
+          <div className="space-y-4">
+            {[
+              { q: "What should I include in my message?", a: "The more detail, the better. Describe the manual process slowing you down, the tools you use, and how much time it costs you." },
+              { q: "Do you charge for the initial consultation?", a: "Nope. The first 30-minute workflow audit is free. No strings attached." },
+              { q: "Can I hire you for a one-time project?", a: "Absolutely. Most of my work is project-based. You're not committed to a long-term contract." },
+              { q: "Do you work internationally?", a: "Yes! I work with clients globally. As long as we can communicate via Zoom/Email, location doesn't matter." }
+            ].map((faq, i) => (
+              <div key={i} className="border border-brand-text/5 p-6 rounded-xl bg-brand-surface hover:bg-brand-text/[0.02] transition-colors">
+                <h3 className="font-bold uppercase text-brand-green mb-2 text-sm tracking-wide">Q: {faq.q}</h3>
+                <p className="text-sm text-brand-muted leading-relaxed">A: {faq.a}</p>
+              </div>
+            ))}
+          </div>
+        </div>
       </section>
 
       {/* TRUST FOOTER */}
-      <section className="py-12 bg-black text-white text-center">
-         <div className="max-w-4xl mx-auto px-4">
-            <h2 className="font-black uppercase text-xl mb-6">Why People Trust Me</h2>
-            <div className="flex flex-wrap justify-center gap-4 md:gap-8 font-mono text-xs md:text-sm">
-               <span className="flex items-center gap-2"><CheckCircle2 className="text-brand-teal" size={16}/> Enrolled Advocate (D/2371/2023)</span>
-               <span className="flex items-center gap-2"><CheckCircle2 className="text-brand-teal" size={16}/> Legal Operations Analyst @ EvenUp</span>
-               <span className="flex items-center gap-2"><CheckCircle2 className="text-brand-teal" size={16}/> No Vendor Lock-In</span>
-            </div>
-         </div>
+      <section className="py-12 bg-black text-brand-text text-center border-t border-brand-text/5">
+        <div className="max-w-4xl mx-auto px-4">
+          <h2 className="font-bold uppercase text-sm mb-6 text-brand-muted tracking-widest">Why People Trust Me</h2>
+          <div className="flex flex-wrap justify-center gap-4 md:gap-8 text-xs md:text-sm">
+            <span className="flex items-center gap-2 text-brand-muted"><CheckCircle2 className="text-brand-blue" size={16} /> Enrolled Advocate (D/2371/2023)</span>
+            <span className="flex items-center gap-2 text-brand-muted"><CheckCircle2 className="text-brand-blue" size={16} /> Legal Operations Analyst @ EvenUp</span>
+            <span className="flex items-center gap-2 text-brand-muted"><CheckCircle2 className="text-brand-blue" size={16} /> No Vendor Lock-In</span>
+          </div>
+        </div>
       </section>
 
     </div>

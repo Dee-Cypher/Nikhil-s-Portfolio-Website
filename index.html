@@ -1,131 +1,149 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Nikhil | The Knowledge Repository & Portfolio</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
-    <script>
-      // Avoid FOUC (Flash of Unstyled Content)
-      if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-        document.documentElement.classList.add('dark');
-      } else {
-        document.documentElement.classList.remove('dark');
-      }
 
-      tailwind.config = {
-        darkMode: 'class',
-        theme: {
-          extend: {
-            fontFamily: {
-              sans: ['"Space Grotesk"', 'sans-serif'],
-              mono: ['"JetBrains Mono"', 'monospace'],
-            },
-            colors: {
-              brand: {
-                dark: '#000000', // Pitch Black
-                teal: '#319795', // Keep for accent
-                amber: '#FFC107', // Bright Amber
-                bg: '#FFFFFF',   // Stark White
-                gray: '#F3F4F6', // Light Gray
-              }
-            },
-            boxShadow: {
-              'brutal': '4px 4px 0px 0px #000000',
-              'brutal-lg': '8px 8px 0px 0px #000000',
-              'brutal-sm': '2px 2px 0px 0px #000000',
-              'brutal-hover': '2px 2px 0px 0px #000000', 
-            },
-            animation: {
-              'marquee': 'marquee 40s linear infinite',
-              'marquee-reverse': 'marquee-reverse 40s linear infinite',
-              'float': 'float 6s ease-in-out infinite',
-              'spin-slow': 'spin 8s linear infinite',
-            },
-            keyframes: {
-              marquee: {
-                '0%': { transform: 'translateX(0%)' },
-                '100%': { transform: 'translateX(-100%)' },
-              },
-              'marquee-reverse': {
-                '0%': { transform: 'translateX(-100%)' },
-                '100%': { transform: 'translateX(0%)' },
-              },
-              float: {
-                '0%, 100%': { transform: 'translateY(0)' },
-                '50%': { transform: 'translateY(-20px)' },
-              }
-            },
-            backgroundImage: {
-              'grid-pattern': "linear-gradient(to right, #e5e7eb 1px, transparent 1px), linear-gradient(to bottom, #e5e7eb 1px, transparent 1px)",
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nikhil | The Knowledge Repository & Portfolio</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500;700&display=swap"
+    rel="stylesheet">
+  <script>
+    if (localStorage.getItem('theme') === 'light' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: light)').matches)) {
+      document.documentElement.classList.remove('dark');
+    } else {
+      document.documentElement.classList.add('dark');
+    }
+
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Outfit"', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          },
+          colors: {
+            // Custom Ninja Tortles Palette
+            brand: {
+              bg: 'rgb(var(--brand-bg) / <alpha-value>)',
+              surface: 'rgb(var(--brand-surface) / <alpha-value>)',
+              text: 'rgb(var(--brand-text) / <alpha-value>)',
+              muted: 'rgb(var(--brand-muted) / <alpha-value>)',
+              orange: 'rgb(var(--brand-orange) / <alpha-value>)',
+              yellow: 'rgb(var(--brand-yellow) / <alpha-value>)',
+              green: 'rgb(var(--brand-green) / <alpha-value>)',
+              red: '#EF4444',
+              blue: 'rgb(var(--brand-blue) / <alpha-value>)',
+              purple: 'rgb(var(--brand-purple) / <alpha-value>)',
+              glass: 'var(--glass)',
+              glassBorder: 'var(--glassBorder)',
             }
+          },
+          boxShadow: {
+            'glass': '0 4px 30px rgba(0, 0, 0, 0.3)',
+            'glow': '0 0 15px rgba(255, 107, 74, 0.2)',
+            'card': '0 4px 6px -1px rgba(0, 0, 0, 0.5)',
+          },
+          animation: {
+            'float': 'float 6s ease-in-out infinite',
+            'pulse-soft': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+          },
+          keyframes: {
+            float: {
+              '0%, 100%': { transform: 'translateY(0)' },
+              '50%': { transform: 'translateY(-10px)' },
+            }
+          },
+          backgroundImage: {
+            'grid-pattern': "linear-gradient(to right, rgba(255,255,255,0.05) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.05) 1px, transparent 1px)",
           }
         }
       }
-    </script>
-    <style>
-      body {
-        font-family: 'Space Grotesk', sans-serif;
-      }
-      .bg-grid {
-        background-size: 40px 40px;
-        background-image: linear-gradient(to right, #f0f0f0 1px, transparent 1px),
-                          linear-gradient(to bottom, #f0f0f0 1px, transparent 1px);
-      }
-      .dark .bg-grid {
-         background-image: linear-gradient(to right, #1a1a1a 1px, transparent 1px),
-                          linear-gradient(to bottom, #1a1a1a 1px, transparent 1px);
-      }
-      .no-scrollbar::-webkit-scrollbar {
-          display: none;
-      }
-      .no-scrollbar {
-          -ms-overflow-style: none;
-          scrollbar-width: none;
-      }
-      /* Custom selection color */
-      ::selection {
-        background-color: #319795;
-        color: white;
-      }
+    }
+  </script>
+  <style>
+    :root {
+      --brand-bg: 248 250 252;
+      --brand-surface: 255 255 255;
+      --brand-text: 15 23 42;
+      --brand-muted: 71 85 105;
+      --brand-orange: 234 88 12;
+      --brand-yellow: 202 138 4;
+      --brand-green: 22 163 74;
+      --brand-blue: 37 99 235;
+      --brand-purple: 147 51 234;
+      --glass: rgba(255, 255, 255, 0.70);
+      --glassBorder: rgba(0, 0, 0, 0.08);
+    }
 
-      /* 3D Transform Utilities for Cards */
-      .perspective-1000 {
-        perspective: 1000px;
-      }
-      
-      .preserve-3d {
-        transform-style: preserve-3d;
-      }
-      
-      .backface-hidden {
-        backface-visibility: hidden;
-        -webkit-backface-visibility: hidden;
-      }
-    </style>
-  <script type="importmap">
-{
-  "imports": {
-    "react": "https://esm.sh/react@^19.2.3",
-    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
-    "react/": "https://esm.sh/react@^19.2.3/",
-    "react-router-dom": "https://esm.sh/react-router-dom@^7.10.1",
-    "lucide-react": "https://esm.sh/lucide-react@^0.561.0",
-    "framer-motion": "https://esm.sh/framer-motion@^12.23.26",
-    "vite": "https://esm.sh/vite@^7.2.7",
-    "@vitejs/plugin-react": "https://esm.sh/@vitejs/plugin-react@^5.1.2",
-    "react-countup": "https://esm.sh/react-countup@^6.5.3",
-    "react-intersection-observer": "https://esm.sh/react-intersection-observer@^9.13.1",
-    "recharts": "https://esm.sh/recharts@^2.12.7"
-  }
-}
-</script>
+    .dark {
+      --brand-bg: 13 13 15;
+      --brand-surface: 26 26 29;
+      --brand-text: 242 242 242;
+      --brand-muted: 156 163 175;
+      --brand-orange: 255 107 74;
+      --brand-yellow: 255 192 98;
+      --brand-green: 74 222 128;
+      --brand-blue: 59 130 246;
+      --brand-purple: 192 132 252;
+      --glass: rgba(20, 20, 22, 0.70);
+      --glassBorder: rgba(255, 255, 255, 0.08);
+    }
+
+    body {
+      font-family: 'Space Grotesk', sans-serif;
+    }
+
+    .bg-grid {
+      background-size: 40px 40px;
+      background-image: linear-gradient(to right, #f0f0f0 1px, transparent 1px),
+        linear-gradient(to bottom, #f0f0f0 1px, transparent 1px);
+    }
+
+    .dark .bg-grid {
+      background-image: linear-gradient(to right, #1a1a1a 1px, transparent 1px),
+        linear-gradient(to bottom, #1a1a1a 1px, transparent 1px);
+    }
+
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+
+    /* Custom selection color */
+    ::selection {
+      background-color: #319795;
+      color: white;
+    }
+
+    /* 3D Transform Utilities for Cards */
+    .perspective-1000 {
+      perspective: 1000px;
+    }
+
+    .preserve-3d {
+      transform-style: preserve-3d;
+    }
+
+    .backface-hidden {
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+    }
+  </style>
+
 </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/index.tsx"></script>
-  </body>
+
+<body>
+  <div id="root"></div>
+  <script type="module" src="/index.tsx"></script>
+</body>
+
 </html>

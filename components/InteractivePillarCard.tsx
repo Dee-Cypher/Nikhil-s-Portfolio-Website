@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 
 interface PillarCardProps {
   icon: React.ReactNode;
@@ -17,15 +17,20 @@ export const InteractivePillarCard: React.FC<PillarCardProps> = ({
 }) => {
   const [isFlipped, setIsFlipped] = useState(false);
 
-  const getAccentClass = (color: string) => {
-    switch(color) {
-      case 'brand-teal': return 'bg-brand-teal';
-      case 'brand-amber': return 'bg-brand-amber';
-      default: return 'bg-black';
+  // Map accentColor to exact tailwind color for borders/text
+  const getColor = (color: string) => {
+    switch (color) {
+      case 'brand-teal': return 'text-brand-green border-brand-green';
+      case 'brand-amber': return 'text-brand-orange border-brand-orange';
+      case 'brand-blue': return 'text-brand-blue border-brand-blue';
+      case 'brand-orange': return 'text-brand-orange border-brand-orange';
+      default: return 'text-brand-text border-brand-text';
     }
   }
 
-  const bgClass = getAccentClass(accentColor);
+  const bgGradient = accentColor === 'brand-orange'
+    ? 'from-brand-orange/20 to-brand-surface'
+    : 'from-brand-blue/20 to-brand-surface';
 
   return (
     <motion.div
@@ -43,69 +48,59 @@ export const InteractivePillarCard: React.FC<PillarCardProps> = ({
         style={{ transformStyle: 'preserve-3d' }}
       >
         {/* FRONT FACE */}
-        <div 
-          className="absolute inset-0 bg-brand-gray dark:bg-zinc-900 border-2 border-black dark:border-white p-8 shadow-brutal backface-hidden"
+        <div
+          className="absolute inset-0 bg-brand-surface border border-brand-text/10 rounded-3xl p-10 flex flex-col backface-hidden shadow-glass"
           style={{ backfaceVisibility: 'hidden' }}
         >
-          <motion.div 
-            className={`w-16 h-16 ${bgClass} border-2 border-black dark:border-white flex items-center justify-center mb-6 text-white shadow-brutal-sm`}
-            whileHover={{ scale: 1.1, rotate: 10 }}
-          >
+          <div className={`w-16 h-16 rounded-2xl bg-brand-text/5 flex items-center justify-center mb-8 ${getColor(accentColor).split(' ')[0]}`}>
             {icon}
-          </motion.div>
-          
-          <h3 className="text-3xl font-black uppercase leading-none mb-4 text-black dark:text-white">
-            {title}
-          </h3>
-          
-          <div className={`inline-block bg-white dark:bg-black border border-black dark:border-white p-2 mb-6 font-mono text-xs font-bold uppercase text-black dark:text-white`}>
-            {subtitle}
           </div>
 
-          <p className="font-mono text-sm text-gray-600 dark:text-gray-300 mb-6">
+          <div className="mb-2 text-xs font-bold uppercase tracking-widest text-brand-muted/70">{subtitle}</div>
+          <h3 className="text-3xl font-bold uppercase leading-none mb-6 text-brand-text">
+            {title}
+          </h3>
+
+          <p className="text-brand-muted leading-relaxed text-lg">
             {description}
           </p>
 
-          {/* Hover hint */}
-          <motion.div 
-            className="absolute bottom-8 left-8 right-8 text-center font-mono text-xs text-brand-teal"
-            animate={{ opacity: [0.5, 1, 0.5] }}
-            transition={{ repeat: Infinity, duration: 2 }}
-          >
-            → Hover to see details
-          </motion.div>
+          <div className="mt-auto flex items-center gap-2 text-xs font-mono text-brand-muted/50">
+            <div className="w-2 h-2 rounded-full bg-brand-text/20 animate-pulse" />
+            Hover to inspect structure
+          </div>
         </div>
 
         {/* BACK FACE */}
-        <div 
-          className={`absolute inset-0 ${bgClass} border-2 border-black dark:border-white p-8 shadow-brutal backface-hidden`}
-          style={{ 
+        <div
+          className={`absolute inset-0 bg-gradient-to-br ${bgGradient} border border-brand-text/10 rounded-3xl p-10 backface-hidden shadow-glow`}
+          style={{
             backfaceVisibility: 'hidden',
             transform: 'rotateY(180deg)'
           }}
         >
-          <h4 className="font-bold uppercase text-sm mb-4 text-white border-b-2 border-white pb-2">
-            What You'll Learn:
+          <h4 className="font-bold uppercase text-sm mb-6 text-brand-text flex items-center gap-2">
+            <span className="w-1.5 h-1.5 rounded-full bg-brand-text" /> What You'll Learn:
           </h4>
-          
-          <ul className="space-y-3 mb-6">
+
+          <ul className="space-y-4 mb-8">
             {bulletPoints.map((point, i) => (
-              <motion.li 
+              <motion.li
                 key={i}
-                initial={{ opacity: 0, x: -20 }}
+                initial={{ opacity: 0, x: -10 }}
                 animate={isFlipped ? { opacity: 1, x: 0 } : {}}
-                transition={{ delay: i * 0.1 }}
-                className="flex items-start font-mono text-sm text-white"
+                transition={{ delay: 0.2 + (i * 0.1) }}
+                className="flex items-start text-sm text-brand-text/90 leading-relaxed"
               >
-                <span className="mr-3 font-bold">&gt;&gt;</span>
+                <span className="mr-3 opacity-50">›</span>
                 {point}
               </motion.li>
             ))}
           </ul>
 
-          <div className="pt-4 border-t-2 border-white">
-            <div className="font-mono text-xs font-bold uppercase text-white/80">Ideal For</div>
-            <div className="font-mono text-sm mt-2 text-white">{idealFor}</div>
+          <div className="pt-6 border-t border-brand-text/10 mt-auto">
+            <div className="text-[10px] font-bold uppercase text-brand-text/50 mb-1">Ideal For</div>
+            <div className="text-sm text-brand-text font-medium">{idealFor}</div>
           </div>
         </div>
       </motion.div>

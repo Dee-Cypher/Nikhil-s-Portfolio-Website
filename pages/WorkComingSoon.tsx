@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Hammer, ArrowLeft, HardHat, Construction } from 'lucide-react';
+import { Hammer, ArrowLeft, HardHat, Construction, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 // --- LEGO BUILDER LOGIC ---
@@ -8,53 +8,53 @@ import { Link } from 'react-router-dom';
 // 5x5 Grid representations of letters
 const LETTERS: Record<string, number[][]> = {
   S: [
-    [0,1,1,1,1],
-    [1,0,0,0,0],
-    [0,1,1,1,0],
-    [0,0,0,0,1],
-    [1,1,1,1,0]
+    [0, 1, 1, 1, 1],
+    [1, 0, 0, 0, 0],
+    [0, 1, 1, 1, 0],
+    [0, 0, 0, 0, 1],
+    [1, 1, 1, 1, 0]
   ],
   O: [
-    [0,1,1,1,0],
-    [1,0,0,0,1],
-    [1,0,0,0,1],
-    [1,0,0,0,1],
-    [0,1,1,1,0]
+    [0, 1, 1, 1, 0],
+    [1, 0, 0, 0, 1],
+    [1, 0, 0, 0, 1],
+    [1, 0, 0, 0, 1],
+    [0, 1, 1, 1, 0]
   ],
   N: [
-    [1,0,0,0,1],
-    [1,1,0,0,1],
-    [1,0,1,0,1],
-    [1,0,0,1,1],
-    [1,0,0,0,1]
+    [1, 0, 0, 0, 1],
+    [1, 1, 0, 0, 1],
+    [1, 0, 1, 0, 1],
+    [1, 0, 0, 1, 1],
+    [1, 0, 0, 0, 1]
   ],
   C: [
-    [0,1,1,1,1],
-    [1,0,0,0,0],
-    [1,0,0,0,0],
-    [1,0,0,0,0],
-    [0,1,1,1,1]
+    [0, 1, 1, 1, 1],
+    [1, 0, 0, 0, 0],
+    [1, 0, 0, 0, 0],
+    [1, 0, 0, 0, 0],
+    [0, 1, 1, 1, 1]
   ],
   M: [
-    [1,0,0,0,1],
-    [1,1,0,1,1],
-    [1,0,1,0,1],
-    [1,0,0,0,1],
-    [1,0,0,0,1]
+    [1, 0, 0, 0, 1],
+    [1, 1, 0, 1, 1],
+    [1, 0, 1, 0, 1],
+    [1, 0, 0, 0, 1],
+    [1, 0, 0, 0, 1]
   ],
   I: [
-    [1,1,1],
-    [0,1,0],
-    [0,1,0],
-    [0,1,0],
-    [1,1,1]
+    [1, 1, 1],
+    [0, 1, 0],
+    [0, 1, 0],
+    [0, 1, 0],
+    [1, 1, 1]
   ],
   G: [
-    [0,1,1,1,0],
-    [1,0,0,0,0],
-    [1,0,1,1,1],
-    [1,0,0,0,1],
-    [0,1,1,1,0]
+    [0, 1, 1, 1, 0],
+    [1, 0, 0, 0, 0],
+    [1, 0, 1, 1, 1],
+    [1, 0, 0, 0, 1],
+    [0, 1, 1, 1, 0]
   ]
 };
 
@@ -88,7 +88,7 @@ const LegoBuilder: React.FC<{ text: string }> = ({ text }) => {
                 id: `${char}-${charIdx}-${rIdx}-${cIdx}`,
                 x: currentX + cIdx,
                 y: rIdx,
-                color: charIdx % 2 === 0 ? 'bg-brand-teal' : 'bg-brand-amber'
+                color: charIdx % 2 === 0 ? 'bg-brand-blue' : 'bg-brand-orange'
               });
             }
           });
@@ -110,11 +110,11 @@ const LegoBuilder: React.FC<{ text: string }> = ({ text }) => {
     const timeout = setTimeout(() => {
       // Move builder to next brick pos
       const nextBrick = bricks[builtCount];
-      setBuilderPos({ 
-        x: nextBrick.x * (BRICK_SIZE + GAP), 
-        y: nextBrick.y * (BRICK_SIZE + GAP) 
+      setBuilderPos({
+        x: nextBrick.x * (BRICK_SIZE + GAP),
+        y: nextBrick.y * (BRICK_SIZE + GAP)
       });
-      
+
       // Place brick
       setBuiltCount(prev => prev + 1);
     }, 150); // Speed of building
@@ -123,13 +123,14 @@ const LegoBuilder: React.FC<{ text: string }> = ({ text }) => {
   }, [bricks, builtCount]);
 
   return (
-    <div className="relative p-8 bg-white dark:bg-zinc-900 border-2 border-black dark:border-white shadow-brutal dark:shadow-[4px_4px_0px_0px_#ffffff] inline-block">
+    <div className="relative p-8 bg-brand-surface border border-brand-text/5 shadow-glass inline-block rounded-2xl overflow-hidden group">
+      <div className="absolute inset-0 bg-brand-text/5 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
       {/* Container size based on max dimensions */}
-      <div style={{ 
+      <div style={{
         width: Math.max(...bricks.map(b => b.x)) * (BRICK_SIZE + GAP) + BRICK_SIZE,
-        height: 5 * (BRICK_SIZE + GAP) 
+        height: 5 * (BRICK_SIZE + GAP)
       }} className="relative">
-        
+
         {/* Render Bricks */}
         {bricks.map((brick, i) => (
           <motion.div
@@ -137,7 +138,7 @@ const LegoBuilder: React.FC<{ text: string }> = ({ text }) => {
             initial={{ scale: 0, opacity: 0 }}
             animate={i < builtCount ? { scale: 1, opacity: 1 } : { scale: 0, opacity: 0 }}
             transition={{ type: "spring", stiffness: 300, damping: 20 }}
-            className={`absolute ${brick.color} border-2 border-black dark:border-white shadow-[2px_2px_0px_0px_rgba(0,0,0,0.3)]`}
+            className={`absolute ${brick.color} border border-brand-text/20 shadow-md rounded-[2px]`}
             style={{
               width: BRICK_SIZE,
               height: BRICK_SIZE,
@@ -146,34 +147,34 @@ const LegoBuilder: React.FC<{ text: string }> = ({ text }) => {
             }}
           >
             {/* Stud on top to make it look like Lego */}
-            <div className="absolute top-[2px] left-[2px] w-[calc(100%-8px)] h-[calc(100%-8px)] border border-black/10 rounded-full opacity-50"></div>
+            <div className="absolute top-[2px] left-[2px] w-[calc(100%-4px)] h-[calc(100%-4px)] border border-brand-text/20 rounded-full opacity-50 bg-brand-text/10"></div>
           </motion.div>
         ))}
 
         {/* Builder Character */}
         {builtCount < bricks.length && (
           <motion.div
-            animate={{ 
-              x: builderPos.x, 
+            animate={{
+              x: builderPos.x,
               y: builderPos.y - 30 // Hover above
             }}
             transition={{ duration: 0.1 }}
-            className="absolute z-10 text-black dark:text-white"
+            className="absolute z-10 text-brand-text"
           >
             <motion.div
               animate={{ rotate: [-10, 10, -10], y: [0, -5, 0] }}
               transition={{ repeat: Infinity, duration: 0.5 }}
             >
               <div className="relative">
-                 <HardHat size={32} className="text-brand-amber fill-brand-amber" />
-                 <Hammer size={24} className="absolute -right-4 top-2 text-black dark:text-white transform rotate-45" />
+                <HardHat size={32} className="text-brand-yellow fill-brand-yellow" />
+                <Hammer size={24} className="absolute -right-4 top-2 text-brand-text transform rotate-45" />
               </div>
             </motion.div>
           </motion.div>
         )}
       </div>
-      
-      <div className="mt-4 font-mono text-xs text-center text-gray-500 uppercase tracking-widest">
+
+      <div className="mt-4 font-mono text-xs text-center text-brand-muted uppercase tracking-widest border-t border-brand-text/5 pt-2">
         Rendering Block {builtCount} / {bricks.length}
       </div>
     </div>
@@ -182,56 +183,64 @@ const LegoBuilder: React.FC<{ text: string }> = ({ text }) => {
 
 export const WorkComingSoon: React.FC = () => {
   return (
-    <div className="min-h-screen bg-brand-gray dark:bg-black text-black dark:text-white flex flex-col items-center justify-center p-4">
-      
+    <div className="min-h-screen bg-brand-bg text-brand-text font-sans flex flex-col items-center justify-center p-4 relative overflow-hidden">
+
+      <div className="absolute inset-0 bg-brand-blue/5 blur-[150px] pointer-events-none" />
+
       {/* Back Link */}
-      <div className="absolute top-8 left-8">
-        <Link to="/" className="flex items-center gap-2 font-bold uppercase hover:text-brand-teal transition-colors border-2 border-transparent hover:border-black dark:hover:border-white p-2">
-          <ArrowLeft size={20} /> Return to Base
+      <div className="absolute top-8 left-8 z-20">
+        <Link to="/" className="flex items-center gap-2 font-bold uppercase text-brand-muted hover:text-brand-text transition-colors text-sm">
+          <ArrowLeft size={16} /> Return to Base
         </Link>
       </div>
 
-      <motion.div 
+      <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="max-w-4xl w-full text-center space-y-12"
+        className="max-w-4xl w-full text-center space-y-12 relative z-10"
       >
-        <div className="inline-flex items-center gap-2 px-4 py-2 bg-brand-amber text-black border-2 border-black font-mono font-bold uppercase shadow-brutal-sm">
-          <Construction size={18} />
+        <div className="inline-flex items-center gap-2 px-4 py-2 bg-brand-surface border border-brand-orange/30 text-brand-orange rounded-full font-bold uppercase shadow-glow text-xs tracking-wider">
+          <Construction size={14} />
           <span>Site Renovation in Progress</span>
         </div>
 
         <div>
-          <h1 className="text-4xl md:text-6xl font-black uppercase mb-8 tracking-tighter">
-            We Are <span className="text-brand-teal">Building</span><br/>Something New
+          <h1 className="text-4xl md:text-6xl font-black uppercase mb-8 tracking-tight">
+            We Are <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-blue to-brand-green">Building</span><br />Something New
           </h1>
-          
+
           {/* The Lego Animation */}
-          <div className="flex justify-center mb-8 overflow-x-auto py-4">
-             <LegoBuilder text="SOON" />
+          <div className="flex justify-center mb-12 overflow-x-auto py-4">
+            <LegoBuilder text="SOON" />
           </div>
 
-          <p className="font-mono text-lg max-w-2xl mx-auto text-gray-600 dark:text-gray-400">
-            The Project Archive is currently undergoing a complete structural refactor. 
+          <p className="text-lg max-w-2xl mx-auto text-brand-muted font-light leading-relaxed">
+            The Project Archive is currently undergoing a complete structural refactor.
             I'm documenting new case studies and adding live code demos.
           </p>
         </div>
 
         <div className="grid md:grid-cols-2 gap-6 max-w-2xl mx-auto">
-          <Link to="/knowledge" className="bg-white dark:bg-zinc-900 border-2 border-black dark:border-white p-6 shadow-brutal dark:shadow-[4px_4px_0px_0px_#ffffff] hover:-translate-y-1 transition-transform group">
-             <h3 className="font-black uppercase text-xl mb-2 group-hover:text-brand-teal">Read The Codex</h3>
-             <p className="font-mono text-sm text-gray-500">While the portfolio builds, explore the knowledge base articles and tutorials.</p>
+          <Link to="/knowledge" className="bg-brand-surface border border-brand-text/5 p-8 rounded-2xl shadow-glass hover:bg-brand-text/[0.02] hover:-translate-y-1 transition-all group text-left">
+            <div className="flex justify-between items-start mb-4">
+              <h3 className="font-bold uppercase text-xl text-brand-text group-hover:text-brand-blue transition-colors">Read The Codex</h3>
+              <ArrowRight size={18} className="text-brand-muted group-hover:text-brand-text group-hover:translate-x-1 transition-transform" />
+            </div>
+            <p className="text-sm text-brand-muted leading-relaxed">While the portfolio builds, explore the knowledge base articles and tutorials.</p>
           </Link>
-          <Link to="/contact" className="bg-white dark:bg-zinc-900 border-2 border-black dark:border-white p-6 shadow-brutal dark:shadow-[4px_4px_0px_0px_#ffffff] hover:-translate-y-1 transition-transform group">
-             <h3 className="font-black uppercase text-xl mb-2 group-hover:text-brand-amber">Get in Touch</h3>
-             <p className="font-mono text-sm text-gray-500">Need to see my work urgently? Email me and I'll send a PDF portfolio.</p>
+          <Link to="/contact" className="bg-brand-surface border border-brand-text/5 p-8 rounded-2xl shadow-glass hover:bg-brand-text/[0.02] hover:-translate-y-1 transition-all group text-left">
+            <div className="flex justify-between items-start mb-4">
+              <h3 className="font-bold uppercase text-xl text-brand-text group-hover:text-brand-orange transition-colors">Get in Touch</h3>
+              <ArrowRight size={18} className="text-brand-muted group-hover:text-brand-text group-hover:translate-x-1 transition-transform" />
+            </div>
+            <p className="text-sm text-brand-muted leading-relaxed">Need to see my work urgently? Email me and I'll send a PDF portfolio.</p>
           </Link>
         </div>
 
-        <div className="pt-12 border-t border-black/10 dark:border-white/10">
-           <p className="font-mono text-xs uppercase text-gray-400">
-              Expected Completion: <span className="text-black dark:text-white font-bold">Q1 2025</span>
-           </p>
+        <div className="pt-12 border-t border-brand-text/5 w-full max-w-lg mx-auto">
+          <p className="font-bold uppercase text-xs text-brand-muted/50 tracking-widest">
+            Expected Completion: <span className="text-brand-text">Q1 2025</span>
+          </p>
         </div>
       </motion.div>
     </div>

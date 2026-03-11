@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { 
-  Award, Gavel, ArrowRight, Download, Scale, 
-  Terminal, Check, GraduationCap, Building2, Target, Shield, 
-  Zap, MessageSquare, BookOpen, Cog, Users, Mail, Wrench
+import {
+  Gavel, ArrowRight, ArrowUpRight, Download, Scale,
+  Terminal, Check, GraduationCap, Building2, Target, Shield, Briefcase,
+  Zap, MessageSquare, BookOpen, Cog, Users
 } from 'lucide-react';
-import { PHILOSOPHY, STATS, LAW_ARTICLES_PREVIEW, TECH_ARTICLES_PREVIEW } from '../constants';
+import { PHILOSOPHY, LAW_ARTICLES_PREVIEW, TECH_ARTICLES_PREVIEW } from '../constants';
 import { StatsGrid } from '../components/AnimatedCounter';
 import { InteractivePillarCard } from '../components/InteractivePillarCard';
 import { ConnectionCard } from '../components/ConnectionDiagram';
@@ -85,7 +85,7 @@ const HOME_PROJECTS = [
 ];
 
 const iconMap: Record<string, React.ElementType> = {
-  BookOpen, Cog, Users
+  BookOpen, Cog, Users, Terminal
 };
 
 export const Home: React.FC = () => {
@@ -93,70 +93,76 @@ export const Home: React.FC = () => {
   const y1 = useTransform(scrollY, [0, 500], [0, 200]);
   const y2 = useTransform(scrollY, [0, 500], [0, -150]);
   const y3 = useTransform(scrollY, [0, 500], [0, 100]);
-  
+
   const [projectFilter, setProjectFilter] = useState('All');
 
-  const displayedProjects = projectFilter === 'All' 
-    ? HOME_PROJECTS 
+  const displayedProjects = projectFilter === 'All'
+    ? HOME_PROJECTS
     : HOME_PROJECTS.filter(p => p.category === projectFilter);
 
   return (
-    <div className="flex flex-col overflow-hidden bg-white dark:bg-black transition-colors duration-300">
-      
+    <div className="flex flex-col overflow-hidden bg-brand-bg relative">
+      <div className="fixed inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 pointer-events-none z-[1]" />
+
       {/* SECTION 1: HERO */}
-      <section className="relative min-h-[90vh] flex flex-col justify-center px-4 sm:px-6 lg:px-8 py-20 border-b-2 border-black dark:border-white">
+      <section className="relative min-h-[95vh] flex flex-col justify-center px-4 sm:px-6 lg:px-8 py-20 border-b border-brand-text/5 z-10">
         {/* Parallax Background */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
-          <motion.div style={{ y: y2 }} className="absolute top-20 right-[10%] opacity-10 dark:opacity-5 text-black dark:text-white">
+          <div className="absolute top-[20%] right-[10%] w-[500px] h-[500px] bg-brand-orange/5 rounded-full blur-[100px]" />
+          <div className="absolute bottom-[20%] left-[10%] w-[500px] h-[500px] bg-brand-blue/5 rounded-full blur-[100px]" />
+
+          <motion.div style={{ y: y2 }} className="absolute top-20 right-[10%] opacity-5 text-brand-text">
             <Scale size={120} strokeWidth={1} />
           </motion.div>
-          <motion.div style={{ y: y1 }} className="absolute bottom-40 left-[5%] opacity-10 dark:opacity-5 text-brand-teal">
+          <motion.div style={{ y: y1 }} className="absolute bottom-40 left-[5%] opacity-5 text-brand-orange">
             <Gavel size={140} strokeWidth={1} />
           </motion.div>
-          <motion.div style={{ y: y3 }} className="absolute top-40 left-[15%] opacity-10 dark:opacity-5 text-brand-amber">
+          <motion.div style={{ y: y3 }} className="absolute top-40 left-[15%] opacity-5 text-brand-blue">
             <Terminal size={130} strokeWidth={1} />
           </motion.div>
         </div>
 
-        <div className="max-w-6xl mx-auto z-10 w-full">
+        <div className="max-w-6xl mx-auto z-10 w-full relative">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
           >
-            <div className="inline-flex items-center gap-2 px-4 py-2 border-2 border-black dark:border-white bg-brand-amber text-black shadow-brutal-sm mb-8 transform -rotate-2">
-              <Award size={16} />
-              <span className="font-mono font-bold uppercase text-xs">Registered Trademark Attorney • Bar Council of Delhi</span>
+            <div className="inline-flex items-center gap-2 px-3 py-2 sm:px-4 rounded-full border border-brand-text/10 bg-brand-text/5 text-brand-text mb-8 backdrop-blur-md">
+              <span className="w-2 h-2 rounded-full bg-brand-green animate-pulse flex-shrink-0"></span>
+              <span className="font-mono font-medium tracking-wide text-[10px] sm:text-xs uppercase text-brand-muted">Legal Operations Architect • IP Attorney</span>
             </div>
-            
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter text-black dark:text-white leading-[0.95] mb-8 uppercase">
-              Lawyer Building <br/>
-              <span className="text-brand-teal">Legal Automation</span>
+
+            <h1 className="text-5xl sm:text-6xl md:text-8xl lg:text-9xl font-bold tracking-tighter text-brand-text leading-[0.9] mb-8">
+              The Legal <br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-orange to-brand-yellow">Engineer</span>
             </h1>
-            
-            <div className="border-l-8 border-black dark:border-white pl-6 py-2 bg-brand-gray/50 dark:bg-zinc-900/50 max-w-3xl mb-12">
-              <p className="text-lg md:text-xl font-mono text-black dark:text-gray-300 leading-relaxed">
-                Registered Trademark Attorney (Bar Council of Delhi) • Personal Injury Demand Letter Specialist • Automation Enthusiast
+
+            <div className="border-l-2 border-brand-orange/50 pl-6 sm:pl-8 py-2 max-w-3xl mb-12">
+              <p className="text-lg sm:text-xl md:text-2xl text-brand-muted font-light leading-relaxed">
+                Attorney bridging law, AI, and technology. I build intelligent systems and processes with legal precision that drive results and save thousands of hours.
               </p>
-              <p className="text-sm md:text-base font-mono font-bold text-black dark:text-white mt-4 border-t-2 border-dashed border-black dark:border-white/20 pt-2">
-                Currently at EvenUp drafting PI demand letters | 2.5+ years in IP law | Sharing everything I learn—completely free
+              <p className="text-sm sm:text-base md:text-lg font-mono text-brand-text mt-4 pt-2">
+                Product Operations Associate <span className="text-brand-orange">@ EvenUp</span> | Legal AI & Automation
               </p>
             </div>
 
-            {/* NEW: Animated Stats Grid */}
-            <StatsGrid />
-            
+            {/* NEW: Animated Stats Grid needs updating in component */}
+            <div className="mb-12">
+              <StatsGrid />
+            </div>
+
             <div className="flex flex-col sm:flex-row gap-6">
-              <Link 
+              <Link
                 to="/projects"
-                className="px-8 py-5 bg-black dark:bg-white text-white dark:text-black font-bold uppercase text-lg border-2 border-black dark:border-white shadow-brutal dark:shadow-[4px_4px_0px_0px_#ffffff] hover:shadow-none hover:translate-x-[2px] hover:translate-y-[2px] transition-all flex items-center justify-center gap-3"
+                className="px-8 py-4 bg-brand-orange text-white font-bold rounded-lg shadow-glow hover:scale-105 transition-all flex items-center justify-center gap-3"
               >
-                View My Work <ArrowRight size={24} />
+                View My Work <ArrowRight size={20} />
               </Link>
-              <button 
-                className="px-8 py-5 bg-white dark:bg-black text-black dark:text-white font-bold uppercase text-lg border-2 border-black dark:border-white shadow-brutal dark:shadow-[4px_4px_0px_0px_#ffffff] hover:shadow-none hover:translate-x-[2px] hover:translate-y-[2px] transition-all flex items-center justify-center gap-3"
+              <button
+                className="px-8 py-4 bg-brand-text/5 border border-brand-text/10 text-brand-text font-bold rounded-lg hover:bg-brand-text/10 transition-all flex items-center justify-center gap-3 backdrop-blur-md"
               >
-                Download Full Profile <Download size={24} />
+                Download Full Profile <Download size={20} />
               </button>
             </div>
           </motion.div>
@@ -164,19 +170,19 @@ export const Home: React.FC = () => {
       </section>
 
       {/* SECTION 2: TRUST BAR */}
-      <section className="py-12 border-b-2 border-black dark:border-white bg-brand-gray dark:bg-zinc-900">
+      <section className="py-12 border-b border-brand-text/5 bg-black/50 backdrop-blur-sm z-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-8 font-mono text-sm font-bold uppercase tracking-widest text-gray-500 dark:text-gray-400">
+          <div className="text-center mb-8 font-mono text-xs font-bold uppercase tracking-[0.2em] text-brand-muted">
             Qualified & Registered With
           </div>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
             {[
-              { icon: <Check size={20} className="text-brand-teal" strokeWidth={4} />, primary: "Bar Council", secondary: "D/2371/2023" },
-              { icon: <Check size={20} className="text-brand-teal" strokeWidth={4} />, primary: "All India", secondary: "Bar Exam" },
-              { icon: <Check size={20} className="text-brand-teal" strokeWidth={4} />, primary: "Trademark", secondary: "Attorney 54191" },
-              { icon: <GraduationCap size={20} />, primary: "Symbiosis", secondary: "Law School" },
-              { icon: <Building2 size={20} />, primary: "EvenUp", secondary: "Current" },
-              { icon: <Building2 size={20} />, primary: "DSPIN", secondary: "2 Years" },
+              { icon: <Check size={20} className="text-brand-green" strokeWidth={3} />, primary: "Bar Council", secondary: "D/2371/2023" },
+              { icon: <Check size={20} className="text-brand-green" strokeWidth={3} />, primary: "All India", secondary: "Bar Exam" },
+              { icon: <Check size={20} className="text-brand-green" strokeWidth={3} />, primary: "Trademark", secondary: "Attorney 54191" },
+              { icon: <GraduationCap size={20} className="text-brand-blue" />, primary: "Symbiosis", secondary: "Law School" },
+              { icon: <Building2 size={20} className="text-brand-purple" />, primary: "EvenUp", secondary: "Current" },
+              { icon: <Building2 size={20} className="text-brand-purple" />, primary: "DSPIN", secondary: "2 Years" },
             ].map((badge, idx) => (
               <motion.div
                 key={idx}
@@ -184,42 +190,40 @@ export const Home: React.FC = () => {
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ delay: idx * 0.05 }}
-                className="bg-white dark:bg-black border border-black dark:border-white p-4 text-center hover:scale-105 transition-transform"
+                className="bg-brand-surface border border-brand-text/5 rounded-xl p-4 text-center hover:bg-brand-text/5 transition-colors group"
               >
-                <div className="mb-1 flex justify-center text-black dark:text-white">{badge.icon}</div>
-                <div className="font-mono text-xs font-bold text-black dark:text-white">{badge.primary}</div>
-                <div className="font-mono text-[10px] text-gray-500 dark:text-gray-400">{badge.secondary}</div>
+                <div className="mb-2 flex justify-center text-brand-muted group-hover:text-brand-text transition-colors">{badge.icon}</div>
+                <div className="font-bold text-sm text-brand-text mb-1">{badge.primary}</div>
+                <div className="font-mono text-[10px] text-brand-muted">{badge.secondary}</div>
               </motion.div>
             ))}
-          </div>
-          <div className="text-center mt-6 font-mono text-xs text-gray-500 dark:text-gray-400">
-            Verified credentials ensuring professional excellence in IP law, personal injury, and legal automation
           </div>
         </div>
       </section>
 
       {/* SECTION 3: TWO PILLARS */}
-      <section className="py-20 border-b-2 border-black dark:border-white bg-white dark:bg-black">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-5xl md:text-6xl font-black uppercase text-black dark:text-white tracking-tighter mb-6">
-              Two Domains, One System
+      <section className="py-24 border-b border-brand-text/5 z-10 relative">
+        <div className="absolute top-0 right-0 w-[30%] h-[30%] bg-brand-blue/5 rounded-full blur-[100px] pointer-events-none" />
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+          <div className="text-center mb-20">
+            <h2 className="text-5xl md:text-6xl font-black uppercase text-brand-text tracking-tighter mb-6">
+              Law Meets <span className="text-brand-muted">AI & Tech.</span>
             </h2>
-            <p className="font-mono text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-              Most lawyers specialize in one area. I practice two and automate both.
+            <p className="font-light text-xl text-brand-muted max-w-2xl mx-auto leading-relaxed">
+              Merging deep legal expertise with advanced AI to create <span className="text-brand-orange font-bold">automated workflows</span> that operate with attorney-level precision.
             </p>
           </div>
 
-          <div className="max-w-4xl mx-auto p-6 border-l-8 border-black dark:border-white border-y-2 border-r-2 bg-brand-gray dark:bg-zinc-900 mb-12">
-            <p className="font-mono text-lg italic text-black dark:text-white text-center">
-              "IP law taught me precision and frameworks. <br/>
-              Personal injury taught me storytelling and persuasion. <br/>
-              Automation taught me leverage and systems thinking."
+          <div className="max-w-4xl mx-auto p-8 rounded-2xl bg-gradient-to-r from-brand-surface to-brand-bg border border-brand-text/10 mb-16 relative overflow-hidden">
+            <div className="absolute left-0 top-0 w-1 h-full bg-brand-orange" />
+            <p className="font-serif italic text-2xl text-brand-text text-center leading-relaxed opacity-90">
+              "The future of law isn't just about better arguments. It's about better architecture."
             </p>
           </div>
 
-          {/* NEW: Interactive Pillar Cards */}
-          <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+          {/* Interactive Pillar Cards - Component Refactor Needed */}
+          <div className="grid md:grid-cols-3 gap-8 max-w-7xl mx-auto">
             <InteractivePillarCard
               icon={<Scale size={32} />}
               title="Law & Legal Practice"
@@ -233,10 +237,10 @@ export const Home: React.FC = () => {
                 "Office action responses and examiner objections"
               ]}
               idealFor="Law students, IP practitioners, personal injury attorneys, business owners"
-              accentColor="brand-teal"
+              accentColor="brand-blue"
               index={0}
             />
-            
+
             <InteractivePillarCard
               icon={<Terminal size={32} />}
               title="Technology & Automation"
@@ -250,19 +254,38 @@ export const Home: React.FC = () => {
                 "Quality assurance systems for demand letters"
               ]}
               idealFor="Legal professionals drowning in manual work, automation beginners"
-              accentColor="brand-amber"
+              accentColor="brand-orange"
               index={1}
+            />
+
+            <InteractivePillarCard
+              icon={<Briefcase size={32} />}
+              title="Business Operations"
+              subtitle="Family Enterprise"
+              description="Real-world experience managing and scaling a business through the COVID-19 pandemic before transitioning into law."
+              bulletPoints={[
+                "Supply chain optimization and logistics",
+                "Digital transformation of legacy systems",
+                "Cross-functional team leadership",
+                "Financial planning and execution",
+                "Standard Operating Procedure (SOP) development"
+              ]}
+              idealFor="Entrepreneurs, SMB Owners, Operations Managers"
+              accentColor="brand-green"
+              index={2}
             />
           </div>
 
-          <div className="mt-16 text-center">
-            <p className="font-mono text-lg mb-6 text-black dark:text-white">Ready to explore? Choose your starting point:</p>
+          <div className="mt-20 text-center">
             <div className="flex flex-wrap justify-center gap-4">
-              <Link to="/law" className="px-8 py-4 border-2 border-black dark:border-white font-bold uppercase shadow-brutal dark:shadow-[4px_4px_0px_0px_#ffffff] hover:shadow-none hover:translate-x-[2px] hover:translate-y-[2px] transition-all bg-white dark:bg-black text-black dark:text-white flex items-center gap-2">
-                <Scale size={20} /> Explore Law <ArrowRight size={20} />
+              <Link to="/law" className="px-8 py-4 border border-brand-text/10 rounded-full font-bold uppercase hover:bg-brand-blue hover:text-brand-text hover:border-brand-blue hover:shadow-glow transition-all bg-brand-surface text-brand-muted flex items-center gap-2 group">
+                <Scale size={20} className="group-hover:scale-110 transition-transform" /> Explore Law <ArrowRight size={18} />
               </Link>
-              <Link to="/tech" className="px-8 py-4 border-2 border-black dark:border-white font-bold uppercase shadow-brutal dark:shadow-[4px_4px_0px_0px_#ffffff] hover:shadow-none hover:translate-x-[2px] hover:translate-y-[2px] transition-all bg-white dark:bg-black text-black dark:text-white flex items-center gap-2">
-                <Terminal size={20} /> Explore Tech <ArrowRight size={20} />
+              <Link to="/tech" className="px-8 py-4 border border-brand-text/10 rounded-full font-bold uppercase hover:bg-brand-orange hover:text-white hover:border-brand-orange hover:shadow-glow transition-all bg-brand-surface text-brand-muted flex items-center gap-2 group">
+                <Terminal size={20} className="group-hover:scale-110 transition-transform" /> Explore Tech <ArrowRight size={18} />
+              </Link>
+              <Link to="/business" className="px-8 py-4 border border-brand-text/10 rounded-full font-bold uppercase hover:bg-brand-green hover:text-brand-bg hover:border-brand-green hover:shadow-[0_0_15px_rgba(34,197,94,0.4)] transition-all bg-brand-surface text-brand-muted flex items-center gap-2 group">
+                <Briefcase size={20} className="group-hover:scale-110 transition-transform" /> Explore Business <ArrowRight size={18} />
               </Link>
             </div>
           </div>
@@ -270,24 +293,18 @@ export const Home: React.FC = () => {
       </section>
 
       {/* SECTION 4: INTEGRATION ADVANTAGE */}
-      <section className="py-20 border-b-2 border-black dark:border-white bg-brand-teal">
+      <section className="py-24 border-b border-brand-text/5 relative bg-gradient-to-b from-brand-bg to-brand-surface z-10">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16 text-white">
-            <h2 className="text-5xl md:text-6xl font-black uppercase tracking-tighter mb-6">Why Combine Law & Tech?</h2>
-            <p className="font-mono text-lg max-w-3xl mx-auto opacity-90">
-               Most legal professionals talk in jargon and do everything manually.<br/>
-               <span className="font-bold">I believe in clarity, systems thinking, and building tools that scale.</span>
+          <div className="text-center mb-20">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-brand-text tracking-tight">Why Combine Law & Tech?</h2>
+            <p className="text-lg text-brand-muted max-w-2xl mx-auto">
+              Each domain teaches lessons that transfer to the other.
             </p>
           </div>
 
-          <div className="border-l-4 border-white pl-6 mb-12 max-w-2xl mx-auto">
-             <p className="font-mono text-xl italic text-white">"Each domain teaches lessons that transfer to the other"</p>
-          </div>
-
-          {/* NEW: Animated Connection Diagram */}
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid md:grid-cols-2 gap-6">
             <ConnectionCard
-              icon={<Target size={32} className="text-brand-teal" />}
+              icon={<Target size={28} className="text-brand-green" />}
               title="Pattern Recognition"
               lawApps={[
                 "Case precedents, contract patterns",
@@ -300,9 +317,9 @@ export const Home: React.FC = () => {
               takeaway="All work involves recognizing structures and replicating success"
               index={0}
             />
-            
+
             <ConnectionCard
-              icon={<Shield size={32} className="text-brand-teal" />}
+              icon={<Shield size={28} className="text-brand-blue" />}
               title="Risk Management"
               lawApps={[
                 "Due diligence, liability protection",
@@ -315,9 +332,9 @@ export const Home: React.FC = () => {
               takeaway="Managing downside is universal—in contracts, cases, and code"
               index={1}
             />
-            
+
             <ConnectionCard
-              icon={<Zap size={32} className="text-brand-teal" />}
+              icon={<Zap size={28} className="text-brand-yellow" />}
               title="Leverage & Efficiency"
               lawApps={[
                 "Clause libraries, legal precedents",
@@ -330,9 +347,9 @@ export const Home: React.FC = () => {
               takeaway="Build once, benefit forever—the power of systems thinking"
               index={2}
             />
-            
+
             <ConnectionCard
-              icon={<MessageSquare size={32} className="text-brand-teal" />}
+              icon={<MessageSquare size={28} className="text-brand-purple" />}
               title="Clear Communication"
               lawApps={[
                 "Persuasive legal arguments",
@@ -350,89 +367,94 @@ export const Home: React.FC = () => {
       </section>
 
       {/* SECTION 5: PROJECTS & TOOLS */}
-      <section className="py-20 border-b-2 border-black dark:border-white bg-white dark:bg-black">
-         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-12">
-               <h2 className="text-5xl md:text-6xl font-black uppercase text-black dark:text-white tracking-tighter mb-4">Projects & Tools</h2>
-               <p className="font-mono text-lg text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
-                  Everything I build, I document and share. Not as an expert—as a learner building in public.
-               </p>
+      <section className="py-24 border-b border-brand-text/5 bg-brand-bg z-10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col md:flex-row justify-between items-end mb-12">
+            <div>
+              <h2 className="text-5xl md:text-6xl font-black uppercase text-brand-text tracking-tighter mb-4">Projects</h2>
+              <p className="text-brand-muted max-w-xl text-lg">
+                Production-grade tools built to solve real legal problems.
+              </p>
             </div>
 
             {/* Filters */}
-            <div className="flex justify-center gap-4 mb-12">
-               {['All', 'Law Projects', 'Tech Projects'].map(filter => (
-                  <button
-                     key={filter}
-                     onClick={() => setProjectFilter(filter)}
-                     className={`px-6 py-2 border-2 border-black dark:border-white font-bold uppercase text-sm shadow-brutal dark:shadow-[2px_2px_0px_0px_#ffffff] hover:translate-y-[2px] hover:shadow-none transition-all ${
-                        projectFilter === filter 
-                        ? 'bg-black text-white dark:bg-white dark:text-black' 
-                        : 'bg-white text-black dark:bg-black dark:text-white'
-                     }`}
-                  >
-                     {filter}
-                  </button>
-               ))}
+            <div className="flex gap-2 mt-6 md:mt-0">
+              {['All', 'Law Projects', 'Tech Projects'].map(filter => (
+                <button
+                  key={filter}
+                  onClick={() => setProjectFilter(filter)}
+                  className={`px-5 py-2 rounded-lg text-sm font-bold transition-all ${projectFilter === filter
+                    ? 'bg-brand-orange text-white shadow-glow'
+                    : 'bg-brand-surface text-brand-muted hover:text-brand-text hover:bg-brand-text/5'
+                    }`}
+                >
+                  {filter}
+                </button>
+              ))}
             </div>
+          </div>
 
-            {/* Grid */}
-            <motion.div layout className="grid md:grid-cols-2 gap-8 mb-12">
-               <AnimatePresence>
-                  {displayedProjects.map((project) => (
-                     <motion.div
-                        layout
-                        key={project.id}
-                        initial={{ opacity: 0, scale: 0.95 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        exit={{ opacity: 0, scale: 0.95 }}
-                        className="bg-brand-gray dark:bg-zinc-900 border-2 border-black dark:border-white p-8 shadow-brutal dark:shadow-[4px_4px_0px_0px_#ffffff] hover:shadow-brutal-lg hover:-translate-y-1 transition-all"
-                     >
-                        <div className="flex justify-between items-start mb-4">
-                           <span className="inline-block px-2 py-1 bg-brand-teal text-white border border-black dark:border-white text-[10px] font-bold uppercase">
-                              {project.category}
-                           </span>
-                           {project.stats && (
-                              <span className="font-mono text-xs font-bold text-brand-amber bg-black px-2 py-1">
-                                 {project.stats}
-                              </span>
-                           )}
-                        </div>
-                        <h3 className="text-2xl font-black uppercase mb-3 leading-none text-black dark:text-white">{project.title}</h3>
-                        <p className="font-mono text-sm text-gray-700 dark:text-gray-300 mb-6 leading-relaxed">
-                           {project.summary}
-                        </p>
-                        {project.tags && (
-                           <div className="flex flex-wrap gap-2 mb-6">
-                              {project.tags.map(tag => (
-                                 <span key={tag} className="text-[10px] uppercase font-bold text-gray-500 dark:text-gray-400 border border-gray-300 dark:border-gray-700 px-1">
-                                    {tag}
-                                 </span>
-                              ))}
-                           </div>
-                        )}
-                        <a href={project.link} className="inline-flex items-center font-bold uppercase text-sm text-black dark:text-white hover:text-brand-teal transition-colors border-b-2 border-black dark:border-white hover:border-brand-teal pb-1">
-                           {project.linkText} <ArrowRight size={14} className="ml-1" />
-                        </a>
-                     </motion.div>
-                  ))}
-               </AnimatePresence>
-            </motion.div>
 
-            <div className="text-center bg-brand-amber p-8 border-2 border-black dark:border-white shadow-brutal dark:shadow-[4px_4px_0px_0px_#ffffff]">
-               <h3 className="text-2xl font-black uppercase mb-4 text-black">Want to build your own legal automation tools?</h3>
-               <Link to="/tech" className="inline-block px-8 py-3 bg-black text-white font-bold uppercase border-2 border-black hover:bg-white hover:text-black transition-colors">
-                  Start Learning Automation &rarr;
-               </Link>
-            </div>
-         </div>
+          {/* Grid */}
+          <motion.div layout className="grid md:grid-cols-2 gap-6 mb-16">
+            <AnimatePresence>
+              {displayedProjects.map((project) => (
+                <motion.div
+                  layout
+                  key={project.id}
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.95 }}
+                  className="group bg-brand-surface border border-brand-text/5 rounded-2xl p-8 hover:bg-brand-text/5 hover:border-brand-orange/30 transition-all relative overflow-hidden"
+                >
+                  <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-100 transition-opacity">
+                    <ArrowUpRight className="text-brand-orange" />
+                  </div>
+
+                  <div className="flex gap-3 mb-6">
+                    <span className="inline-block px-3 py-1 bg-brand-blue/10 text-brand-blue rounded-full text-[10px] font-bold uppercase tracking-wider">
+                      {project.category}
+                    </span>
+                    {project.stats && (
+                      <span className="inline-block px-3 py-1 bg-brand-green/10 text-brand-green rounded-full text-[10px] font-bold uppercase tracking-wider">
+                        {project.stats}
+                      </span>
+                    )}
+                  </div>
+
+                  <h3 className="text-2xl font-bold mb-3 text-brand-text group-hover:text-brand-orange transition-colors">{project.title}</h3>
+                  <p className="text-brand-muted mb-8 leading-relaxed text-sm">
+                    {project.summary}
+                  </p>
+
+                  {project.tags && (
+                    <div className="flex flex-wrap gap-2 mt-auto">
+                      {project.tags.map(tag => (
+                        <span key={tag} className="text-[10px] uppercase font-bold text-gray-400 border border-brand-text/10 px-2 py-1 rounded">
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  )}
+                </motion.div>
+              ))}
+            </AnimatePresence>
+          </motion.div>
+
+          <div className="text-center p-12 rounded-3xl bg-gradient-to-br from-brand-orange/20 to-brand-surface border border-brand-orange/20 relative overflow-hidden">
+            <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-10" />
+            <h3 className="text-3xl font-black uppercase mb-4 text-brand-text relative z-10">Want to build your own tools?</h3>
+            <Link to="/tech" className="inline-block px-8 py-3 bg-brand-text text-brand-surface font-bold rounded-full hover:scale-105 transition-transform relative z-10">
+              Start Learning Automation &rarr;
+            </Link>
+          </div>
+        </div>
       </section>
 
       {/* SECTION 6: PHILOSOPHY */}
-      <section className="py-20 border-b-2 border-black dark:border-white bg-brand-gray dark:bg-zinc-900">
+      <section className="py-24 border-b border-brand-text/5 bg-black z-10">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-5xl md:text-6xl font-black uppercase text-center mb-16 text-black dark:text-white tracking-tighter">Core Beliefs</h2>
-          {/* NEW: Animated Philosophy Cards */}
+          <h2 className="text-5xl md:text-6xl font-black uppercase text-center mb-16 text-brand-text tracking-tighter">Core Beliefs</h2>
           <div className="grid md:grid-cols-3 gap-8">
             {PHILOSOPHY.map((card, idx) => {
               const IconComponent = iconMap[card.icon];
@@ -450,108 +472,32 @@ export const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* SECTION 7: STATS */}
-      <section className="py-20 border-b-2 border-white bg-black text-white">
+      {/* SECTION 7: KNOWLEDGE PREVIEW */}
+      <section className="py-24 z-10 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-4xl md:text-5xl font-black uppercase text-center mb-12 tracking-tighter">By The Numbers</h2>
-          {/* NEW: Staggered Stats Grid */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            {STATS.map((stat, idx) => (
-              <motion.div
-                key={idx}
-                initial={{ opacity: 0, scale: 0.8, rotate: -5 }}
-                whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
-                viewport={{ once: true }}
-                transition={{ 
-                  delay: idx * 0.05,
-                  duration: 0.5,
-                  type: "spring",
-                  stiffness: 200
-                }}
-                whileHover={{ 
-                  scale: 1.05,
-                  rotate: 2,
-                  transition: { duration: 0.2 }
-                }}
-                className="border-2 border-white p-6 text-center hover:bg-white/5 transition-all duration-300 bg-black relative overflow-hidden group"
-              >
-                {/* Animated background gradient */}
-                <motion.div
-                  className="absolute inset-0 bg-gradient-to-br from-brand-teal/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"
-                  initial={false}
-                />
-                
-                {/* Number with count-up */}
-                <motion.div 
-                  className="text-4xl md:text-5xl font-black text-brand-teal mb-2 relative z-10"
-                  initial={{ scale: 0 }}
-                  whileInView={{ scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: idx * 0.05 + 0.2, type: "spring" }}
-                >
-                  {stat.number}
-                </motion.div>
-                
-                {/* Labels */}
-                <div className="font-mono text-sm font-bold uppercase mb-1 relative z-10">
-                  {stat.label}
-                </div>
-                <div className="font-mono text-xs text-gray-400 italic relative z-10">
-                  {stat.sublabel}
-                </div>
-
-                {/* Corner accent */}
-                <motion.div
-                  className="absolute -bottom-4 -right-4 w-16 h-16 bg-brand-teal/10 rounded-full"
-                  animate={{
-                    scale: [1, 1.2, 1],
-                    opacity: [0.1, 0.3, 0.1]
-                  }}
-                  transition={{
-                    repeat: Infinity,
-                    duration: 3,
-                    ease: "easeInOut"
-                  }}
-                />
-              </motion.div>
-            ))}
-          </div>
-          <div className="mt-12 pt-8 border-t border-white/20 text-center font-mono text-sm text-gray-400 leading-relaxed">
-            Registered Attorney: Bar Council of Delhi (D/2371/2023) • Qualified: All India Bar Exam • Trademark Attorney (Code 54191)<br/>
-            Education: B.B.A. LL.B., Symbiosis Law School, Noida • Current: Legal Operations Analyst at EvenUp
-          </div>
-        </div>
-      </section>
-
-      {/* SECTION 8: KNOWLEDGE PREVIEW */}
-      <section className="py-20 border-b-2 border-black dark:border-white bg-white dark:bg-black">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-           <div className="text-center mb-16">
-            <h2 className="text-5xl md:text-6xl font-black uppercase text-black dark:text-white tracking-tighter mb-4">
-              What You'll Find Here
+          <div className="text-center mb-20">
+            <h2 className="text-5xl md:text-6xl font-black uppercase text-brand-text tracking-tighter mb-4">
+              The Repository
             </h2>
-            <p className="font-mono text-lg text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
-              The complete knowledge base. Everything I learn about law and automation—documented and shared completely free.
+            <p className="text-xl text-brand-muted max-w-2xl mx-auto">
+              Everything I learn about law and automation. Documented. Shared. Free.
             </p>
           </div>
 
           {[
-            { id: 'law', title: 'In the Law Section', icon: Scale, previews: LAW_ARTICLES_PREVIEW, categories: ['Trademark law guides', 'Personal injury insights', 'Contract templates'] },
-            { id: 'tech', title: 'In the Tech Section', icon: Terminal, previews: TECH_ARTICLES_PREVIEW, categories: ['Google Apps Script tutorials', 'Automation projects', 'n8n workflow automation'] }
+            { id: 'law', title: 'Law Section', icon: Scale, previews: LAW_ARTICLES_PREVIEW, categories: ['Trademark law', 'PI insights', 'Templates'] },
+            { id: 'tech', title: 'Tech Section', icon: Terminal, previews: TECH_ARTICLES_PREVIEW, categories: ['Apps Script', 'Automation', 'n8n'] }
           ].map((block) => (
-            <div key={block.id} className="mb-20 last:mb-0">
-              <div className="flex items-center gap-4 mb-6">
-                <block.icon size={40} className="text-brand-teal" />
-                <h3 className="text-4xl font-black uppercase text-black dark:text-white">{block.title}</h3>
+            <div key={block.id} className="mb-24 last:mb-0">
+              <div className="flex items-center gap-4 mb-8">
+                <div className="p-3 bg-brand-surface border border-brand-text/10 rounded-xl">
+                  <block.icon size={32} className="text-brand-orange" />
+                </div>
+                <h3 className="text-4xl font-bold uppercase text-brand-text">{block.title}</h3>
               </div>
-              <ul className="mb-8 font-mono text-base text-gray-700 dark:text-gray-300 list-none pl-6 border-l-4 border-brand-teal">
-                {block.categories.map((cat, i) => (
-                  <li key={i} className="mb-1">• {cat}</li>
-                ))}
-              </ul>
-              
+
+
               <div className="grid md:grid-cols-3 gap-6">
-                {/* NEW: Animated Preview Cards */}
                 {block.previews.map((article, i) => (
                   <ArticlePreviewCard
                     key={article.id}
@@ -560,119 +506,17 @@ export const Home: React.FC = () => {
                   />
                 ))}
               </div>
-              
+
               <div className="mt-8 text-center">
-                 <Link to={`/${block.id}`} className="inline-flex items-center gap-2 px-8 py-4 border-2 border-black dark:border-white font-bold uppercase text-black dark:text-white shadow-brutal dark:shadow-[4px_4px_0px_0px_#ffffff] hover:shadow-none hover:translate-x-[2px] hover:translate-y-[2px] transition-all">
-                    View All {block.id} Content <ArrowRight size={20} />
-                 </Link>
+                <Link to={`/${block.id}`} className="inline-flex items-center gap-2 text-brand-muted hover:text-brand-text transition-colors font-mono text-sm uppercase tracking-wider">
+                  View All {block.id} Content <ArrowRight size={16} />
+                </Link>
               </div>
             </div>
           ))}
         </div>
       </section>
 
-      {/* SECTION 9: FINAL CTA */}
-      <section className="py-20 bg-white dark:bg-black relative overflow-hidden">
-        {/* Animated gradient overlay */}
-        <motion.div
-          className="absolute inset-0 opacity-10"
-          animate={{
-            background: [
-              'linear-gradient(45deg, #319795 0%, #FFC107 100%)',
-              'linear-gradient(90deg, #FFC107 0%, #319795 100%)',
-              'linear-gradient(135deg, #319795 0%, #FFC107 100%)',
-              'linear-gradient(45deg, #319795 0%, #FFC107 100%)',
-            ]
-          }}
-          transition={{
-            duration: 10,
-            repeat: Infinity,
-            ease: "linear"
-          }}
-        />
-
-        {/* Decorative Top Bar with animation */}
-        <motion.div 
-          className="absolute top-0 left-0 w-full h-2"
-          initial={{ scaleX: 0 }}
-          whileInView={{ scaleX: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 1.5 }}
-        >
-          <motion.div
-            className="h-full"
-            animate={{
-              background: [
-                'linear-gradient(to right, #319795, #FFC107, #EF4444)',
-                'linear-gradient(to right, #FFC107, #EF4444, #319795)',
-                'linear-gradient(to right, #EF4444, #319795, #FFC107)',
-                'linear-gradient(to right, #319795, #FFC107, #EF4444)',
-              ]
-            }}
-            transition={{
-              duration: 5,
-              repeat: Infinity,
-              ease: "linear"
-            }}
-          />
-        </motion.div>
-
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-            
-            <motion.h2 
-              className="text-5xl md:text-7xl font-black uppercase mb-4 text-black dark:text-white"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-            >
-              Ready to Learn<br/>
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-teal to-brand-amber">Legal Automation?</span>
-            </motion.h2>
-            <p className="font-mono text-lg text-gray-700 dark:text-gray-300 max-w-2xl mx-auto mb-12">
-              Choose your starting point, or explore both and see how they connect.
-            </p>
-
-            <div className="grid md:grid-cols-2 gap-8 mb-16 max-w-3xl mx-auto">
-              <Link to="/law" className="bg-white dark:bg-zinc-900 border-2 border-black dark:border-white p-8 shadow-brutal dark:shadow-[4px_4px_0px_0px_#ffffff] hover:shadow-none hover:translate-x-[2px] hover:translate-y-[2px] transition-all group">
-                 <div className="mb-6 flex justify-center text-brand-teal"><Scale size={56} /></div>
-                 <h3 className="text-2xl font-black uppercase mb-2 text-black dark:text-white">Start with Law</h3>
-                 <p className="font-mono text-sm text-gray-600 dark:text-gray-400 mb-6">Trademark strategies, PI insights, contract templates</p>
-                 <span className="inline-block w-full py-3 bg-black text-white dark:bg-white dark:text-black font-bold uppercase">
-                   Explore Law &rarr;
-                 </span>
-              </Link>
-              <Link to="/tech" className="bg-white dark:bg-zinc-900 border-2 border-black dark:border-white p-8 shadow-brutal dark:shadow-[4px_4px_0px_0px_#ffffff] hover:shadow-none hover:translate-x-[2px] hover:translate-y-[2px] transition-all group">
-                 <div className="mb-6 flex justify-center text-brand-amber"><Terminal size={56} /></div>
-                 <h3 className="text-2xl font-black uppercase mb-2 text-black dark:text-white">Start with Tech</h3>
-                 <p className="font-mono text-sm text-gray-600 dark:text-gray-400 mb-6">Automation tutorials, tool walkthroughs, code snippets</p>
-                 <span className="inline-block w-full py-3 bg-black text-white dark:bg-white dark:text-black font-bold uppercase">
-                   Explore Tech &rarr;
-                 </span>
-              </Link>
-            </div>
-
-            <div className="bg-brand-gray dark:bg-zinc-900 border-2 border-black dark:border-white p-8 max-w-xl mx-auto mb-12 shadow-brutal dark:shadow-[4px_4px_0px_0px_#ffffff]">
-               <h4 className="font-black text-xl uppercase mb-2 text-black dark:text-white">Get Monthly Insights</h4>
-               <p className="font-mono text-sm text-gray-700 dark:text-gray-300 mb-6">
-                 Best insights across law and automation. Delivered once a month. No spam.
-               </p>
-               <div className="flex gap-2">
-                 <input type="email" placeholder="your.email@example.com" className="flex-1 p-3 border-2 border-black bg-white font-mono text-sm focus:outline-none text-black" />
-                 <button className="px-6 bg-black text-white dark:bg-white dark:text-black border-2 border-black dark:border-white font-bold uppercase hover:bg-brand-teal hover:text-white transition-colors">
-                   <Mail size={18} />
-                 </button>
-               </div>
-            </div>
-
-            <div className="pt-8 border-t border-gray-200 dark:border-gray-800">
-               <p className="font-mono text-sm text-gray-600 dark:text-gray-400 mb-4">Need legal work or automation consulting?</p>
-               <Link to="/contact" className="inline-block px-8 py-3 border-2 border-black dark:border-white bg-transparent text-black dark:text-white font-bold uppercase hover:bg-brand-teal hover:text-white hover:border-black transition-colors">
-                 Get In Touch &rarr;
-               </Link>
-            </div>
-        </div>
-      </section>
     </div>
   );
 };

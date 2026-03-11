@@ -13,7 +13,7 @@ const CodeBlock: React.FC<{ code: string; lang?: string }> = ({ code, lang = 'ja
   };
 
   return (
-    <div className="relative border-2 border-black dark:border-white bg-black text-white p-6 my-6 shadow-brutal-sm font-mono text-sm overflow-x-auto">
+    <div className="relative border-2 border-black dark:border-brand-text bg-black text-brand-text p-6 my-6 shadow-brutal-sm font-mono text-sm overflow-x-auto">
       <div className="absolute top-0 right-0 p-2">
         <button 
           onClick={handleCopy}
@@ -30,7 +30,7 @@ const CodeBlock: React.FC<{ code: string; lang?: string }> = ({ code, lang = 'ja
 
 export const TechArticle2: React.FC = () => {
   return (
-    <div className="min-h-screen bg-white dark:bg-black text-black dark:text-white font-sans">
+    <div className="min-h-screen bg-brand-text dark:bg-black text-brand-surface dark:text-brand-text font-sans">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
         
         {/* Breadcrumb */}
@@ -39,8 +39,8 @@ export const TechArticle2: React.FC = () => {
         </Link>
 
         {/* Header */}
-        <div className="border-b-4 border-black dark:border-white pb-8 mb-12">
-          <div className="inline-block px-2 py-1 bg-brand-teal text-white border border-black dark:border-white font-mono text-xs font-bold uppercase mb-4">
+        <div className="border-b-4 border-black dark:border-brand-text pb-8 mb-12">
+          <div className="inline-block px-2 py-1 bg-brand-teal text-brand-text border border-black dark:border-brand-text font-mono text-xs font-bold uppercase mb-4">
             Intermediate Tutorial
           </div>
           <h1 className="text-4xl md:text-6xl font-black uppercase leading-none mb-6">
@@ -54,7 +54,7 @@ export const TechArticle2: React.FC = () => {
         {/* Content */}
         <article className="prose prose-lg dark:prose-invert max-w-none font-mono">
           
-          <div className="bg-brand-gray dark:bg-zinc-900 border-2 border-black dark:border-white p-6 mb-12 shadow-brutal-sm">
+          <div className="bg-brand-gray dark:bg-zinc-900 border-2 border-black dark:border-brand-text p-6 mb-12 shadow-brutal-sm">
             <h3 className="font-bold uppercase text-lg mb-2 flex items-center gap-2">
               <Terminal size={20} /> What We're Building
             </h3>
@@ -143,10 +143,10 @@ export const TechArticle2: React.FC = () => {
             Every morning, instead of digging through your inbox, you can open your spreadsheet and see a neat list of all new leads. You can add columns for "Status", "Notes", or "Assigned Attorney".
           </p>
 
-          <div className="bg-brand-gray dark:bg-zinc-900 border-2 border-black dark:border-white p-6 text-center shadow-brutal-sm">
+          <div className="bg-brand-gray dark:bg-zinc-900 border-2 border-black dark:border-brand-text p-6 text-center shadow-brutal-sm">
             <h3 className="font-black uppercase text-xl mb-2">Want to generate documents from this data?</h3>
             <p className="font-mono text-sm mb-4">Learn how to auto-fill a Trademark Application using data from a Sheet.</p>
-            <Link to="/tech/trademark-generator" className="inline-block px-6 py-2 bg-black text-white dark:bg-white dark:text-black font-bold uppercase hover:bg-brand-teal hover:border-brand-teal transition-colors border-2 border-black dark:border-white">
+            <Link to="/tech/trademark-generator" className="inline-block px-6 py-2 bg-black text-brand-text dark:bg-brand-text dark:text-brand-surface font-bold uppercase hover:bg-brand-teal hover:border-brand-teal transition-colors border-2 border-black dark:border-brand-text">
               Next Tutorial &rarr;
             </Link>
           </div>

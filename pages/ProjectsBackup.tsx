@@ -18,20 +18,20 @@ export const ProjectsBackup: React.FC = () => {
     : PROJECTS.filter(p => p.category === filter);
 
   return (
-    <div className="bg-white dark:bg-black text-black dark:text-white">
+    <div className="bg-brand-text dark:bg-black text-brand-surface dark:text-brand-text">
       
       {/* HERO SECTION */}
-      <section className="pt-20 pb-20 border-b-2 border-black dark:border-white">
+      <section className="pt-20 pb-20 border-b-2 border-black dark:border-brand-text">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl">
-            <div className="inline-block px-3 py-1 bg-brand-teal text-white border-2 border-black dark:border-white font-mono font-bold uppercase mb-6 shadow-brutal-sm">
+            <div className="inline-block px-3 py-1 bg-brand-teal text-brand-text border-2 border-black dark:border-brand-text font-mono font-bold uppercase mb-6 shadow-brutal-sm">
               How I Work
             </div>
             <h1 className="text-5xl md:text-7xl lg:text-8xl font-black uppercase leading-[0.9] mb-8">
               I Don't Believe In<br/>
               <span className="text-brand-amber">Gatekeeping Knowledge</span>
             </h1>
-            <p className="font-mono text-lg md:text-xl leading-relaxed text-gray-700 dark:text-gray-300 mb-8 border-l-4 border-black dark:border-white pl-6">
+            <p className="font-mono text-lg md:text-xl leading-relaxed text-gray-700 dark:text-gray-300 mb-8 border-l-4 border-black dark:border-brand-text pl-6">
               Everything I know, I share. Everything I build, I document. If you're looking for someone who hoards trade secrets, you're in the wrong place.
             </p>
             <p className="font-mono text-sm md:text-base max-w-3xl mb-12">
@@ -44,14 +44,14 @@ export const ProjectsBackup: React.FC = () => {
       </section>
 
       {/* SECTION 1: FIT CHECK */}
-      <section className="py-20 border-b-2 border-black dark:border-white bg-brand-gray dark:bg-zinc-900">
+      <section className="py-20 border-b-2 border-black dark:border-brand-text bg-brand-gray dark:bg-zinc-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-2 gap-12">
             
             {/* GOOD FIT */}
-            <div className="bg-white dark:bg-black border-2 border-black dark:border-white p-8 shadow-brutal dark:shadow-[4px_4px_0px_0px_#ffffff]">
+            <div className="bg-brand-text dark:bg-black border-2 border-black dark:border-brand-text p-8 shadow-brutal dark:shadow-[4px_4px_0px_0px_#ffffff]">
               <div className="flex items-center gap-4 mb-8">
-                <div className="bg-green-500 text-white p-2 border-2 border-black dark:border-white">
+                <div className="bg-green-500 text-brand-text p-2 border-2 border-black dark:border-brand-text">
                   <Check size={24} strokeWidth={3} />
                 </div>
                 <h2 className="text-3xl font-black uppercase">You're A Great Fit If...</h2>
@@ -75,9 +75,9 @@ export const ProjectsBackup: React.FC = () => {
             </div>
 
             {/* BAD FIT */}
-            <div className="bg-white dark:bg-black border-2 border-black dark:border-white p-8 shadow-brutal dark:shadow-[4px_4px_0px_0px_#ffffff] opacity-90">
+            <div className="bg-brand-text dark:bg-black border-2 border-black dark:border-brand-text p-8 shadow-brutal dark:shadow-[4px_4px_0px_0px_#ffffff] opacity-90">
               <div className="flex items-center gap-4 mb-8">
-                <div className="bg-red-500 text-white p-2 border-2 border-black dark:border-white">
+                <div className="bg-red-500 text-brand-text p-2 border-2 border-black dark:border-brand-text">
                   <X size={24} strokeWidth={3} />
                 </div>
                 <h2 className="text-3xl font-black uppercase">We're Not A Fit If...</h2>
@@ -105,7 +105,7 @@ export const ProjectsBackup: React.FC = () => {
       </section>
 
       {/* SECTION 2: PHILOSOPHY */}
-      <section className="py-20 border-b-2 border-black dark:border-white bg-white dark:bg-black">
+      <section className="py-20 border-b-2 border-black dark:border-brand-text bg-brand-text dark:bg-black">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-4xl md:text-5xl font-black uppercase mb-16">Three Rules I Never Break</h2>
           <div className="grid md:grid-cols-3 gap-8">
@@ -114,8 +114,8 @@ export const ProjectsBackup: React.FC = () => {
               { icon: Clock, title: "Start Small, Prove Value", desc: "No massive 6-month contracts. We build a small win in Week 1, prove ROI, then scale." },
               { icon: Shield, title: "Teach While Building", desc: "Weekly demos and recorded walkthroughs. You get the tool AND the knowledge to maintain it." }
             ].map((rule, i) => (
-              <div key={i} className="border-2 border-black dark:border-white p-8 hover:-translate-y-2 transition-transform shadow-brutal dark:shadow-[4px_4px_0px_0px_#ffffff]">
-                <div className="w-16 h-16 mx-auto bg-brand-teal text-white border-2 border-black dark:border-white flex items-center justify-center mb-6 shadow-brutal-sm">
+              <div key={i} className="border-2 border-black dark:border-brand-text p-8 hover:-translate-y-2 transition-transform shadow-brutal dark:shadow-[4px_4px_0px_0px_#ffffff]">
+                <div className="w-16 h-16 mx-auto bg-brand-teal text-brand-text border-2 border-black dark:border-brand-text flex items-center justify-center mb-6 shadow-brutal-sm">
                   <rule.icon size={32} />
                 </div>
                 <h3 className="text-xl font-black uppercase mb-4">{rule.title}</h3>
@@ -127,7 +127,7 @@ export const ProjectsBackup: React.FC = () => {
       </section>
 
       {/* SECTION 3: PROCESS */}
-      <section className="py-20 border-b-2 border-black dark:border-white bg-brand-gray dark:bg-zinc-900">
+      <section className="py-20 border-b-2 border-black dark:border-brand-text bg-brand-gray dark:bg-zinc-900">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
              <h2 className="text-4xl md:text-5xl font-black uppercase mb-4">My 4-Week Sprint Process</h2>
@@ -142,10 +142,10 @@ export const ProjectsBackup: React.FC = () => {
               { week: "Week 4", title: "Deploy & Train", desc: "Production launch. Complete runbook documentation. Live team training session. Handoff.", commit: "2-3 hours" }
             ].map((step, i) => (
               <div key={i} className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
-                <div className="flex items-center justify-center w-10 h-10 rounded-full border-2 border-black dark:border-white bg-white dark:bg-black group-hover:bg-brand-teal group-hover:text-white transition-colors shadow-brutal-sm shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
+                <div className="flex items-center justify-center w-10 h-10 rounded-full border-2 border-black dark:border-brand-text bg-brand-text dark:bg-black group-hover:bg-brand-teal group-hover:text-brand-text transition-colors shadow-brutal-sm shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
                   <span className="font-bold text-xs">{i + 1}</span>
                 </div>
-                <div className="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-white dark:bg-black border-2 border-black dark:border-white p-6 shadow-brutal dark:shadow-[4px_4px_0px_0px_#ffffff]">
+                <div className="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-brand-text dark:bg-black border-2 border-black dark:border-brand-text p-6 shadow-brutal dark:shadow-[4px_4px_0px_0px_#ffffff]">
                   <div className="flex justify-between items-start mb-2">
                     <span className="font-mono text-xs font-bold text-brand-teal uppercase">{step.week}</span>
                     <span className="font-mono text-[10px] bg-brand-gray dark:bg-zinc-800 px-2 py-1 uppercase">Your Time: {step.commit}</span>
@@ -157,15 +157,15 @@ export const ProjectsBackup: React.FC = () => {
             ))}
           </div>
 
-          <div className="mt-12 p-6 bg-brand-amber border-2 border-black dark:border-white text-center shadow-brutal dark:shadow-[4px_4px_0px_0px_#ffffff]">
-             <p className="font-black uppercase text-black mb-2">Post-Launch Guarantee</p>
-             <p className="font-mono text-sm text-black">30 Days of support included. If I broke it, I fix it for free.</p>
+          <div className="mt-12 p-6 bg-brand-amber border-2 border-black dark:border-brand-text text-center shadow-brutal dark:shadow-[4px_4px_0px_0px_#ffffff]">
+             <p className="font-black uppercase text-brand-surface mb-2">Post-Launch Guarantee</p>
+             <p className="font-mono text-sm text-brand-surface">30 Days of support included. If I broke it, I fix it for free.</p>
           </div>
         </div>
       </section>
 
       {/* SECTION 4: EXPECTATIONS */}
-      <section className="py-20 border-b-2 border-black dark:border-white bg-white dark:bg-black">
+      <section className="py-20 border-b-2 border-black dark:border-brand-text bg-brand-text dark:bg-black">
          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 className="text-4xl font-black uppercase mb-12 text-center">The Honest Version</h2>
             <div className="grid md:grid-cols-2 gap-12">
@@ -206,7 +206,7 @@ export const ProjectsBackup: React.FC = () => {
       </section>
 
       {/* SECTION 5: PRICING */}
-      <section className="py-20 border-b-2 border-black dark:border-white bg-brand-gray dark:bg-zinc-900">
+      <section className="py-20 border-b-2 border-black dark:border-brand-text bg-brand-gray dark:bg-zinc-900">
          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
                <h2 className="text-4xl font-black uppercase mb-4">Pricing Philosophy</h2>
@@ -221,8 +221,8 @@ export const ProjectsBackup: React.FC = () => {
                   { title: "Workflow Systems", range: "$2,500 - $5,000", time: "3-4 Weeks", ex: ["Case Assignment Logic", "Doc Gen Pipeline", "CRM Integration"], feat: true },
                   { title: "Complex Builds", range: "$5,000 - $10k+", time: "6-8 Weeks", ex: ["Custom Dashboards", "Verdict Extraction", "Multi-Tool Sync"] }
                ].map((tier, i) => (
-                  <div key={i} className={`relative flex flex-col p-8 border-2 border-black dark:border-white bg-white dark:bg-black shadow-brutal dark:shadow-[4px_4px_0px_0px_#ffffff] ${tier.feat ? 'transform md:-translate-y-4' : ''}`}>
-                     {tier.feat && <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-brand-teal text-white px-4 py-1 font-bold uppercase text-xs border-2 border-black dark:border-white">Most Common</div>}
+                  <div key={i} className={`relative flex flex-col p-8 border-2 border-black dark:border-brand-text bg-brand-text dark:bg-black shadow-brutal dark:shadow-[4px_4px_0px_0px_#ffffff] ${tier.feat ? 'transform md:-translate-y-4' : ''}`}>
+                     {tier.feat && <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-brand-teal text-brand-text px-4 py-1 font-bold uppercase text-xs border-2 border-black dark:border-brand-text">Most Common</div>}
                      <h3 className="text-2xl font-black uppercase mb-2">{tier.title}</h3>
                      <div className="text-3xl font-black text-brand-teal mb-2">{tier.range}</div>
                      <div className="font-mono text-xs uppercase font-bold text-gray-500 mb-6">Timeline: {tier.time}</div>
@@ -233,7 +233,7 @@ export const ProjectsBackup: React.FC = () => {
                            </li>
                         ))}
                      </ul>
-                     <Link to="/contact" className="w-full py-3 bg-black text-white dark:bg-white dark:text-black font-bold uppercase text-center border-2 border-transparent hover:border-black dark:hover:border-white hover:bg-brand-teal hover:text-white transition-colors">
+                     <Link to="/contact" className="w-full py-3 bg-black text-brand-text dark:bg-brand-text dark:text-brand-surface font-bold uppercase text-center border-2 border-transparent hover:border-black dark:hover:border-brand-text hover:bg-brand-teal hover:text-brand-text transition-colors">
                         Get A Quote
                      </Link>
                   </div>
@@ -243,7 +243,7 @@ export const ProjectsBackup: React.FC = () => {
       </section>
 
       {/* SECTION 6: PAST RESULTS (PROJECT GRID) */}
-      <section className="py-20 border-b-2 border-black dark:border-white bg-white dark:bg-black">
+      <section className="py-20 border-b-2 border-black dark:border-brand-text bg-brand-text dark:bg-black">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
            <div className="mb-12 flex flex-col md:flex-row justify-between items-end">
               <div>
@@ -257,10 +257,10 @@ export const ProjectsBackup: React.FC = () => {
                   <button
                     key={cat}
                     onClick={() => setFilter(cat)}
-                    className={`px-3 py-1 border-2 border-black dark:border-white font-bold uppercase text-xs shadow-brutal-sm hover:translate-y-[1px] hover:shadow-none transition-all ${
+                    className={`px-3 py-1 border-2 border-black dark:border-brand-text font-bold uppercase text-xs shadow-brutal-sm hover:translate-y-[1px] hover:shadow-none transition-all ${
                       filter === cat
-                        ? 'bg-black text-white dark:bg-white dark:text-black'
-                        : 'bg-white text-black dark:bg-black dark:text-white'
+                        ? 'bg-black text-brand-text dark:bg-brand-text dark:text-brand-surface'
+                        : 'bg-brand-text text-brand-surface dark:bg-black dark:text-brand-text'
                     }`}
                   >
                     {cat}
@@ -278,17 +278,17 @@ export const ProjectsBackup: React.FC = () => {
       </section>
 
       {/* SECTION 7: CTA */}
-      <section className="py-24 bg-brand-teal text-white">
+      <section className="py-24 bg-brand-teal text-brand-text">
          <div className="max-w-4xl mx-auto px-4 text-center">
             <h2 className="text-5xl md:text-6xl font-black uppercase mb-8 leading-none">Let's Start With A Conversation</h2>
             <p className="font-mono text-lg mb-12 max-w-2xl mx-auto">
                No sales pitch. No obligation. Just a free 30-minute audit to see if automation can solve your problem.
             </p>
-            <div className="flex flex-col sm:flex-row justify-center gap-6 text-black">
-               <Link to="/contact" className="px-8 py-4 bg-white border-2 border-black font-bold uppercase text-lg shadow-brutal-lg hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all">
+            <div className="flex flex-col sm:flex-row justify-center gap-6 text-brand-surface">
+               <Link to="/contact" className="px-8 py-4 bg-brand-text border-2 border-black font-bold uppercase text-lg shadow-brutal-lg hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all">
                   Book Free Workflow Audit
                </Link>
-               <a href="mailto:nikhilgoyal.advo@gmail.com" className="px-8 py-4 bg-transparent border-2 border-white text-white font-bold uppercase text-lg hover:bg-white hover:text-black transition-colors">
+               <a href="mailto:nikhilgoyal.advo@gmail.com" className="px-8 py-4 bg-transparent border-2 border-brand-text text-brand-text font-bold uppercase text-lg hover:bg-brand-text hover:text-brand-surface transition-colors">
                   Or Email Me First
                </a>
             </div>

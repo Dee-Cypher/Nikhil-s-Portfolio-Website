@@ -13,7 +13,7 @@ const CodeBlock: React.FC<{ code: string; lang?: string }> = ({ code, lang = 'ja
   };
 
   return (
-    <div className="relative border-2 border-black dark:border-white bg-black text-white p-6 my-6 shadow-brutal-sm font-mono text-sm overflow-x-auto">
+    <div className="relative border-2 border-black dark:border-brand-text bg-black text-brand-text p-6 my-6 shadow-brutal-sm font-mono text-sm overflow-x-auto">
       <div className="absolute top-0 right-0 p-2">
         <button 
           onClick={handleCopy}
@@ -30,7 +30,7 @@ const CodeBlock: React.FC<{ code: string; lang?: string }> = ({ code, lang = 'ja
 
 export const TechArticle3: React.FC = () => {
   return (
-    <div className="min-h-screen bg-white dark:bg-black text-black dark:text-white font-sans">
+    <div className="min-h-screen bg-brand-text dark:bg-black text-brand-surface dark:text-brand-text font-sans">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
         
         {/* Breadcrumb */}
@@ -39,8 +39,8 @@ export const TechArticle3: React.FC = () => {
         </Link>
 
         {/* Header */}
-        <div className="border-b-4 border-black dark:border-white pb-8 mb-12">
-          <div className="inline-block px-2 py-1 bg-brand-teal text-white border border-black dark:border-white font-mono text-xs font-bold uppercase mb-4">
+        <div className="border-b-4 border-black dark:border-brand-text pb-8 mb-12">
+          <div className="inline-block px-2 py-1 bg-brand-teal text-brand-text border border-black dark:border-brand-text font-mono text-xs font-bold uppercase mb-4">
             Advanced Project
           </div>
           <h1 className="text-4xl md:text-6xl font-black uppercase leading-none mb-6">
@@ -54,7 +54,7 @@ export const TechArticle3: React.FC = () => {
         {/* Content */}
         <article className="prose prose-lg dark:prose-invert max-w-none font-mono">
           
-          <div className="bg-brand-gray dark:bg-zinc-900 border-2 border-black dark:border-white p-6 mb-12 shadow-brutal-sm">
+          <div className="bg-brand-gray dark:bg-zinc-900 border-2 border-black dark:border-brand-text p-6 mb-12 shadow-brutal-sm">
             <h3 className="font-bold uppercase text-lg mb-2 flex items-center gap-2">
               <FileText size={20} /> The Strategy
             </h3>
@@ -154,10 +154,10 @@ export const TechArticle3: React.FC = () => {
             <li><strong>Opposition Notices:</strong> Boilerplate legal filings that just need specific fact swaps.</li>
           </ul>
 
-          <div className="p-8 border-2 border-black bg-brand-teal text-white shadow-brutal text-center">
+          <div className="p-8 border-2 border-black bg-brand-teal text-brand-text shadow-brutal text-center">
              <h3 className="font-black uppercase text-2xl mb-2">Want the full code?</h3>
              <p className="font-mono text-sm mb-6">I have a GitHub repository with more advanced versions of these scripts (including error handling and email sending).</p>
-             <button className="inline-flex items-center gap-2 px-6 py-3 bg-white text-black font-bold uppercase hover:bg-black hover:text-white transition-colors border-2 border-black">
+             <button className="inline-flex items-center gap-2 px-6 py-3 bg-brand-text text-brand-surface font-bold uppercase hover:bg-black hover:text-brand-text transition-colors border-2 border-black">
                 <Download size={18} /> Download Repo
              </button>
           </div>

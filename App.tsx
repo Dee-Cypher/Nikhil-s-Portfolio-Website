@@ -10,6 +10,7 @@ import { Contact } from './pages/Contact';
 import { Knowledge } from './pages/Knowledge';
 import { Law } from './pages/Law';
 import { Tech } from './pages/Tech';
+import { Business } from './pages/Business';
 import { TechArticle1 } from './pages/tech/TechArticle1';
 import { TechArticle2 } from './pages/tech/TechArticle2';
 import { TechArticle3 } from './pages/tech/TechArticle3';
@@ -35,15 +36,17 @@ const App: React.FC = () => {
           <Route path="/knowledge" element={<Knowledge />} />
           <Route path="/law" element={<Law />} />
           <Route path="/tech" element={<Tech />} />
+          <Route path="/business" element={<Business />} />
           <Route path="/tech/hello-legal-world" element={<TechArticle1 />} />
           <Route path="/tech/email-to-sheets" element={<TechArticle2 />} />
           <Route path="/tech/trademark-generator" element={<TechArticle3 />} />
-          
+
           {/* Work Routes - Main is now Coming Soon, Backup is Original */}
           <Route path="/projects" element={<WorkComingSoon />} />
           <Route path="/projects-backup" element={<ProjectsBackup />} />
 
           <Route path="/work-coming-soon" element={<WorkComingSoon />} />
+          <Route path="/verify-projects" element={<Projects />} />
           <Route path="/services" element={<Services />} />
           <Route path="/contact" element={<Contact />} />
         </Routes>

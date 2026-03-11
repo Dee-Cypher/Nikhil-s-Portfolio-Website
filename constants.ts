@@ -8,7 +8,8 @@ export const NAV_ITEMS: NavItem[] = [
     path: '/knowledge',
     children: [
       { label: 'Law', path: '/law' },
-      { label: 'Tech', path: '/tech' }
+      { label: 'Tech', path: '/tech' },
+      { label: 'Business', path: '/business' }
     ]
   },
   { label: 'Work', path: '/projects' },
@@ -16,14 +17,14 @@ export const NAV_ITEMS: NavItem[] = [
 ];
 
 export const STATS: Stat[] = [
+  { number: '5+', label: 'Scalable Team Tools', sublabel: 'Built & Deployed Daily' },
+  { number: 'Expert', label: 'Prompt Engineering', sublabel: 'LLM Evaluator & QA' },
+  { number: '10x', label: 'Efficiency Gains', sublabel: 'Via Automated Workflows' },
   { number: '200+', label: 'Trademark Apps', sublabel: 'Filed & Prosecuted' },
   { number: '500+', label: 'Agreements', sublabel: 'Drafted & Negotiated' },
   { number: '80%', label: 'Success Rate', sublabel: 'Opposition Proceedings' },
-  { number: '250+', label: 'Disputes', sublabel: 'Resolved via Arbitration' },
-  { number: '2.5+', label: 'Years', sublabel: 'Legal Practice' },
-  { number: '10+', label: 'Tools Built', sublabel: 'Automation Projects' },
-  { number: '100%', label: 'Free', sublabel: 'All Knowledge Shared' },
-  { number: '2', label: 'Domains', sublabel: 'Law • Tech' },
+  { number: '10+', label: 'Automation Projects', sublabel: 'Independently Built' },
+  { number: '3', label: 'Domains', sublabel: 'Law • Tech • Business' },
 ];
 
 export const SKILLS = [
@@ -35,31 +36,45 @@ export const SKILLS = [
 export const DOMAINS: Domain[] = [
   {
     id: 'law',
-    name: 'Law & Legal Practice',
+    name: 'Legal Engineering & Practice',
     icon: 'Scale',
-    tagline: 'IP Law + Personal Injury',
+    tagline: 'IP Strategy + System Architecture',
     bulletPoints: [
-      'Trademark registration & IP protection strategies',
-      'Personal injury demand letter drafting',
-      'Contract drafting frameworks and clause libraries',
-      'Case law analysis and legal research methods',
-      'Office action responses and examiner objections'
+      'Trademark portfolio management systems',
+      'High-volume demand letter architecture',
+      'Automated contract drafting engines',
+      'Data-driven case law analysis',
+      'Process engineering for legal ops'
     ],
-    idealFor: 'Law students, IP practitioners, personal injury attorneys'
+    idealFor: 'Law firms scaling operations, Legal Tech founders, IP Departments'
   },
   {
     id: 'tech',
-    name: 'Technology & Automation',
+    name: 'Automation Architecture',
     icon: 'Terminal',
-    tagline: 'Learning & Building',
+    tagline: 'Building The Legal Stack',
     bulletPoints: [
-      'Google Apps Script for legal workflows',
-      'Automation for trademark applications',
-      'n8n workflow automation (no-code)',
-      'AI tools for legal analysis (Claude, ChatGPT)',
-      'Quality assurance systems for demand letters'
+      'Custom Google Apps Script solutions',
+      'End-to-end filing automation',
+      'No-code workflow orchestration (n8n)',
+      'LLM integration for legal analysis',
+      'Quality Asurance (QA) systems code'
     ],
-    idealFor: 'Legal professionals, automation beginners, efficiency seekers'
+    idealFor: 'Legal Obvser, Legal Engineers, Efficiency Consultants'
+  },
+  {
+    id: 'business',
+    name: 'Business Operations',
+    icon: 'Briefcase',
+    tagline: 'Scaling Family Enterprise',
+    bulletPoints: [
+      'Strategic growth during COVID-19 pandemic',
+      'Operational restructuring and efficiency',
+      'Supply chain management',
+      'Team leadership and coordination',
+      'Financial planning and execution'
+    ],
+    idealFor: 'Entrepreneurs, SMB Owners, Operations Managers'
   }
 ];
 
@@ -68,58 +83,58 @@ export const INTEGRATIONS: Integration[] = [
     id: 1,
     icon: 'Target',
     title: 'Pattern Recognition',
-    lawApplication: 'Case precedents, contract patterns',
+    lawApplication: 'Identifying repeatable case facts',
     financeApplication: '',
-    techApplication: 'Code patterns, workflow bottlenecks',
-    takeaway: 'All legal work involves recognizing underlying structures and replicating success'
+    techApplication: 'Abstracting logic into reusable functions',
+    takeaway: 'Great lawyers and great engineers both see the matrix—the underlying patterns.'
   },
   {
     id: 2,
     icon: 'Shield',
-    title: 'Risk Management',
-    lawApplication: 'Due diligence, liability protection',
+    title: 'Risk Architecture',
+    lawApplication: 'Contractual liability caps',
     financeApplication: '',
-    techApplication: 'Error handling, data validation',
-    takeaway: 'Managing downside is universal—whether in contracts, cases, or code'
+    techApplication: 'Error handling and fail-safes',
+    takeaway: 'We don\'t just avoid risk. We engineer systems that are resilient to it.'
   },
   {
     id: 3,
     icon: 'Zap',
-    title: 'Leverage & Efficiency',
-    lawApplication: 'Clause libraries, template contracts',
+    title: 'Scale & Leverage',
+    lawApplication: 'Template libraries',
     financeApplication: '',
-    techApplication: 'Automation scripts, reusable workflows',
-    takeaway: 'Build once, benefit forever—the power of systems thinking'
+    techApplication: 'Automated pipelines',
+    takeaway: 'The only way to escape the billable hour is to build assets that work while you sleep.'
   },
   {
     id: 4,
     icon: 'MessageSquare',
-    title: 'Clear Communication',
-    lawApplication: 'Persuasive arguments, precise language',
+    title: 'Precise Logic',
+    lawApplication: 'Unambiguous drafting',
     financeApplication: '',
-    techApplication: 'Clean code, documentation',
-    takeaway: 'Clarity compounds trust in every domain'
+    techApplication: 'Clean, typed code',
+    takeaway: 'Ambiguity is a bug. Precision is a feature.'
   }
 ];
 
 export const PHILOSOPHY: Philosophy[] = [
   {
     id: 1,
-    icon: 'BookOpen',
-    title: 'Teach to Learn',
-    description: 'I document every project publicly for a selfish reason: teaching forces clarity. If I can\'t explain how I built something, I don\'t actually understand it. That\'s why everything I learn gets published here—free, detailed, step-by-step.'
+    icon: 'Terminal',
+    title: 'Deep AI Expertise',
+    description: "Working extensively with AI since the launch of ChatGPT allows me to quickly identify systematic issues in AI-generated content, perform rigorous QA analysis, and engineer reliable prompts."
   },
   {
     id: 2,
     icon: 'Cog',
-    title: 'Systems > Hustle',
-    description: "I don't work 80-hour weeks. I build systems that work while I sleep. If you do something more than twice, script it. If you draft the same contract 50 times, template it. Manual work doesn't scale. Systems do."
+    title: 'Engineer > Administrator',
+    description: "Lawyers manage processes. Engineers build systems that manage processes. I combine AI expertise tightly with an operator's mindset to create resources that scale team impact."
   },
   {
     id: 3,
     icon: 'Users',
-    title: 'Learning in Public',
-    description: "I'm not a legal tech expert. I'm a lawyer learning to code. I share projects that aren't perfect, tools that have bugs, tutorials where I got stuck. If you're 10 steps ahead of me, this won't help. If you're where I was 6 months ago, it might be exactly what you need."
+    title: 'The Builder\'s Mindset',
+    description: "I'm not just drafting documents. I'm building tools—NTD Gems, Prompt Libraries, and Workflow Dashboards—that turn legal services into scalable, consistent products."
   }
 ];
 

@@ -1,76 +1,63 @@
 import React from 'react';
-import { ArrowUpRight, Minus, Square, X } from 'lucide-react';
+import { ArrowUpRight, Github } from 'lucide-react';
 import { Project } from '../types';
 import { motion } from 'framer-motion';
 
 export const ProjectCard: React.FC<{ project: Project; index: number }> = ({ project, index }) => {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 50 }}
+      initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ delay: index * 0.1, duration: 0.5 }}
       className="h-full"
     >
-      <div className="h-full flex flex-col bg-white text-black border-2 border-black shadow-brutal hover:shadow-brutal-lg transition-all duration-300 group">
-        {/* Window Header */}
-        <div className="h-10 bg-black border-b-2 border-black flex items-center justify-between px-3">
-          <span className="font-mono text-white text-xs uppercase tracking-wider truncate mr-4">
-            {project.title}.exe
-          </span>
-          <div className="flex gap-2">
-            <div className="w-4 h-4 bg-white border border-black flex items-center justify-center hover:bg-brand-teal cursor-pointer">
-              <Minus size={10} className="text-black" />
-            </div>
-            <div className="w-4 h-4 bg-white border border-black flex items-center justify-center hover:bg-brand-amber cursor-pointer">
-              <Square size={8} className="text-black" />
-            </div>
-            <div className="w-4 h-4 bg-white border border-black flex items-center justify-center hover:bg-red-500 cursor-pointer">
-              <X size={10} className="text-black" />
-            </div>
-          </div>
-        </div>
+      <div className="h-full flex flex-col bg-brand-surface border border-brand-text/5 rounded-2xl shadow-glass overflow-hidden group hover:border-brand-orange/30 transition-all duration-300">
 
         {/* Image Content */}
-        <div className="aspect-video w-full overflow-hidden border-b-2 border-black relative">
-          <div className="absolute inset-0 bg-brand-teal/20 opacity-0 group-hover:opacity-100 transition-opacity z-10 mix-blend-multiply pointer-events-none" />
+        <div className="aspect-video w-full overflow-hidden relative">
+          <div className="absolute inset-0 bg-brand-bg/50 group-hover:bg-transparent transition-colors z-10" />
           <img
             src={project.image}
             alt={project.title}
-            className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
+            className="w-full h-full object-cover grayscale group-hover:grayscale-0 scale-100 group-hover:scale-105 transition-all duration-700"
           />
         </div>
 
         {/* Text Content */}
-        <div className="p-6 flex flex-col flex-grow bg-white">
+        <div className="p-8 flex flex-col flex-grow relative">
           <div className="mb-4">
-             <span className="inline-block px-2 py-1 mb-3 text-xs font-bold uppercase tracking-wide bg-brand-teal text-white border-2 border-black shadow-brutal-sm">
+            <span className="inline-block px-3 py-1 mb-4 text-[10px] font-bold uppercase tracking-widest bg-brand-text/5 text-brand-orange rounded-full">
               {project.category}
             </span>
-            <h3 className="text-2xl font-black uppercase leading-none mb-2 text-black group-hover:text-brand-teal transition-colors">
+            <h3 className="text-2xl font-bold uppercase leading-none mb-3 text-brand-text">
               {project.title}
             </h3>
           </div>
 
-          <p className="font-mono text-sm text-gray-600 mb-6 flex-grow leading-relaxed border-l-2 border-gray-200 pl-3">
+          <p className="text-sm text-brand-muted mb-8 flex-grow leading-relaxed">
             {project.description}
           </p>
 
-          <div className="space-y-4">
-             <div className="flex flex-wrap gap-2">
+          <div className="space-y-6 mt-auto">
+            <div className="flex flex-wrap gap-2">
               {project.tools.map((tool) => (
-                <span key={tool} className="px-2 py-1 text-[10px] uppercase font-bold border border-black text-black bg-brand-gray">
+                <span key={tool} className="px-2 py-1 text-[10px] uppercase font-bold text-gray-500 border border-brand-text/5 rounded bg-brand-bg">
                   {tool}
                 </span>
               ))}
             </div>
 
-            <a 
-              href={project.link || '#'} 
-              className="w-full py-3 flex items-center justify-center gap-2 bg-black text-white font-bold uppercase border-2 border-black hover:bg-white hover:text-black transition-colors"
-            >
-              View Case Study <ArrowUpRight size={18} />
-            </a>
+            <div className="flex gap-4">
+              <a
+                href={project.link || '#'}
+                className="flex-1 py-3 flex items-center justify-center gap-2 bg-brand-text text-brand-surface font-bold uppercase rounded-lg hover:bg-brand-orange hover:text-white transition-colors text-sm"
+              >
+                View Case Study <ArrowUpRight size={16} />
+              </a>
+              {/* Optional Github Link if exists, purely visual placeholder for now */}
+              {/* <button className="p-3 bg-brand-text/5 text-brand-text rounded-lg hover:bg-brand-text/10"><Github size={20}/></button> */}
+            </div>
           </div>
         </div>
       </div>

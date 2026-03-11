@@ -3,7 +3,7 @@ import { SKILLS } from '../constants';
 
 export const SkillsMarquee: React.FC = () => {
   return (
-    <div className="w-full overflow-hidden py-12">
+    <div className="w-full overflow-hidden py-20 bg-brand-bg border-y border-brand-text/5">
       <div className="flex w-full select-none">
         {/* Track 1 */}
         <div className="flex flex-shrink-0 animate-marquee items-center gap-8 pr-8 min-w-full">
@@ -14,7 +14,7 @@ export const SkillsMarquee: React.FC = () => {
         {/* Track 2 */}
         <div className="flex flex-shrink-0 animate-marquee items-center gap-8 pr-8 min-w-full">
           {SKILLS.concat(SKILLS).map((skill, index) => (
-             <SkillTile key={`t2-${index}`} skill={skill} />
+            <SkillTile key={`t2-${index}`} skill={skill} />
           ))}
         </div>
       </div>
@@ -23,8 +23,8 @@ export const SkillsMarquee: React.FC = () => {
 };
 
 const SkillTile: React.FC<{ skill: string }> = ({ skill }) => (
-  <div className="flex-shrink-0 px-8 py-4 border-2 border-black dark:border-white bg-white dark:bg-black shadow-brutal dark:shadow-[4px_4px_0px_0px_#ffffff] hover:shadow-brutal-lg hover:-translate-y-1 transition-all group cursor-default">
-    <span className="text-xl font-bold uppercase text-black dark:text-white group-hover:text-brand-teal transition-colors whitespace-nowrap font-mono">
+  <div className="flex-shrink-0 px-8 py-4 border border-brand-text/10 bg-brand-surface rounded-full hover:bg-brand-text/10 hover:border-brand-orange/50 transition-all group cursor-default">
+    <span className="text-lg font-bold uppercase text-brand-muted group-hover:text-brand-text transition-colors whitespace-nowrap tracking-wider">
       {skill}
     </span>
   </div>
