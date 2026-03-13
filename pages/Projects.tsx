@@ -48,7 +48,7 @@ export const Projects: React.FC = () => {
           <div className="grid md:grid-cols-2 gap-8 md:gap-12">
 
             {/* GOOD FIT */}
-            <div className="bg-brand-surface border border-brand-text/10 p-8 rounded-2xl shadow-glass hover:bg-brand-text/[0.02] transition-colors relative overflow-hidden group">
+            <div className="glass-card bg-brand-surface border border-brand-text/10 p-8 rounded-2xl shadow-glass hover:bg-brand-text/[0.02] transition-colors relative overflow-hidden group">
               <div className="absolute top-0 right-0 w-32 h-32 bg-brand-green/10 blur-[50px] pointer-events-none" />
               <div className="flex items-center gap-4 mb-8">
                 <div className="bg-brand-green/20 text-brand-green p-3 rounded-xl border border-brand-green/30 shadow-glow">
@@ -75,7 +75,7 @@ export const Projects: React.FC = () => {
             </div>
 
             {/* BAD FIT */}
-            <div className="bg-brand-surface border border-brand-text/10 p-8 rounded-2xl shadow-glass hover:bg-brand-text/[0.02] transition-colors relative overflow-hidden group">
+            <div className="glass-card bg-brand-surface border border-brand-text/10 p-8 rounded-2xl shadow-glass hover:bg-brand-text/[0.02] transition-colors relative overflow-hidden group">
               <div className="absolute top-0 right-0 w-32 h-32 bg-brand-orange/10 blur-[50px] pointer-events-none" />
               <div className="flex items-center gap-4 mb-8">
                 <div className="bg-brand-orange/20 text-brand-orange p-3 rounded-xl border border-brand-orange/30 shadow-glow">
@@ -115,7 +115,7 @@ export const Projects: React.FC = () => {
               { icon: Clock, title: "Start Small, Prove Value", desc: "No massive 6-month contracts. We build a small win in Week 1, prove ROI, then scale.", color: "text-brand-orange" },
               { icon: Shield, title: "Teach While Building", desc: "Weekly demos and recorded walkthroughs. You get the tool AND the knowledge to maintain it.", color: "text-brand-green" }
             ].map((rule, i) => (
-              <div key={i} className="bg-brand-surface border border-brand-text/5 p-8 rounded-2xl hover:-translate-y-2 transition-transform shadow-glass hover:bg-brand-text/[0.02]">
+              <div key={i} className="glass-card bg-brand-surface border border-brand-text/5 p-8 rounded-2xl hover:-translate-y-2 transition-transform shadow-glass hover:bg-brand-text/[0.02]">
                 <div className={`w-16 h-16 mx-auto bg-brand-text/5 rounded-2xl flex items-center justify-center mb-6 shadow-glow ${rule.color}`}>
                   <rule.icon size={32} />
                 </div>

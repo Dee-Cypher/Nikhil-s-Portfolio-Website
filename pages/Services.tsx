@@ -50,7 +50,7 @@ export const Services: React.FC = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ delay: index * 0.1 }}
                   viewport={{ once: true }}
-                  className="bg-brand-surface border border-brand-text/5 p-8 rounded-2xl shadow-glass hover:bg-brand-text/[0.02] hover:border-brand-text/10 transition-all duration-300 flex flex-col group relative overflow-hidden"
+                  className="glass-card bg-brand-surface border border-brand-text/5 p-8 rounded-2xl shadow-glass hover:bg-brand-text/[0.02] hover:border-brand-text/10 transition-all duration-300 flex flex-col group relative overflow-hidden"
                 >
                   <div className="absolute top-0 right-0 w-32 h-32 bg-brand-blue/5 blur-[50px] -translate-y-1/2 translate-x-1/2 pointer-events-none" />
 

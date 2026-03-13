@@ -76,13 +76,13 @@
       --brand-green: 22 163 74;
       --brand-blue: 37 99 235;
       --brand-purple: 147 51 234;
-      --glass: rgba(255, 255, 255, 0.70);
+      --glass: rgba(255, 255, 255, 0.55);
       --glassBorder: rgba(0, 0, 0, 0.08);
     }
 
     .dark {
       --brand-bg: 13 13 15;
-      --brand-surface: 26 26 29;
+      --brand-surface: 38 38 44;
       --brand-text: 242 242 242;
       --brand-muted: 156 163 175;
       --brand-orange: 255 107 74;
@@ -90,8 +90,21 @@
       --brand-green: 74 222 128;
       --brand-blue: 59 130 246;
       --brand-purple: 192 132 252;
-      --glass: rgba(20, 20, 22, 0.70);
-      --glassBorder: rgba(255, 255, 255, 0.08);
+      --glass: rgba(30, 30, 36, 0.55);
+      --glassBorder: rgba(255, 255, 255, 0.12);
+    }
+
+    /* --- Glassmorphism utility --- */
+    .glass-card {
+      background: var(--glass);
+      backdrop-filter: blur(16px) saturate(160%);
+      -webkit-backdrop-filter: blur(16px) saturate(160%);
+      border: 1px solid var(--glassBorder);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.12), inset 0 1px 0 rgba(255,255,255,0.06);
+    }
+
+    .dark .glass-card {
+      box-shadow: 0 8px 32px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.04);
     }
 
     body {

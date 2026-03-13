@@ -99,7 +99,7 @@ export const Knowledge: React.FC = () => {
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0, scale: 0.95 }}
                   transition={{ duration: 0.3, delay: i * 0.05 }}
-                  className="bg-brand-surface border border-brand-text/5 p-8 rounded-2xl shadow-glass hover:bg-brand-text/[0.02] hover:border-brand-text/10 hover:-translate-y-1 transition-all group cursor-pointer relative overflow-hidden"
+                  className="glass-card bg-brand-surface border border-brand-text/5 p-8 rounded-2xl shadow-glass hover:bg-brand-text/[0.02] hover:border-brand-text/10 hover:-translate-y-1 transition-all group cursor-pointer relative overflow-hidden"
                 >
                   {/* Hover Gradient */}
                   <div className="absolute top-0 right-0 w-32 h-32 bg-brand-blue/5 blur-[50px] transition-opacity opacity-0 group-hover:opacity-100 pointer-events-none" />

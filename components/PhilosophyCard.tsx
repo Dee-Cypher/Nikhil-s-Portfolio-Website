@@ -17,7 +17,7 @@ export const PhilosophyCard: React.FC<PhilosophyCardProps> = ({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ delay: index * 0.15, duration: 0.6 }}
-      className="bg-brand-surface border border-brand-text/10 rounded-2xl p-8 hover:border-brand-orange/40 hover:shadow-glow transition-all group relative overflow-hidden h-full flex flex-col"
+      className="glass-card bg-brand-surface border border-brand-text/10 rounded-2xl p-8 hover:border-brand-orange/40 hover:shadow-glow transition-all group relative overflow-hidden h-full flex flex-col"
     >
       <div className="absolute inset-0 bg-gradient-to-br from-brand-orange/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
 

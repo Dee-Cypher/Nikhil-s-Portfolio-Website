@@ -27,9 +27,28 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
     }
   };
 
+  const [navVisible, setNavVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
+
   useEffect(() => {
     setIsOpen(false);
   }, [location]);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      if (currentScrollY < 80) {
+        setNavVisible(true);
+      } else if (currentScrollY > lastScrollY) {
+        setNavVisible(false);
+      } else {
+        setNavVisible(true);
+      }
+      setLastScrollY(currentScrollY);
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [lastScrollY]);
 
   return (
     <div className="min-h-screen flex flex-col bg-brand-bg text-brand-text font-sans selection:bg-brand-orange selection:text-brand-text overflow-x-hidden">
@@ -41,7 +60,7 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
       </div>
 
       {/* NAVBAR */}
-      <nav className="sticky top-0 z-50 bg-brand-bg/80 backdrop-blur-md border-b border-brand-text/5 transition-all duration-300">
+      <nav className={`sticky top-0 z-50 bg-brand-bg/80 backdrop-blur-md border-b border-brand-text/5 transition-all duration-500 ${navVisible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-full pointer-events-none'}`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex h-20 items-center justify-between relative">
 
@@ -137,7 +156,7 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
-              className="md:hidden overflow-hidden bg-brand-surface border-b border-brand-text/10"
+              className="md:hidden overflow-hidden glass-card bg-brand-surface border-b border-brand-text/10"
             >
               <div className="flex flex-col p-4 space-y-2">
                 {NAV_ITEMS.map((item) => (

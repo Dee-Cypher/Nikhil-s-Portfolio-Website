@@ -221,14 +221,14 @@ export const WorkComingSoon: React.FC = () => {
         </div>
 
         <div className="grid md:grid-cols-2 gap-6 max-w-2xl mx-auto">
-          <Link to="/knowledge" className="bg-brand-surface border border-brand-text/5 p-8 rounded-2xl shadow-glass hover:bg-brand-text/[0.02] hover:-translate-y-1 transition-all group text-left">
+          <Link to="/knowledge" className="glass-card bg-brand-surface border border-brand-text/5 p-8 rounded-2xl shadow-glass hover:bg-brand-text/[0.02] hover:-translate-y-1 transition-all group text-left">
             <div className="flex justify-between items-start mb-4">
               <h3 className="font-bold uppercase text-xl text-brand-text group-hover:text-brand-blue transition-colors">Read The Codex</h3>
               <ArrowRight size={18} className="text-brand-muted group-hover:text-brand-text group-hover:translate-x-1 transition-transform" />
             </div>
             <p className="text-sm text-brand-muted leading-relaxed">While the portfolio builds, explore the knowledge base articles and tutorials.</p>
           </Link>
-          <Link to="/contact" className="bg-brand-surface border border-brand-text/5 p-8 rounded-2xl shadow-glass hover:bg-brand-text/[0.02] hover:-translate-y-1 transition-all group text-left">
+          <Link to="/contact" className="glass-card bg-brand-surface border border-brand-text/5 p-8 rounded-2xl shadow-glass hover:bg-brand-text/[0.02] hover:-translate-y-1 transition-all group text-left">
             <div className="flex justify-between items-start mb-4">
               <h3 className="font-bold uppercase text-xl text-brand-text group-hover:text-brand-orange transition-colors">Get in Touch</h3>
               <ArrowRight size={18} className="text-brand-muted group-hover:text-brand-text group-hover:translate-x-1 transition-transform" />

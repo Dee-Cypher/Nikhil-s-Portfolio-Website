@@ -190,7 +190,7 @@ export const Home: React.FC = () => {
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ delay: idx * 0.05 }}
-                className="bg-brand-surface border border-brand-text/5 rounded-xl p-4 text-center hover:bg-brand-text/5 transition-colors group"
+                className="glass-card bg-brand-surface border border-brand-text/5 rounded-xl p-4 text-center hover:bg-brand-text/5 transition-colors group"
               >
                 <div className="mb-2 flex justify-center text-brand-muted group-hover:text-brand-text transition-colors">{badge.icon}</div>
                 <div className="font-bold text-sm text-brand-text mb-1">{badge.primary}</div>

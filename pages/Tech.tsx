@@ -210,7 +210,7 @@ export const Tech: React.FC = () => {
                            <p>From intake to filing, <span className="font-bold text-brand-text">I build the infrastructure that makes legal services scalable.</span></p>
                         </div>
 
-                        <div className="bg-brand-surface border border-brand-text/10 p-6 rounded-2xl mb-8 shadow-glass bg-brand-text/[0.02]">
+                        <div className="glass-card bg-brand-surface border border-brand-text/10 p-6 rounded-2xl mb-8 shadow-glass bg-brand-text/[0.02]">
                            <h3 className="font-bold uppercase mb-4 text-sm text-brand-muted tracking-wide flex items-center gap-2">
                               <div className="w-1.5 h-1.5 bg-brand-green rounded-full shadow-[0_0_8px_rgba(74,222,128,0.5)]"></div> My Current Skill Level
                            </h3>
@@ -291,7 +291,7 @@ export const Tech: React.FC = () => {
                         whileInView={{ opacity: 1, y: 0 }}
                         transition={{ delay: i * 0.1 }}
                         key={tool.id}
-                        className="bg-brand-surface border border-brand-text/5 p-6 rounded-2xl shadow-glass hover:bg-brand-text/5 hover:border-brand-text/10 transition-all group"
+                        className="glass-card bg-brand-surface border border-brand-text/5 p-6 rounded-2xl shadow-glass hover:bg-brand-text/5 hover:border-brand-text/10 transition-all group"
                      >
                         <div className="flex justify-between items-start mb-6">
                            <div className={`p-3 bg-brand-text/5 rounded-xl ${tool.color} group-hover:scale-110 transition-transform`}>
@@ -409,7 +409,7 @@ export const Tech: React.FC = () => {
                            initial={{ opacity: 0, scale: 0.95 }}
                            animate={{ opacity: 1, scale: 1 }}
                            exit={{ opacity: 0, scale: 0.95 }}
-                           className="bg-brand-surface border border-brand-text/10 p-8 rounded-2xl hover:border-brand-blue/30 transition-all group cursor-pointer shadow-glass"
+                           className="glass-card bg-brand-surface border border-brand-text/10 p-8 rounded-2xl hover:border-brand-blue/30 transition-all group cursor-pointer shadow-glass"
                         >
                            <div className="flex justify-between items-start mb-6">
                               <div className="flex gap-2">
@@ -520,7 +520,7 @@ export const Tech: React.FC = () => {
 
                <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
                   {SNIPPETS.map((snip, i) => (
-                     <div key={i} className="bg-brand-surface border border-brand-text/10 p-5 rounded-xl hover:-translate-y-1 transition-all cursor-pointer group hover:border-brand-blue/30 shadow-sm">
+                     <div key={i} className="glass-card bg-brand-surface border border-brand-text/10 p-5 rounded-xl hover:-translate-y-1 transition-all cursor-pointer group hover:border-brand-blue/30 shadow-sm">
                         <div className="flex justify-between items-center mb-3">
                            <span className="text-[10px] font-bold uppercase text-brand-blue bg-brand-blue/10 px-2 py-0.5 rounded">{snip.lang}</span>
                            {snip.lines > 0 && <span className="text-[10px] text-brand-muted/70">{snip.lines} lines</span>}
@@ -565,7 +565,7 @@ export const Tech: React.FC = () => {
                <h2 className="text-4xl font-bold uppercase mb-12 text-center text-brand-text">The Honest FAQ</h2>
                <div className="space-y-6">
                   {FAQS.map((faq, i) => (
-                     <div key={i} className="bg-brand-surface border border-brand-text/10 p-6 rounded-xl hover:border-brand-text/20 transition-colors">
+                     <div key={i} className="glass-card bg-brand-surface border border-brand-text/10 p-6 rounded-xl hover:border-brand-text/20 transition-colors">
                         <h3 className="font-bold uppercase text-brand-orange mb-3 text-sm tracking-wide">{faq.q}</h3>
                         <p className="text-sm text-brand-muted leading-relaxed">{faq.a}</p>
                      </div>

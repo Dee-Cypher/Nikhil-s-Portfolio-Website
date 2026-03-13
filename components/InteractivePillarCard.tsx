@@ -49,7 +49,7 @@ export const InteractivePillarCard: React.FC<PillarCardProps> = ({
       >
         {/* FRONT FACE */}
         <div
-          className="absolute inset-0 bg-brand-surface border border-brand-text/10 rounded-3xl p-10 flex flex-col backface-hidden shadow-glass"
+          className="absolute inset-0 glass-card bg-brand-surface border border-brand-text/10 rounded-3xl p-10 flex flex-col backface-hidden shadow-glass"
           style={{ backfaceVisibility: 'hidden' }}
         >
           <div className={`w-16 h-16 rounded-2xl bg-brand-text/5 flex items-center justify-center mb-8 ${getColor(accentColor).split(' ')[0]}`}>

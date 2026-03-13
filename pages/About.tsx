@@ -57,7 +57,7 @@ export const About: React.FC = () => {
                   initial={{ opacity: 0, scale: 0.95 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.5, delay: 0.2 }}
-                  className="bg-brand-surface border border-brand-text/10 rounded-2xl p-4 shadow-2xl relative overflow-hidden group"
+                  className="glass-card bg-brand-surface border border-brand-text/10 rounded-2xl p-4 shadow-2xl relative overflow-hidden group"
                >
                   <div className="aspect-[3/4] overflow-hidden rounded-xl mb-4 relative">
                      <div className="absolute inset-0 bg-brand-blue/10 mix-blend-overlay z-10" />
@@ -85,7 +85,7 @@ export const About: React.FC = () => {
                {/* Job 1 */}
                <div className="relative pl-12">
                   <div className="absolute -left-[9px] top-8 w-4 h-4 bg-brand-bg border-2 border-brand-green rounded-full shadow-[0_0_10px_rgba(34,197,94,0.5)]"></div>
-                  <div className="bg-brand-surface border border-brand-text/10 rounded-2xl p-8 hover:border-brand-green/30 transition-all group relative overflow-hidden">
+                  <div className="glass-card bg-brand-surface border border-brand-text/10 rounded-2xl p-8 hover:border-brand-green/30 transition-all group relative overflow-hidden">
                      <div className="absolute top-0 right-0 w-32 h-32 bg-brand-green/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
 
                      <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 relative z-10">
@@ -105,7 +105,7 @@ export const About: React.FC = () => {
                {/* Job 2 */}
                <div className="relative pl-12">
                   <div className="absolute -left-[9px] top-8 w-4 h-4 bg-brand-bg border-2 border-brand-blue rounded-full shadow-[0_0_10px_rgba(59,130,246,0.5)]"></div>
-                  <div className="bg-brand-surface border border-brand-text/10 rounded-2xl p-8 hover:border-brand-blue/30 transition-all group relative overflow-hidden">
+                  <div className="glass-card bg-brand-surface border border-brand-text/10 rounded-2xl p-8 hover:border-brand-blue/30 transition-all group relative overflow-hidden">
                      <div className="absolute top-0 right-0 w-32 h-32 bg-brand-blue/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
 
                      <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 relative z-10">
@@ -133,7 +133,7 @@ export const About: React.FC = () => {
                {/* Job 3 */}
                <div className="relative pl-12">
                   <div className="absolute -left-[9px] top-8 w-4 h-4 bg-brand-bg border-2 border-brand-orange rounded-full shadow-[0_0_10px_rgba(249,115,22,0.5)]"></div>
-                  <div className="bg-brand-surface border border-brand-text/10 rounded-2xl p-8 hover:border-brand-orange/30 transition-all group relative overflow-hidden">
+                  <div className="glass-card bg-brand-surface border border-brand-text/10 rounded-2xl p-8 hover:border-brand-orange/30 transition-all group relative overflow-hidden">
                      <div className="absolute top-0 right-0 w-32 h-32 bg-brand-orange/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
 
                      <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 relative z-10">
@@ -330,7 +330,7 @@ export const About: React.FC = () => {
                   { label: "Trademark Attorney", sub: "Code 54191" },
                   { label: "B.B.A. LL.B.", sub: "Symbiosis Noida" }
                ].map((cred, i) => (
-                  <div key={i} className="bg-brand-surface border border-brand-text/10 px-8 py-4 rounded-xl text-center hover:border-brand-blue/30 hover:shadow-glow transition-all">
+                  <div key={i} className="glass-card bg-brand-surface border border-brand-text/10 px-8 py-4 rounded-xl text-center hover:border-brand-blue/30 hover:shadow-glow transition-all">
                      <div className="font-bold uppercase text-sm text-brand-text mb-1">{cred.label}</div>
                      <div className="text-[10px] uppercase font-bold text-brand-blue tracking-wider">{cred.sub}</div>
                   </div>
@@ -377,7 +377,7 @@ export const About: React.FC = () => {
                   { title: "Legal Pros", want: "Automation tools & efficiency hacks.", get: "Copy-paste scripts & no-code tutorials." },
                   { title: "Collaborators", want: "Reliable partner for IP/PI work.", get: "Portfolio of 200+ filings & code samples." }
                ].map((persona, i) => (
-                  <div key={i} className="bg-brand-surface border border-brand-text/10 p-8 rounded-2xl hover:bg-brand-text/5 transition-colors group relative overflow-hidden">
+                  <div key={i} className="glass-card bg-brand-surface border border-brand-text/10 p-8 rounded-2xl hover:bg-brand-text/5 transition-colors group relative overflow-hidden">
                      <div className="absolute top-0 left-0 w-1 h-full bg-brand-blue scale-y-0 group-hover:scale-y-100 transition-transform origin-top" />
                      <h3 className="text-2xl font-bold uppercase mb-6 text-brand-text">{persona.title}</h3>
                      <div className="mb-6">

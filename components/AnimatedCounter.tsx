@@ -28,7 +28,7 @@ export const AnimatedStat: React.FC<StatProps> = ({
       initial={{ opacity: 0, scale: 0.9 }}
       animate={inView ? { opacity: 1, scale: 1 } : {}}
       transition={{ duration: 0.5, delay, ease: "backOut" }}
-      className="bg-brand-surface border border-brand-text/5 rounded-2xl p-6 hover:bg-brand-text/5 hover:border-brand-orange/30 transition-all group relative overflow-hidden"
+      className="glass-card bg-brand-surface border border-brand-text/5 rounded-2xl p-6 hover:bg-brand-text/5 hover:border-brand-orange/30 transition-all group relative overflow-hidden"
     >
       <div className="absolute top-0 right-0 w-24 h-24 bg-brand-orange/5 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2 group-hover:bg-brand-orange/10 transition-colors" />
 

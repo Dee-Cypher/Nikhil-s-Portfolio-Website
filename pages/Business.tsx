@@ -14,7 +14,7 @@ export const Business: React.FC = () => {
                     transition={{ duration: 0.6 }}
                     className="relative z-10"
                 >
-                    <div className="inline-block px-3 py-1 bg-brand-surface border border-brand-text/10 rounded-full font-bold uppercase text-xs mb-6 text-brand-orange tracking-wider shadow-glass flex items-center gap-2 w-max">
+                    <div className="inline-block px-3 py-1 glass-card bg-brand-surface border border-brand-text/10 rounded-full font-bold uppercase text-xs mb-6 text-brand-orange tracking-wider shadow-glass flex items-center gap-2 w-max">
                         <Briefcase size={14} /> Domain 03
                     </div>
                     <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold uppercase leading-[0.9] mb-8 tracking-tight">

@@ -63,7 +63,7 @@ export const Contact: React.FC = () => {
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="bg-brand-surface border border-brand-text/5 p-8 rounded-2xl shadow-glass hover:bg-brand-text/[0.02] transition-colors group"
+              className="glass-card bg-brand-surface border border-brand-text/5 p-8 rounded-2xl shadow-glass hover:bg-brand-text/[0.02] transition-colors group"
             >
               <div className="inline-block px-3 py-1 bg-brand-blue/10 text-brand-blue font-bold uppercase text-xs rounded mb-4 border border-brand-blue/20">Option 1: You Know What You Need</div>
               <h2 className="text-3xl font-bold uppercase mb-4 text-brand-text">Book A Free Workflow Audit</h2>
@@ -83,7 +83,7 @@ export const Contact: React.FC = () => {
               initial={{ opacity: 0, x: 20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="bg-brand-surface border border-brand-text/5 p-8 rounded-2xl shadow-glass hover:bg-brand-text/[0.02] transition-colors group"
+              className="glass-card bg-brand-surface border border-brand-text/5 p-8 rounded-2xl shadow-glass hover:bg-brand-text/[0.02] transition-colors group"
             >
               <div className="inline-block px-3 py-1 bg-brand-orange/10 text-brand-orange font-bold uppercase text-xs rounded mb-4 border border-brand-orange/20">Option 2: You Have Questions</div>
               <h2 className="text-3xl font-bold uppercase mb-4 text-brand-text">Send A Message</h2>

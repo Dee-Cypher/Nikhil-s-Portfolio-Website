@@ -22,7 +22,7 @@ export const ArticlePreviewCard: React.FC<ArticlePreviewCardProps> = ({ article,
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ delay: index * 0.1, duration: 0.5 }}
-      className="bg-brand-surface border border-brand-text/5 rounded-2xl p-6 hover:bg-brand-text/5 transition-all cursor-pointer group flex flex-col h-full relative overflow-hidden"
+      className="glass-card bg-brand-surface border border-brand-text/5 rounded-2xl p-6 hover:bg-brand-text/5 transition-all cursor-pointer group flex flex-col h-full relative overflow-hidden"
     >
 
       {/* Category & Time */}

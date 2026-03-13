@@ -12,7 +12,7 @@ export const ProjectCard: React.FC<{ project: Project; index: number }> = ({ pro
       transition={{ delay: index * 0.1, duration: 0.5 }}
       className="h-full"
     >
-      <div className="h-full flex flex-col bg-brand-surface border border-brand-text/5 rounded-2xl shadow-glass overflow-hidden group hover:border-brand-orange/30 transition-all duration-300">
+      <div className="h-full flex flex-col glass-card bg-brand-surface border border-brand-text/5 rounded-2xl shadow-glass overflow-hidden group hover:border-brand-orange/30 transition-all duration-300">
 
         {/* Image Content */}
         <div className="aspect-video w-full overflow-hidden relative">

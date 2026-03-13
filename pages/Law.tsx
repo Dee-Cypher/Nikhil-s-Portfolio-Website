@@ -257,7 +257,7 @@ export const Law: React.FC = () => {
               { title: 'Personal Injury Law', items: ['Demand Letters', 'Medical Analysis', 'Settlement Valuation', 'Liability Assessment'], color: 'text-brand-orange' },
               { title: 'Contract Drafting', items: ['Licensing Templates', 'Partnership Deals', 'Service Agreements', 'Clause Libraries'], color: 'text-brand-green' }
             ].map((col, i) => (
-              <div key={i} className="bg-brand-surface border border-brand-text/5 p-6 rounded-2xl shadow-glass hover:-translate-y-1 transition-transform group">
+              <div key={i} className="glass-card bg-brand-surface border border-brand-text/5 p-6 rounded-2xl shadow-glass hover:-translate-y-1 transition-transform group">
                 <h3 className={`font-bold uppercase text-xl mb-4 border-b border-brand-text/5 pb-4 ${col.color}`}>{col.title}</h3>
                 <ul className="space-y-3 text-sm text-brand-muted">
                   {col.items.map((item, j) => (
@@ -346,7 +346,7 @@ export const Law: React.FC = () => {
               { title: 'Policy Limits Settlement', area: 'PI Law', result: 'Settled in 45 Days', desc: 'Securing full policy limits for an MVA case despite initial lowball offer, using precise demand drafting.', color: 'text-brand-orange' },
               { title: 'Intl Licensing Deal', area: 'Contracts', result: 'Protected & Signed', desc: 'Negotiating a complex tech transfer agreement between a US licensor and Indian manufacturer.', color: 'text-brand-green' }
             ].map((study, i) => (
-              <div key={i} className="bg-brand-surface border border-brand-text/5 p-6 rounded-2xl shadow-glass hover:bg-brand-text/[0.02] hover:-translate-y-1 transition-all group">
+              <div key={i} className="glass-card bg-brand-surface border border-brand-text/5 p-6 rounded-2xl shadow-glass hover:bg-brand-text/[0.02] hover:-translate-y-1 transition-all group">
                 <div className={`inline-block px-2 py-1 bg-brand-text/5 text-brand-text text-[10px] font-bold uppercase mb-4 rounded border border-brand-text/5`}>{study.area}</div>
                 <h3 className="text-xl font-bold uppercase mb-2 text-brand-text">{study.title}</h3>
                 <div className={`text-xs font-bold uppercase mb-4 border-b border-brand-text/5 pb-4 ${study.color}`}>Result: {study.result}</div>
